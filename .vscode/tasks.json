@@ -1,0 +1,29 @@
+{
+    "command": "gcc",
+    "args": [
+        "*.c",
+        "*.h",
+        "-o",  
+        "matlabutilites.out",
+        "-lm",
+        "&&",
+        "./matlabutilites.out"
+      ],
+    "isShellCommand": true,
+    "showOutput": "always",
+    "problemMatcher": {
+        "owner": "c",
+        "fileLocation": [
+            "relative",
+            "${workspaceRoot}"
+        ],
+        "pattern": {
+            "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "severity": 4,
+            "message": 5
+        }
+    }
+}
