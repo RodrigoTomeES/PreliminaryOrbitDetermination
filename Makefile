@@ -1,2 +1,2 @@
 all:
-	gcc *.c *.h -o matlabutilites.out -lm
+	gcc *.c *.h -o matlabutilites.out -lm && ./matlabutilites.out
