@@ -120,9 +120,9 @@ void multiplicacionMatrices(double matriz1 [ROWS][COLS],double matriz2 [ROWS][CO
   resultado[2][2]=matriz1[2][0]*matriz2[0][2] + matriz1[2][1]*matriz2[1][2] + matriz1[2][2]*matriz2[2][2];
 }
 
-void crossMatrix(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double resultado [ROWS][COLS]){
+// void crossMatrix(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double resultado [ROWS][COLS]){
 
-}
+// }
 
 void roots(double poly[], int numCoeficientes, double solucionesReales[], int *numSolucionesReales){
   int degree = numCoeficientes - 1;
