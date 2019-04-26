@@ -1,6 +1,7 @@
 // Test MatLabUtilites
 #include <assert.h>
 #include <math.h>
+#include <stdio.h>
 #include "MatLabUtilites.h"
 #define EPSILON pow(10, -7)
 // Epsilon es de 10⁻7 ya que es la precisión que deja ver matlab para el test
