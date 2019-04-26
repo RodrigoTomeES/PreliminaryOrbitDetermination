@@ -2,7 +2,8 @@
 #include <assert.h>
 #include <math.h>
 #include "MatLabUtilites.h"
-#define EPSILON pow(10, -13)
+#define EPSILON pow(10, -7)
+// Epsilon es de 10⁻7 ya que es la precisión que deja ver matlab para el test
 
 double v1[] = {0.0,0.0,0.0};
 double v2[]={4,-1,2};
@@ -93,6 +94,27 @@ int main () {
   printf("---- Pass Test CROSS ----\n");
   
   //Test roots
+  double polinome[9] = {1,0, -73120740632072, 0, 0, -1.58793679567638e+36, 0, 0, -1.19853848536909e+58};
+  double resRoots[8];
+  int numCoeficientes = 9;
+  double solution[2] = {20488505.5958373, -16734286.9676343};
+  int zeros = 0;
+
+  roots(polinome, numCoeficientes, resRoots, &zeros);
+
+  printf("  Numero de soluciones reales: %d\n", zeros);
+  printf("\n");
+
+  for (int i = 0; i < zeros; i++) {
+    printf("  Roots de C: %f\n", resRoots[i]);
+    printf("  Roots de Matlab: %f\n", solution[i]);
+    printf("  Diferencia: %f\n", fabs(resRoots[i] - solution[i]));
+
+    assert(fabs(resRoots[i] - solution[i]) < EPSILON);
+
+    printf("\n");
+  }
+
   printf("---- Pass Test ROOTS ----\n");
 
   //Pasa todos los test

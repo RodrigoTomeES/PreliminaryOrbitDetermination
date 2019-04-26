@@ -25,4 +25,4 @@ void restaMatrices(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],doubl
 void multiplicacionMatrices(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double resultado [ROWS][COLS]);
 void cross(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double resultado [ROWS]);
 
-void roots(double vector [], int num, double res[]);
+void roots(double poly[], int numCoeficientes, double solucionesReales[], int *numSolucionesReales);

@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include "MatLabUtilites.h"
+#include "rpoly.h"
+#define EPSILON pow(10, -7)
 
-// Como Juan Félix dijo que los vectores de tamaño fijo para ser coherentes no es necesario poner el tamaño
+// Como Juan Félix dijo que los vectores son de tamaño fijo para ser coherentes no es necesario poner el tamaño
 
 double norm(double vector  []) {
 	return sqrt(vector[0]*vector[0]+vector[1]*vector[1]+vector[2]*vector[2]);
@@ -122,6 +124,18 @@ void cross(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double result
 
 }
 
-void roots(double vector [], int num, double res[]){
+void roots(double poly[], int numCoeficientes, double solucionesReales[], int *numSolucionesReales){
+  int degree = numCoeficientes - 1;
+  double real[degree];
+  double imaginary[degree];
+  int zeros = real_poly_roots(poly, degree, real, imaginary);
+  int contadorSolucionesReales = 0;
 
+  for (int i = 0; i<zeros; i++) {
+    if (fabs(imaginary[i]) <= EPSILON || imaginary[i] == 0.0) {
+      solucionesReales[i] = real[i];
+      contadorSolucionesReales+=1;
+    }
+  }
+  *numSolucionesReales = contadorSolucionesReales;
 }
