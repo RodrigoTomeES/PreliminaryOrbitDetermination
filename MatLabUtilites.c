@@ -42,14 +42,22 @@ double det(double matriz [ROWS][COLS]){
 }
 
 void zeros(double matriz [ROWS][COLS]){
-
+  matriz[0][0]=0;
+  matriz[0][1]=0;
+  matriz[0][2]=0;
+  matriz[1][0]=0;
+  matriz[1][1]=0;
+  matriz[1][2]=0;
+  matriz[2][0]=0;
+  matriz[2][1]=0;
+  matriz[2][2]=0;
 }
 
 double fix(double num){
 
 }
 double abs(double num){
-
+  return fabs(num);
 }
 
 bool all(double matriz [ROWS][COLS], double num){

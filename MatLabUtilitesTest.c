@@ -31,11 +31,23 @@ int main () {
   //Test det
   
   //Test zeros
-  
+  double zerosMatrix [3][3]={{0,0,0},{0,0,0},{0,0,0}};
+  zeros(res);
+  assert(matricesIguales(res,zerosMatrix));
+  printf("---- Pass Test ZEROS ----");
+
   //Test fix
   
   //Test abs
+  double positive = 3.0;
+  double zero = 0.0;
+  double negative = -9.0;
 
+  assert(abs(positive) == fabs(positive));
+  assert(abs(zero) == fabs(zero));
+  assert(abs(negative) == fabs(negative));
+
+  printf("---- Pass Test ABS ----");
   //Test all
   
   //Test sumaMatrices
