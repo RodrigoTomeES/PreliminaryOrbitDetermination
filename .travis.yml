@@ -1,5 +1,6 @@
+dist: xenial
 language: c
-compiler: gcc-7.3
+compiler: gcc
 addons:
   sonarcloud:
     organization: "preliminaryorbitdetermination" # the key of the org you chose at step #3
