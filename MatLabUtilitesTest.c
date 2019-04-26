@@ -22,9 +22,9 @@ int main () {
   assert(fabs(dot(v2,v3) - 8.0) < EPSILON);
 
   //Test traspuesta
-  double matriz [3][3]={{1,2,3},{4,5,6},{7,8,9}};
+  double matriz1 [3][3]={{1,2,3},{4,5,6},{7,8,9}};
   double res [3][3];
-  traspuesta(matriz,res);
+  traspuesta(matriz1,res);
   double x[3][3]={{1,4,7},{2,5,8},{3,6,9}};
   assert(matricesIguales(res,x));
 
@@ -49,15 +49,25 @@ int main () {
 
   printf("---- Pass Test ABS ----");
   //Test all
-  
+  double xAll[3][3]={{-1,-1,-1},{-1,-1,-1},{-1,-1,-1}};
+  assert(all(xAll,-1));
+
   //Test sumaMatrices
-  
+  double matriz2 [3][3]={{1,2,3},{4,5,6},{7,8,9}};
+  sumaMatrices(matriz1,matriz2,res);
+  double xSumaMatrices[3][3]={{2,4,6},{8,10,12},{14,16,18}};
+  assert(matricesIguales(res,xSumaMatrices));
+
+
   //Test restaMatrices
-  
+  restaMatrices(matriz1,matriz2,res);
+  double xRestaMatrices[3][3]={{0,0,0},{0,0,0},{0,0,0}};
+  assert(matricesIguales(res,xRestaMatrices));
+
   //Test multiplicacionMatrices
   
   //Test cross
   
   //Test roots
-  
+
 }
