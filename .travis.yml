@@ -5,6 +5,7 @@ addons:
     organization: "preliminaryorbitdetermination" # the key of the org you chose at step #3
     token: $SONAR_TOKEN
 script:
+  - build-wrapper-linux-x86-64 --out-dir bw-output make all
   - sonar-scanner -X
   - gcc *.c *.h -o matlabutilites.out -lm && ./matlabutilites.out
 deploy:
