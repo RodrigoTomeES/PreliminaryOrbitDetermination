@@ -108,8 +108,18 @@ void multiplicacionMatrices(double matriz1 [ROWS][COLS],double matriz2 [ROWS][CO
 
 }
 
-void cross(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double resultado [ROWS]){
+void crossMatrix(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double resultado [ROWS][COLS]){
 
+}
+
+bool vectoresIguales(double vector1[] , double vector2[]){
+  return vector1[0]==vector2[0]&&vector1[1]==vector2[1]&&vector1[2]==vector2[2];
+}
+
+void crossVector(double matriz1 [],double matriz2 [],double resultado []){
+  resultado[0]=matriz1[1]*matriz2[2]-matriz1[2]*matriz2[1];
+  resultado[1]=matriz1[2]*matriz2[0]-matriz1[0]*matriz2[2];
+  resultado[2]=matriz1[0]*matriz2[1]-matriz1[1]*matriz2[0];
 }
 
 void roots(double vector [], int num, double res[]){

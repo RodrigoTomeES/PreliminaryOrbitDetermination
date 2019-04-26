@@ -18,7 +18,7 @@ int main () {
   assert(fabs(sign(0) + 1.0) < EPSILON);
   assert(fabs(sign(-1) + 1.0) < EPSILON);
   assert(fabs(sign(5) - 1.0) < EPSILON);
-  printf("---- Pass Test SIGN ----");
+  printf("---- Pass Test SIGN ----\n");
 
   //Test dot
   assert(fabs(dot(v2,v3) - 8.0) < EPSILON);
@@ -86,6 +86,17 @@ int main () {
   printf("---- Pass Test MULTIPLICACION MATRICES ----\n");
   
   //Test cross
+  //Cross vectores
+  double vectorRes[3];
+  double vector1Cross[3]={4,-2,1};
+  double vector2Cross[3]={1,-1,3};
+  crossVector(vector1Cross,vector2Cross,vectorRes);
+  double vectorResCross[3]={-5,-11,-2};
+  assert(vectoresIguales(vectorRes,vectorResCross));
+
+  //Cross matrices
+  
+
   printf("---- Pass Test CROSS ----\n");
   
   //Test roots
