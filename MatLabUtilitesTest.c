@@ -12,20 +12,47 @@ double v3[]={2,-2,-1};
 
 int main () {
   // Test norm
+  printf("---- Test NORM ----\n");
+  
   assert(fabs(norm(v1) - 0.0) < EPSILON);
+  printf("  DOT función: %f\n", dot(v2,v3));
+  printf("  DOT real: %f\n", 8.0);
+  printf("  Diferencia: %f\n", fabs(dot(v2,v3) - 8.0));
+
   printf("---- Pass Test NORM ----\n");
 
   //Test sign
+  printf("---- Test SIGN ----\n");
+
   assert(fabs(sign(0) + 1.0) < EPSILON);
+  printf("  DOT función: %f\n", dot(v2,v3));
+  printf("  DOT real: %f\n", 8.0);
+  printf("  Diferencia: %f\n", fabs(dot(v2,v3) - 8.0));
+
   assert(fabs(sign(-1) + 1.0) < EPSILON);
+  printf("  DOT función: %f\n", dot(v2,v3));
+  printf("  DOT real: %f\n", 8.0);
+  printf("  Diferencia: %f\n", fabs(dot(v2,v3) - 8.0));
+
   assert(fabs(sign(5) - 1.0) < EPSILON);
+  printf("  DOT función: %f\n", dot(v2,v3));
+  printf("  DOT real: %f\n", 8.0);
+  printf("  Diferencia: %f\n", fabs(dot(v2,v3) - 8.0));
+
   printf("---- Pass Test SIGN ----\n");
 
   //Test dot
+  printf("---- Test DOT ----\n");
+
   assert(fabs(dot(v2,v3) - 8.0) < EPSILON);
+  printf("  DOT función: %f\n", dot(v2,v3));
+  printf("  DOT real: %f\n", 8.0);
+  printf("  Diferencia: %f\n", fabs(dot(v2,v3) - 8.0));
+
   printf("---- Pass Test DOT ----\n");
 
   //Test traspuesta
+  printf("---- Test TRASPUESTA ----\n");
   double matriz1 [3][3]={{1,2,3},{4,5,6},{7,8,9}};
   double res [3][3];
   traspuesta(matriz1,res);
@@ -34,17 +61,26 @@ int main () {
   printf("---- Pass Test TRASPUESTA ----\n");
 
   //Test det
+  printf("---- Test DET ----\n");
+
   double xDet [3][3]={{1,4,-1},{-1,3,2},{2,2,0}};
   assert(fabs(det(xDet) - 20.0) < EPSILON);
+
+  printf("  Det función: %f\n", det(xDet));
+  printf("  Det real: %f\n", 20.0);
+  printf("  Diferencia: %f\n", fabs(det(xDet) - 20.0));
+
   printf("---- Pass Test DET ----\n");
 
   //Test zeros
+  printf("---- Test ZEROS ----\n");
   double zerosMatrix [3][3]={{0,0,0},{0,0,0},{0,0,0}};
   zeros(res);
   assert(matricesIguales(res,zerosMatrix));
   printf("---- Pass Test ZEROS ----\n");
 
   //Test fix
+  printf("---- Test FIX ----\n");
   assert(fabs(fix(-1.9) + 1.0) < EPSILON);
   assert(fabs(fix(1.6) - 1.0) < EPSILON);
   assert(fabs(fix(-4.5) + 4.0) < EPSILON);
@@ -52,6 +88,7 @@ int main () {
   printf("---- Pass Test FIX ----\n");
   
   //Test abs
+  printf("---- Test ABS ----\n");
   double positive = 3.0;
   double zero = 0.0;
   double negative = -9.0;
@@ -63,11 +100,13 @@ int main () {
   printf("---- Pass Test ABS ----\n");
 
   //Test all
+  printf("---- Test ALL ----\n");
   double xAll[3][3]={{-1,-1,-1},{-1,-1,-1},{-1,-1,-1}};
   assert(all(xAll,-1));
   printf("---- Pass Test ALL ----\n");
 
   //Test sumaMatrices
+  printf("---- Test SUMA MATRICES ----\n");
   double matriz2 [3][3]={{1,2,3},{4,5,6},{7,8,9}};
   sumaMatrices(matriz1,matriz2,res);
   double xSumaMatrices[3][3]={{2,4,6},{8,10,12},{14,16,18}};
@@ -76,12 +115,14 @@ int main () {
 
 
   //Test restaMatrices
+  printf("---- Test RESTA MATRICES ----\n");
   restaMatrices(matriz1,matriz2,res);
   double xRestaMatrices[3][3]={{0,0,0},{0,0,0},{0,0,0}};
   assert(matricesIguales(res,xRestaMatrices));
   printf("---- Pass Test RESTA MATRICES ----\n");
 
   //Test multiplicacionMatrices
+  printf("---- Test MULTIPLICACION MATRICES ----\n");
   double matrixA [3][3] = {{1,-1,1},{2,2,3},{-2,-3,-1}};
   double matrixB [3][3] = {{1,0,4},{0,2,5},{1,3,0}};
   double matrixC [3][3];
@@ -91,6 +132,7 @@ int main () {
   printf("---- Pass Test MULTIPLICACION MATRICES ----\n");
   
   //Test cross
+  printf("---- Test CROSS ----\n");
   //Cross vectores
   double vectorRes[3];
   double vector1Cross[3]={4,-2,1};
@@ -100,11 +142,11 @@ int main () {
   assert(vectoresIguales(vectorRes,vectorResCross));
 
   //Cross matrices
-  
 
   printf("---- Pass Test CROSS ----\n");
   
   //Test roots
+  printf("---- Test ROOTS ----\n");
   double polinome[9] = {1,0, -73120740632072, 0, 0, -1.58793679567638e+36, 0, 0, -1.19853848536909e+58};
   double resRoots[8];
   int numCoeficientes = 9;
