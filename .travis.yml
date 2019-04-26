@@ -1,5 +1,5 @@
 language: c
-compiler: gcc
+compiler: gcc-7.3
 addons:
   sonarcloud:
     organization: "preliminaryorbitdetermination" # the key of the org you chose at step #3
