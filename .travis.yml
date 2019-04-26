@@ -1,6 +1,12 @@
 language: c
 compiler: gcc
-script: gcc *.c *.h -o matlabutilites.out -lm && ./matlabutilites.out
+addons:
+  sonarcloud:
+    organization: "preliminaryorbitdetermination" # the key of the org you chose at step #3
+    token: $SONAR_TOKEN
+script:
+  - sonar-scanner
+  - gcc *.c *.h -o matlabutilites.out -lm && ./matlabutilites.out
 deploy:
   provider: pages
   skip-cleanup: true
