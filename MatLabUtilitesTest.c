@@ -5,8 +5,47 @@
 #define EPSILON pow(10, -13)
 
 double v1[] = {0.0,0.0,0.0};
+double v2[]={4,-1,2};
+double v3[]={2,-2,-1};
 
-// Test norm
+
 int main () {
+  // Test norm
   assert(fabs(norm(v1) - 0.0) < EPSILON);
+
+  //Test sign
+  assert(fabs(sign(0) + 1.0) < EPSILON);
+  assert(fabs(sign(-1) + 1.0) < EPSILON);
+  assert(fabs(sign(5) - 1.0) < EPSILON);
+
+  //Test dot
+  assert(fabs(dot(v2,v3) - 8.0) < EPSILON);
+
+  //Test traspuesta
+  double matriz [3][3]={{1,2,3},{4,5,6},{7,8,9}};
+  double res [3][3];
+  traspuesta(matriz,res);
+  double x[3][3]={{1,4,7},{2,5,8},{3,6,9}};
+  assert(matricesIguales(res,x));
+
+  //Test det
+  
+  //Test zeros
+  
+  //Test fix
+  
+  //Test abs
+
+  //Test all
+  
+  //Test sumaMatrices
+  
+  //Test restaMatrices
+  
+  //Test multiplicacionMatrices
+  
+  //Test cross
+  
+  //Test roots
+  
 }
