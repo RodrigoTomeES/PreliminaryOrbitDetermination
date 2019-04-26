@@ -8,7 +8,7 @@ addons:
 script:
   - build-wrapper-linux-x86-64 --out-dir bw-output make all
   - sonar-scanner -X
-  - gcc *.c *.h -o matlabutilites.out -lm && ./matlabutilites.out
+  - ./matlabutilites.out
 deploy:
   provider: pages
   skip-cleanup: true
