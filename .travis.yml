@@ -1,3 +1,9 @@
 language: c
 compiler: gcc
 script: gcc *.c *.h -o matlabutilites.out -lm && ./matlabutilites.out
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: master
