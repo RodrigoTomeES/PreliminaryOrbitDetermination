@@ -36,8 +36,6 @@ int main () {
   double xDet [3][3]={{1,4,-1},{-1,3,2},{2,2,0}};
   assert(fabs(det(xDet) - 20.0) < EPSILON);
   printf("---- Pass Test DET ----\n");
-  
-  
 
   //Test zeros
   double zerosMatrix [3][3]={{0,0,0},{0,0,0},{0,0,0}};
@@ -83,6 +81,12 @@ int main () {
   printf("---- Pass Test RESTA MATRICES ----\n");
 
   //Test multiplicacionMatrices
+  double matrixA [3][3] = {{1,-1,1},{2,2,3},{-2,-3,-1}};
+  double matrixB [3][3] = {{1,0,4},{0,2,5},{1,3,0}};
+  double matrixC [3][3];
+  double matrixResultado [3][3] = {{2,1,-1}, {5,13,18},{-3,-9,-23}};
+  multiplicacionMatrices(matrixA,matrixB,matrixC);
+  assert(matricesIguales(matrixC,matrixResultado));
   printf("---- Pass Test MULTIPLICACION MATRICES ----\n");
   
   //Test cross
