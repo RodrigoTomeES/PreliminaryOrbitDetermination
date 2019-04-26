@@ -30,6 +30,9 @@ int main () {
 
   //Test det
   
+  double xDet [3][3]={{1,4,-1},{-1,3,2},{2,2,0}};
+  assert(fabs(det(xDet) - 20.0) < EPSILON);
+
   //Test zeros
   
   //Test fix

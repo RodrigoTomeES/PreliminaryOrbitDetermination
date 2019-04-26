@@ -38,7 +38,7 @@ bool matricesIguales(double matriz1 [ROWS][COLS], double matriz2 [ROWS][COLS]){
 }
 
 double det(double matriz [ROWS][COLS]){
-
+  return matriz[0][0]*matriz[1][1]*matriz[2][2]+matriz[0][2]*matriz[1][0]*matriz[2][1]+matriz[0][1]*matriz[1][2]*matriz[2][0]-(matriz[0][2]*matriz[1][1]*matriz[2][0]+matriz[1][0]*matriz[0][1]*matriz[2][2]+matriz[0][0]*matriz[1][2]*matriz[2][1]);
 }
 
 void zeros(double matriz [ROWS][COLS]){
