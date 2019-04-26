@@ -5,7 +5,7 @@ addons:
     organization: "preliminaryorbitdetermination" # the key of the org you chose at step #3
     token: $SONAR_TOKEN
 script:
-  - sonar-scanner
+  - sonar-scanner -X
   - gcc *.c *.h -o matlabutilites.out -lm && ./matlabutilites.out
 deploy:
   provider: pages
