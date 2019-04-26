@@ -75,6 +75,12 @@ int main () {
   printf("---- Pass Test RESTA MATRICES ----");
 
   //Test multiplicacionMatrices
+  double matrixA [3][3] = {{1,-1,1},{2,2,3},{-2,-3,-1}};
+  double matrixB [3][3] = {{1,0,4},{0,2,5},{1,3,0}};
+  double matrixC [3][3];
+  double matrixResultado [3][3] = {{2,1,-1}, {5,13,18},{-3,-9,-23}};
+  multiplicacionMatrices(matrixA,matrixB,matrixC);
+  assert(matricesIguales(matrixC,matrixResultado));
   printf("---- Pass Test MULTIPLICACION MATRICES ----");
   
   //Test cross
