@@ -54,7 +54,15 @@ void zeros(double matriz [ROWS][COLS]){
 }
 
 double fix(double num){
+  double res = 0;
 
+  if(sign(num)==1){
+    res=floor(num);
+  }else{
+    res=ceil(num);
+  }
+
+  return res;
 }
 double abs(double num){
   return fabs(num);
