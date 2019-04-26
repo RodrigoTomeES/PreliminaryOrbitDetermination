@@ -33,10 +33,11 @@ int main () {
   printf("---- Pass Test TRASPUESTA ----");
 
   //Test det
-  printf("---- Pass Test DET ----");
-  
   double xDet [3][3]={{1,4,-1},{-1,3,2},{2,2,0}};
   assert(fabs(det(xDet) - 20.0) < EPSILON);
+  printf("---- Pass Test DET ----");
+  
+  
 
   //Test zeros
   double zerosMatrix [3][3]={{0,0,0},{0,0,0},{0,0,0}};
