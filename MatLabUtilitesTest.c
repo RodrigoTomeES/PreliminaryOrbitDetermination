@@ -83,17 +83,13 @@ int main () {
   printf("---- Pass Test RESTA MATRICES ----\n");
 
   //Test multiplicacionMatrices
-<<<<<<< HEAD
   double matrixA [3][3] = {{1,-1,1},{2,2,3},{-2,-3,-1}};
   double matrixB [3][3] = {{1,0,4},{0,2,5},{1,3,0}};
   double matrixC [3][3];
   double matrixResultado [3][3] = {{2,1,-1}, {5,13,18},{-3,-9,-23}};
   multiplicacionMatrices(matrixA,matrixB,matrixC);
   assert(matricesIguales(matrixC,matrixResultado));
-  printf("---- Pass Test MULTIPLICACION MATRICES ----");
-=======
   printf("---- Pass Test MULTIPLICACION MATRICES ----\n");
->>>>>>> ed7eb602c288c786374152567d026d1db0cd28d4
   
   //Test cross
   printf("---- Pass Test CROSS ----\n");
