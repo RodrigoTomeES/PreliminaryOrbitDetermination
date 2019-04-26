@@ -53,15 +53,39 @@ double abs(double num){
 }
 
 bool all(double matriz [ROWS][COLS], double num){
-
+  return matriz[0][0]==num&&
+          matriz[0][1]==num&&
+          matriz[0][2]==num&&
+          matriz[1][0]==num&&
+          matriz[1][1]==num&&
+          matriz[1][2]==num&&
+          matriz[2][0]==num&&
+          matriz[2][1]==num&&
+          matriz[2][2]==num;
 }
 
 void sumaMatrices(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double resultado [ROWS][COLS]){
-
+  resultado[0][0]=matriz1[0][0]+matriz2[0][0];
+  resultado[0][1]=matriz1[0][1]+matriz2[0][1];
+  resultado[0][2]=matriz1[0][2]+matriz2[0][2];
+  resultado[1][0]=matriz1[1][0]+matriz2[1][0];
+  resultado[1][1]=matriz1[1][1]+matriz2[1][1];
+  resultado[1][2]=matriz1[1][2]+matriz2[1][2];
+  resultado[2][0]=matriz1[2][0]+matriz2[2][0];
+  resultado[2][1]=matriz1[2][1]+matriz2[2][1];
+  resultado[2][2]=matriz1[2][2]+matriz2[2][2];
 }
 
 void restaMatrices(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double resultado [ROWS][COLS]){
-
+  resultado[0][0]=matriz1[0][0]-matriz2[0][0];
+  resultado[0][1]=matriz1[0][1]-matriz2[0][1];
+  resultado[0][2]=matriz1[0][2]-matriz2[0][2];
+  resultado[1][0]=matriz1[1][0]-matriz2[1][0];
+  resultado[1][1]=matriz1[1][1]-matriz2[1][1];
+  resultado[1][2]=matriz1[1][2]-matriz2[1][2];
+  resultado[2][0]=matriz1[2][0]-matriz2[2][0];
+  resultado[2][1]=matriz1[2][1]-matriz2[2][1];
+  resultado[2][2]=matriz1[2][2]-matriz2[2][2];
 }
 
 void multiplicacionMatrices(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double resultado [ROWS][COLS]){
@@ -73,5 +97,5 @@ void cross(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double result
 }
 
 void roots(double vector [], int num, double res[]){
-  
+
 }
