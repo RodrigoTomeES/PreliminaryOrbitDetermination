@@ -1,2 +1,3 @@
 language: c
 compiler: gcc
+script: gcc *.c *.h -o matlabutilites.out -lm && ./matlabutilites.out
