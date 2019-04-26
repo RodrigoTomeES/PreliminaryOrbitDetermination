@@ -18,7 +18,7 @@ int main () {
   assert(fabs(sign(0) + 1.0) < EPSILON);
   assert(fabs(sign(-1) + 1.0) < EPSILON);
   assert(fabs(sign(5) - 1.0) < EPSILON);
-  printf("---- Pass Test SIGN ----");
+  printf("---- Pass Test SIGN ----\n");
 
   //Test dot
   assert(fabs(dot(v2,v3) - 8.0) < EPSILON);
@@ -36,8 +36,6 @@ int main () {
   double xDet [3][3]={{1,4,-1},{-1,3,2},{2,2,0}};
   assert(fabs(det(xDet) - 20.0) < EPSILON);
   printf("---- Pass Test DET ----\n");
-  
-  
 
   //Test zeros
   double zerosMatrix [3][3]={{0,0,0},{0,0,0},{0,0,0}};
