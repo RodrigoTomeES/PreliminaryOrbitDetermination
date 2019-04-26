@@ -170,7 +170,7 @@ int main () {
   double polinome[9] = {1,0, -73120740632072, 0, 0, -1.58793679567638e+36, 0, 0, -1.19853848536909e+58};
   double resRoots[8];
   int numCoeficientes = 9;
-  double solution[2] = {20488505.5958373, -16734286.9676343};
+  double solution[8] = {20488505.5958373, -16734286.9676343};
   int zeros;
 
   roots(polinome, numCoeficientes, resRoots, &zeros);
