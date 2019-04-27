@@ -1,3 +1,21 @@
+//$Header$ 
+//------------------------------------------------------------------------------ 
+//                           MatLabUtilitesTest
+//------------------------------------------------------------------------------
+// POD: Preleminary Orbit Determination. 
+// 
+// Legal: MIT  License
+// 
+// Author: David Lacalle & Rodrigo Tomé
+// Created: 2019/04/27 
+// 
+/**  
+* Provides a basic test for MatLabUtilites.c.  
+*  
+* @note     
+*/ 
+//------------------------------------------------------------------------------
+
 // Test MatLabUtilites
 #include <assert.h>
 #include <math.h>
@@ -30,6 +48,20 @@ double v2[]={4,-1,2};
 double v3[]={2,-2,-1};
 
 
+//------------------------------------------------------------------------------ 
+//  int main()
+//------------------------------------------------------------------------------ 
+/**  
+* Execute the test for MatLabUtilites.c  
+* This function show the results of the tests.
+*  
+* @param  - none
+* @return - none
+* @exception - none
+* @see - none  
+* @note - none  
+*/ 
+//------------------------------------------------------------------------------
 int main () {
   // Test norm
   printf("---- Test NORM ----\n");
