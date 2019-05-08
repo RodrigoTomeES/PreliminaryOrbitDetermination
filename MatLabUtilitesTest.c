@@ -145,9 +145,9 @@ int main () {
   double zero = 0.0;
   double negative = -9.0;
 
-  assert(abs(positive) == fabs(positive));
-  assert(abs(zero) == fabs(zero));
-  assert(abs(negative) == fabs(negative));
+  assert(fabs(positive) == fabs(positive));
+  assert(fabs(zero) == fabs(zero));
+  assert(fabs(negative) == fabs(negative));
 
   printf(GREEN "---- Pass Test ABS ----\n" RESET);
 

@@ -75,20 +75,20 @@ int main () {
     unit(v3, v3_unitario);
 
     //Vector v1
-    assert(abs(v1_unitario[0] - 0.0) < EPSILON);
-    assert(abs(v1_unitario[1] - 0.0) < EPSILON);
-    assert(abs(v1_unitario[2] - 0.0) < EPSILON);
+    assert(fabs(v1_unitario[0] - 0.0) < EPSILON);
+    assert(fabs(v1_unitario[1] - 0.0) < EPSILON);
+    assert(fabs(v1_unitario[2] - 0.0) < EPSILON);
 
 
     //Vector v2
-    assert(abs(v2_unitario[0] - 0.8729) < EPSILON);
-    assert(abs(v2_unitario[1] - -0.2182) < EPSILON);
-    assert(abs(v2_unitario[2] - 0.4364) < EPSILON);
+    assert(fabs(v2_unitario[0] - 0.8729) < EPSILON);
+    assert(fabs(v2_unitario[1] - -0.2182) < EPSILON);
+    assert(fabs(v2_unitario[2] - 0.4364) < EPSILON);
 
     //Vector v3
-    assert(abs(v3_unitario[0] - 0.6667) < EPSILON);
-    assert(abs(v3_unitario[1] - -0.6667) < EPSILON);
-    assert(abs(v3_unitario[2] - -0.3333) < EPSILON);
+    assert(fabs(v3_unitario[0] - 0.6667) < EPSILON);
+    assert(fabs(v3_unitario[1] - -0.6667) < EPSILON);
+    assert(fabs(v3_unitario[2] - -0.3333) < EPSILON);
 
     printf(GREEN "---- Pass Test UNIT ----\n" RESET);
 }

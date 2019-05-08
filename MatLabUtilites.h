@@ -16,6 +16,9 @@
 */ 
 //------------------------------------------------------------------------------
 
+#ifndef MATLABUTILITIES_H
+#define MATLABUTILITIES_H
+
 #include <math.h>
 #include <stdbool.h>
 
@@ -35,7 +38,6 @@ double det(double matriz [ROWS][COLS]);
 void zeros(double matriz [ROWS][COLS]);
 
 double fix(double num);
-double abs(double num);
 
 bool all(double matriz [ROWS][COLS], double num);
 
@@ -52,3 +54,5 @@ void devisionVectorPorEscalar(double vector[], double valor, double res[]);
 void opuestoVector(double vector[], double res[]);
 
 void roots(double poly[], int numCoeficientes, double solucionesReales[], int *numSolucionesReales);
+
+#endif /* MATLABUTILITIES_H */
