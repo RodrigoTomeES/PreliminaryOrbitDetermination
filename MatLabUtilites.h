@@ -45,4 +45,10 @@ void multiplicacionMatrices(double matriz1 [ROWS][COLS],double matriz2 [ROWS][CO
 void crossMatrix(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double resultado [ROWS][COLS]);
 void crossVector(double matriz1 [],double matriz2 [],double resultado []);
 
+void sumaVectores(double vector1[], double vector2[], double res[]);
+void multiplicacionVectorPorEscalar(double vector[], double valor, double res[]);
+void devisionVectorPorEscalar(double vector[], double valor, double res[]);
+
+void opuestoVector(double vector[], double res[]);
+
 void roots(double poly[], int numCoeficientes, double solucionesReales[], int *numSolucionesReales);

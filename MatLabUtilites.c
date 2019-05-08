@@ -407,3 +407,27 @@ void crossVector(double matriz1[], double matriz2[], double resultado[])
   resultado[1] = matriz1[2] * matriz2[0] - matriz1[0] * matriz2[2];
   resultado[2] = matriz1[0] * matriz2[1] - matriz1[1] * matriz2[0];
 }
+
+void sumaVectores(double vector1[], double vector2[], double res[]){
+  res[0]=vector1 [0]+vector2[0];
+  res[1]=vector1 [1]+vector2[1];
+  res[2]=vector1 [2]+vector2[2];
+}
+
+void multiplicacionVectorPorEscalar(double vector[], double valor, double res[]){
+  res[0]=vector[0]*valor;
+  res[1]=vector[1]*valor;
+  res[2]=vector[2]*valor;
+}
+
+void devisionVectorPorEscalar(double vector[], double valor, double res[]){
+  res[0]=vector[0]/valor;
+  res[1]=vector[1]/valor;
+  res[2]=vector[2]/valor;
+}
+
+void opuestoVector(double vector[], double res[]){
+  res[0]=-vector[0];
+  res[1]=-vector[1];
+  res[2]=-vector[2];
+}
