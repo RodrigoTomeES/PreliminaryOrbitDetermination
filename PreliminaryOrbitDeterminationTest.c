@@ -101,6 +101,7 @@ void testUnit(){
     assert(fabs(v1_unitario[1] - 0.0) < EPSILON);
     assert(fabs(v1_unitario[2] - 0.0) < EPSILON);
 
+    printf("\n");
 
     //Vector v2
     printf("v2_unitario[0] = %lf, esperado 0.872871560943970\n",v2_unitario[0]);
@@ -110,6 +111,8 @@ void testUnit(){
     assert(fabs(v2_unitario[0] - 0.872871560943970) < EPSILON);
     assert(fabs(v2_unitario[1] - -0.218217890235992) < EPSILON);
     assert(fabs(v2_unitario[2] - 0.436435780471985) < EPSILON);
+
+    printf("\n");
 
     //Vector v3
     printf("v3_unitario[0] = %lf, esperado 0.666666666666667\n",v3_unitario[0]);

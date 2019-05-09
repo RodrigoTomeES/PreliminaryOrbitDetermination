@@ -64,13 +64,23 @@ double v3[]={2,-2,-1};
 //------------------------------------------------------------------------------
 int main () {
   printf(BLUE "---- Test MatLabUtlites ----\n" RESET);
+
   // Test norm
+
   printf("---- Test NORM ----\n");
   
   assert(fabs(norm(v1) - 0.0) < EPSILON);
-  printf("  DOT función: %f\n", dot(v2,v3));
-  printf("  DOT real: %f\n", 8.0);
-  printf("  Diferencia: %f\n", fabs(dot(v2,v3) - 8.0));
+  printf("  Norma función: %f\n", norm(v1));
+  printf("  Norma real: %f\n", 0.0);
+  printf("  Diferencia: %f\n", fabs(norm(v1) - 0.0));
+
+  printf("\n");
+
+  double vDoubler[] = {8794373.698572,404706.483849,2543937.177990};  
+  assert(fabs(norm(vDoubler) - 9.163864493420018e+06) < EPSILON);
+  printf("  Norma función: %f\n", norm(vDoubler));
+  printf("  Norma real: %f\n", 9.163864493420018e+06);
+  printf("  Diferencia: %f\n", fabs(norm(vDoubler) - 9.163864493420018e+06));
 
   printf(GREEN "---- Pass Test NORM ----\n" RESET);
 
@@ -78,19 +88,16 @@ int main () {
   printf("---- Test SIGN ----\n" RESET);
 
   assert(fabs(sign(0) + 1.0) < EPSILON);
-  printf("  DOT función: %f\n", dot(v2,v3));
-  printf("  DOT real: %f\n", 8.0);
-  printf("  Diferencia: %f\n", fabs(dot(v2,v3) - 8.0));
+  printf("  SIGN función: %d\n", sign(0));
+  printf("  SIGN real: %d\n", -1);
 
   assert(fabs(sign(-1) + 1.0) < EPSILON);
-  printf("  DOT función: %f\n", dot(v2,v3));
-  printf("  DOT real: %f\n", 8.0);
-  printf("  Diferencia: %f\n", fabs(dot(v2,v3) - 8.0));
+  printf("  SIGN función: %d\n", sign(-1));
+  printf("  SIGN real: %d\n", -1);
 
   assert(fabs(sign(5) - 1.0) < EPSILON);
-  printf("  DOT función: %f\n", dot(v2,v3));
-  printf("  DOT real: %f\n", 8.0);
-  printf("  Diferencia: %f\n", fabs(dot(v2,v3) - 8.0));
+  printf("  SIGN función: %d\n", sign(5));
+  printf("  SIGN real: %d\n", 1);
 
   printf(GREEN "---- Pass Test SIGN ----\n" RESET);
 
