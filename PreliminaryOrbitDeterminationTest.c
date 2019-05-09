@@ -118,6 +118,8 @@ void testUnit(){
 }
 
 void testDoubler(){
+    printf("---- Test DOUBLER ----\n");
+
     double r2 [TAM];
     double r3 [TAM];
     double * f1;
@@ -142,11 +144,39 @@ void testDoubler(){
     double rsite3[TAM] = { 4909646.95198536,687938.936915757, 3999494.94894739};
     double t1 = -600.000004470348;
     double t3 = 600.000004470348;
-    char direct = "y";
+    char direct = 'y';
 
+    printf("---- Ejecutamos doubler ----\n");
     doubler(cc1,cc2,magrsite1,magrsite2,magrlin,magr2in,los1,los2,los3,rsite1,rsite2,rsite3,t1,t3,direct,
         r2,r3,f1,f2,q1,magr1,magr2,a,deltae32);
 
+    double r2Res[3]={8794373.69857176,404706.483848888,2543937.17799019};
+
+    for(int i=0;i<3;i++){
+        printf("%lf\n",r2[i]);
+    }
+
+    assert(vectoresIguales(r2,r2Res));
+    printf("hola\n");
+    double r3Res[3]={8330719.98165755,3763042.61890889,572283.772288279};
+    assert(vectoresIguales(r3,r3Res));
+    printf("hola\n");
+    assert(fabs(*f1 - 0.005955295306876) < EPSILON);
+    printf("hola\n");
+    assert(fabs(*f2 - -0.0256788305953251) < EPSILON);
+    printf("hola\n");
+    assert(fabs(*q1 - 0.0263603467908808) < EPSILON);
+    printf("hola\n");
+    assert(fabs(*magr1 - 9163883.96041412) < EPSILON);
+    printf("hola\n");
+    assert(fabs(*magr2 - 9163864.49341983) < EPSILON);
+    printf("hola\n");
+    assert(fabs(*a - 9138034.70407932) < EPSILON);
+    printf("hola\n");
+    assert(fabs(*deltae32 - 0.432542922260443) < EPSILON);
+
+
+    printf(GREEN "---- Pass Test DOUBLER ----\n" RESET);
     /*
             r2 =
 

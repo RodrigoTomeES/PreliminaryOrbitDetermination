@@ -55,4 +55,6 @@ void opuestoVector(double vector[], double res[]);
 
 void roots(double poly[], int numCoeficientes, double solucionesReales[], int *numSolucionesReales);
 
+void muestraVector(double vector[]);
+
 #endif /* MATLABUTILITIES_H */
