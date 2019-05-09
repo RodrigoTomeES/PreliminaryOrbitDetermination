@@ -63,6 +63,7 @@ double v3[]={2,-2,-1};
 */ 
 //------------------------------------------------------------------------------
 int main () {
+    printf(BLUE "---- Test PreliminaryOrbitDetermination ----\n" RESET);
     // Test unit
     printf("---- Test UNIT ----\n");
 
@@ -85,22 +86,22 @@ int main () {
 
 
     //Vector v2
-    printf("v2_unitario[0] = %lf, esperado 0.8729\n",v2_unitario[0]);
-    printf("v2_unitario[1] = %lf, esperado -0.2182\n",v2_unitario[1]);
-    printf("v2_unitario[2] = %lf, esperado 0.4364\n",v2_unitario[2]);
+    printf("v2_unitario[0] = %lf, esperado 0.872871560943970\n",v2_unitario[0]);
+    printf("v2_unitario[1] = %lf, esperado -0.218217890235992\n",v2_unitario[1]);
+    printf("v2_unitario[2] = %lf, esperado 0.436435780471985\n",v2_unitario[2]);
 
-    assert(fabs(v2_unitario[0] - 0.8729) < EPSILON);
-    assert(fabs(v2_unitario[1] - -0.2182) < EPSILON);
-    assert(fabs(v2_unitario[2] - 0.4364) < EPSILON);
+    assert(fabs(v2_unitario[0] - 0.872871560943970) < EPSILON);
+    assert(fabs(v2_unitario[1] - -0.218217890235992) < EPSILON);
+    assert(fabs(v2_unitario[2] - 0.436435780471985) < EPSILON);
 
     //Vector v3
-    printf("v3_unitario[0] = %lf, esperado 0.6667\n",v3_unitario[0]);
-    printf("v3_unitario[1] = %lf, esperado -0.6667\n",v3_unitario[1]);
-    printf("v3_unitario[2] = %lf, esperado -0.3333\n",v3_unitario[2]);
+    printf("v3_unitario[0] = %lf, esperado 0.666666666666667\n",v3_unitario[0]);
+    printf("v3_unitario[1] = %lf, esperado -0.666666666666667\n",v3_unitario[1]);
+    printf("v3_unitario[2] = %lf, esperado -0.333333333333333\n",v3_unitario[2]);
 
-    assert(fabs(v3_unitario[0] - 0.6667) < EPSILON);
-    assert(fabs(v3_unitario[1] - -0.6667) < EPSILON);
-    assert(fabs(v3_unitario[2] - -0.3333) < EPSILON);
+    assert(fabs(v3_unitario[0] - 0.666666666666667) < EPSILON);
+    assert(fabs(v3_unitario[1] - -0.666666666666667) < EPSILON);
+    assert(fabs(v3_unitario[2] - -0.333333333333333) < EPSILON);
 
     printf(GREEN "---- Pass Test UNIT ----\n" RESET);
 }
