@@ -367,7 +367,8 @@ void roots(double poly[], int numCoeficientes, double solucionesReales[], int *n
 //------------------------------------------------------------------------------
 bool vectoresIguales(double vector1[], double vector2[])
 {
-  return vector1[0] == vector2[0] && vector1[1] == vector2[1] && vector1[2] == vector2[2];
+  return fabs(vector1[0] - vector2[0]) < EPSILON && fabs(vector1[1] - vector2[1]) < EPSILON && fabs(vector1[2] - vector2[2]) < EPSILON;
+  //return vector1[0] == vector2[0] && vector1[1] == vector2[1] && vector1[2] == vector2[2];
 }
 
 //------------------------------------------------------------------------------
@@ -412,4 +413,12 @@ void opuestoVector(double vector[], double res[]){
   res[0]=-vector[0];
   res[1]=-vector[1];
   res[2]=-vector[2];
+}
+
+void muestraVector(double vector[]){
+  printf("\n");
+  printf("%lf\n",vector[0]);
+  printf("%lf\n",vector[1]);
+  printf("%lf\n",vector[2]);
+  printf("\n");
 }

@@ -14,22 +14,33 @@ void doubler(double cc1, double cc2, double magrsite1, double magrsite2, double 
 
     multiplicacionVectorPorEscalar(los1,rho1,aux);
     sumaVectores(aux,rsite1,r1);
-
+    printf("double\n");
     multiplicacionVectorPorEscalar(los2,rho2,aux);
     sumaVectores(aux,rsite2,r2);
 
+
+    printf("double\n");
+    muestraVector(r1);
     *magr1=norm(r1);
+
+
+    muestraVector(r2);
+    printf("norm1\n");
     *magr2=norm(r2);
 
+
+    printf("HAGO NORM\n");
     double w [TAM];
 
     if(direct=='y'){
         crossVector(r1,r2,aux);
         devisionVectorPorEscalar(aux,(*magr1)*(*magr2),w);
+        printf("double\n");
     }else{
         crossVector(r1,r2,aux);
         devisionVectorPorEscalar(aux,(*magr1)*(*magr2),aux1);
         opuestoVector(aux1,w);
+        printf("double\n");
     }
 
     double rho3;
@@ -37,6 +48,8 @@ void doubler(double cc1, double cc2, double magrsite1, double magrsite2, double 
 
     multiplicacionVectorPorEscalar(los3,rho3,aux);
     sumaVectores(aux,rsite3,r3);
+
+    printf("double\n");
 
     double magr3 = norm(r3);
 
@@ -122,4 +135,6 @@ void doubler(double cc1, double cc2, double magrsite1, double magrsite2, double 
     *f2=t3-deltam32/n;
 
     *q1=sqrt((*f1)*(*f1)+(*f2)*(*f2));
+
+    printf("Acabo\n");
 }

@@ -22,6 +22,8 @@
 #include <stdio.h>
 #include "MatLabUtilites.h"
 #include "unit.h"
+#include "doubler.h"
+
 #define EPSILON pow(10, -7)
 // Epsilon es de 10⁻7 ya que es la precisión que deja ver matlab para el test
 
@@ -43,6 +45,7 @@
 #define BOLDMAGENTA "\033[1m\033[35m"      /* Bold Magenta */
 #define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
 #define BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
+#define TAM 3
 
 double v1[] = {0.0,0.0,0.0};
 double v2[]={4,-1,2};
@@ -121,9 +124,117 @@ void testUnit(){
 }
 
 void testDoubler(){
+    printf("---- Test DOUBLER ----\n");
+
+    double r2 [TAM];
+    double r3 [TAM];
+    double * f1;
+    double *f2;
+    double *q1;
+    double * magr1;
+    double * magr2;
+    double *a ;
+    double * deltae32;
+
+    double cc1 = 5972180.93003294;
+    double cc2 = 6395944.28126917;
+    double magrsite1 = 6369760.82916145;
+    double magrsite2 = 6369760.82916145;
+    double magrlin = 9163883.96041412;
+    double magr2in = 9163864.49341983;
+    double los1[TAM] = {0.633886095165154,-0.773340379778256,0.0115358294325144};
+    double los2[TAM] = {0.935539825569649,-0.0164830818224054, -0.35283642497161};
+    double los3[TAM] = { 0.596384368303438,0.536072673967085,-0.597454411205648};
+    double rsite1[TAM] = {4950990.3382646,256563.116260381,3999465.34658133};
+    double rsite2[TAM] = { 4935037.85913036,472703.320202615, 3999475.70573182};
+    double rsite3[TAM] = { 4909646.95198536,687938.936915757, 3999494.94894739};
+    double t1 = -600.000004470348;
+    double t3 = 600.000004470348;
+    char direct = 'y';
+
+    printf("---- Ejecutamos doubler ----\n");
+    doubler(cc1,cc2,magrsite1,magrsite2,magrlin,magr2in,los1,los2,los3,rsite1,rsite2,rsite3,t1,t3,direct,
+        r2,r3,f1,f2,q1,magr1,magr2,a,deltae32);
+
+    double r2Res[3]={8794373.69857176,404706.483848888,2543937.17799019};
+
+    for(int i=0;i<3;i++){
+        printf("%lf\n",r2[i]);
+    }
+
+    assert(vectoresIguales(r2,r2Res));
+    printf("hola\n");
+    double r3Res[3]={8330719.98165755,3763042.61890889,572283.772288279};
+    assert(vectoresIguales(r3,r3Res));
+    printf("hola\n");
+    assert(fabs(*f1 - 0.005955295306876) < EPSILON);
+    printf("hola\n");
+    assert(fabs(*f2 - -0.0256788305953251) < EPSILON);
+    printf("hola\n");
+    assert(fabs(*q1 - 0.0263603467908808) < EPSILON);
+    printf("hola\n");
+    assert(fabs(*magr1 - 9163883.96041412) < EPSILON);
+    printf("hola\n");
+    assert(fabs(*magr2 - 9163864.49341983) < EPSILON);
+    printf("hola\n");
+    assert(fabs(*a - 9138034.70407932) < EPSILON);
+    printf("hola\n");
+    assert(fabs(*deltae32 - 0.432542922260443) < EPSILON);
+
+
+    printf(GREEN "---- Pass Test DOUBLER ----\n" RESET);
+    /*
+            r2 =
+
+                8794373.69857176
+                404706.483848888
+                2543937.17799019
+
+
+        r3 =
+
+                8330719.98165755
+                3763042.61890889
+                572283.772288279
+
+
+        f1 =
+
+                0.005955295306876
+
+
+        f2 =
+
+            -0.0256788305953251
+
+
+        q1 =
+
+                0.0263603467908808
+
+
+        magr1 =
+
+                9163883.96041412
+
+
+        magr2 =
+
+                9163864.49341983
+
+
+        a =
+
+                9138034.70407932
+
+
+        deltae32 =
+                        0.432542922260443
+    */   
 
 }
 
 void testAngl() {
 
+ 
 }
