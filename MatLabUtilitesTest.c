@@ -63,6 +63,7 @@ double v3[]={2,-2,-1};
 */ 
 //------------------------------------------------------------------------------
 int main () {
+  printf(BLUE "---- Test MatLabUtlites ----\n" RESET);
   // Test norm
   printf("---- Test NORM ----\n");
   
@@ -220,8 +221,9 @@ int main () {
     printf("\n");
   }
 
-  printf(GREEN "---- Pass Test ROOTS ----\n");
+  printf(GREEN "---- Pass Test ROOTS ----\n" RESET);
 
   //Pasa todos los test
-  printf(GREEN "---- All Pass Test ----\n");
+  printf(GREEN "---- All Pass Test From MatLabUtilities----\n" RESET);
+  printf("\n");
 }
