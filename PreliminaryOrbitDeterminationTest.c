@@ -71,21 +71,33 @@ int main () {
     double v3_unitario[3];
 
     unit(v1, v1_unitario);
-    unit(v2, v1_unitario);
+    unit(v2, v2_unitario);
     unit(v3, v3_unitario);
 
     //Vector v1
+    printf("v1_unitario[0] = %lf, esperado 0.0\n",v1_unitario[0]);
+    printf("v1_unitario[1] = %lf, esperado 0.0\n",v1_unitario[1]);
+    printf("v1_unitario[2] = %lf, esperado 0.0\n",v1_unitario[2]);
+
     assert(fabs(v1_unitario[0] - 0.0) < EPSILON);
     assert(fabs(v1_unitario[1] - 0.0) < EPSILON);
     assert(fabs(v1_unitario[2] - 0.0) < EPSILON);
 
 
     //Vector v2
+    printf("v2_unitario[0] = %lf, esperado 0.8729\n",v2_unitario[0]);
+    printf("v2_unitario[1] = %lf, esperado -0.2182\n",v2_unitario[1]);
+    printf("v2_unitario[2] = %lf, esperado 0.4364\n",v2_unitario[2]);
+
     assert(fabs(v2_unitario[0] - 0.8729) < EPSILON);
     assert(fabs(v2_unitario[1] - -0.2182) < EPSILON);
     assert(fabs(v2_unitario[2] - 0.4364) < EPSILON);
 
     //Vector v3
+    printf("v3_unitario[0] = %lf, esperado 0.6667\n",v3_unitario[0]);
+    printf("v3_unitario[1] = %lf, esperado -0.6667\n",v3_unitario[1]);
+    printf("v3_unitario[2] = %lf, esperado -0.3333\n",v3_unitario[2]);
+
     assert(fabs(v3_unitario[0] - 0.6667) < EPSILON);
     assert(fabs(v3_unitario[1] - -0.6667) < EPSILON);
     assert(fabs(v3_unitario[2] - -0.3333) < EPSILON);
