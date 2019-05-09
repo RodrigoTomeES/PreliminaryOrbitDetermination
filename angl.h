@@ -1,6 +1,6 @@
 //$Header$ 
 //------------------------------------------------------------------------------ 
-//                           Unit.h
+//                           angl.h
 //------------------------------------------------------------------------------
 // POD: Preleminary Orbit Determination. 
 // 
@@ -10,18 +10,18 @@
 // Created: 2019/04/27 
 // 
 /**  
-* Provides the definitions of unit function.  
+* Provides the definitions of Matlab functions that are not in C.  
 *  
 * @note     
 */ 
 //------------------------------------------------------------------------------
 
 
-#ifndef UNIT_H
-#define UNIT_H
+#ifndef ANGL_H
+#define ANGL_H
 
 #include "MatLabUtilites.h"
 
-void unit(double vector[], double unit_vector[]);
+double angl(double vector1[], double vector2[]);
 
-#endif /* UNIT_H */
+#endif /* ANGL_H */

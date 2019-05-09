@@ -70,6 +70,12 @@ int main () {
     // Test Doubler
     testDoubler();
 
+    // Test Angl
+    testAngl();
+
+    //Pasa todos los test
+    printf(GREEN "---- All Pass Test From MatLabUtilities----\n" RESET);
+    printf("\n");
 }
 
 void testUnit(){
@@ -115,5 +121,9 @@ void testUnit(){
 }
 
 void testDoubler(){
+
+}
+
+void testAngl() {
 
 }
