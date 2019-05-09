@@ -64,6 +64,14 @@ double v3[]={2,-2,-1};
 //------------------------------------------------------------------------------
 int main () {
     // Test unit
+    testUnit();
+
+    // Test Doubler
+    testDoubler();
+
+}
+
+void testUnit(){
     printf("---- Test UNIT ----\n");
 
     double v1_unitario[3];
@@ -103,4 +111,8 @@ int main () {
     assert(fabs(v3_unitario[2] - -0.3333) < EPSILON);
 
     printf(GREEN "---- Pass Test UNIT ----\n" RESET);
+}
+
+void testDoubler(){
+
 }
