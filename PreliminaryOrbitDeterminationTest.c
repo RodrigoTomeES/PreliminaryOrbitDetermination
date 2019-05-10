@@ -42,10 +42,6 @@
 #define BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
 #define TAM 3
 
-double v1[] = {0.0,0.0,0.0};
-double v2[]={4,-1,2};
-double v3[]={2,-2,-1};
-
 //------------------------------------------------------------------------------ 
 //  int main()
 //------------------------------------------------------------------------------ 
@@ -78,6 +74,10 @@ int main () {
 
 void testUnit(){
     printf("---- Test UNIT ----\n");
+
+    double v1[] = {0.0,0.0,0.0};
+    double v2[]={4,-1,2};
+    double v3[]={2,-2,-1};
 
     double v1_unitario[3];
     double v2_unitario[3];
@@ -221,6 +221,18 @@ void testDoubler(){
 }
 
 void testAngl() {
+    printf("---- Test ANGL ----\n");
 
- 
+    double vector1[]={2,-2,-1};
+    double vector2[]={4,-1,2};
+    
+    double resultadoFuncion =  angl(vector1, vector2);
+    double resultadoReal; //PONER LO DE MATLAB
+
+    assert(fabs(resultadoFuncion - resultadoReal) < EPSILON);
+    printf("  Norma función: %f\n", resultadoFuncion);
+    printf("  Norma real: %f\n", resultadoReal);
+    printf("  Diferencia: %f\n", fabs(resultadoFuncion - resultadoReal));
+
+    printf(GREEN "---- Pass Test ANGL ----\n" RESET);
 }

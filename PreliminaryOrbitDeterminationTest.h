@@ -26,6 +26,7 @@
 #include "MatLabUtilites.h"
 #include "unit.h"
 #include "doubler.h"
+#include "angl.h"
 
 void testUnit();
 void testDoubler();
