@@ -2,7 +2,9 @@
 #include <stdio.h>
 #define TAM 3
 
-void doubler(double cc1, double cc2, double magrsite1, double magrsite2, double magrlin, double magr2in, double los1[], double los2[], double los3[], double rsite1[],double rsite2[], double rsite3[], double t1, double t3, char direct, double r2 [], double r3 [], double * f1,double *f2,double *q1,double * magr1, double * magr2,double *a , double * deltae32){
+void doubler(double cc1, double cc2, double magrsite1, double magrsite2, double magrlin, double magr2in, double los1[], double los2[], 
+            double los3[], double rsite1[],double rsite2[], double rsite3[], double t1, double t3, char direct, double r2 [], 
+            double r3 [], double * f1,double *f2,double *q1,double * magr1, double * magr2,double *a , double * deltae32){
     double mu = 398600.4418e9;
     double rho1 = (-cc1 + sqrt(cc1*cc1-4*(magrsite1*magrsite1-magrlin*magrlin)))/2.0;
     double rho2 = (-cc2 + sqrt(cc2*cc2-4*(magrsite2*magrsite2-magr2in*magr2in)))/2.0;
@@ -15,33 +17,22 @@ void doubler(double cc1, double cc2, double magrsite1, double magrsite2, double 
 
     multiplicacionVectorPorEscalar(los1,rho1,aux);
     sumaVectores(aux,rsite1,r1);
-    printf("double\n");
+
     multiplicacionVectorPorEscalar(los2,rho2,aux);
     sumaVectores(aux,rsite2,r2);
 
-
-    printf("double\n");
-    muestraVector(r1);
     *magr1=norm(r1);
-
-
-    muestraVector(r2);
-    printf("norm1\n");
     *magr2=norm(r2);
 
-
-    printf("HAGO NORM\n");
     double w [TAM];
 
     if(direct=='y'){
         crossVector(r1,r2,aux);
         devisionVectorPorEscalar(aux,(*magr1)*(*magr2),w);
-        printf("double\n");
     }else{
         crossVector(r1,r2,aux);
         devisionVectorPorEscalar(aux,(*magr1)*(*magr2),aux1);
         opuestoVector(aux1,w);
-        printf("double\n");
     }
 
     double rho3;
@@ -49,8 +40,6 @@ void doubler(double cc1, double cc2, double magrsite1, double magrsite2, double 
 
     multiplicacionVectorPorEscalar(los3,rho3,aux);
     sumaVectores(aux,rsite3,r3);
-
-    printf("double\n");
 
     double magr3 = norm(r3);
 
@@ -96,7 +85,6 @@ void doubler(double cc1, double cc2, double magrsite1, double magrsite2, double 
     e = sqrt(ecosv2*ecosv2+esinv2*esinv2);
     *a = p/(1-e*e);
 
-
     double n,s,c;
 
     double sinde32,cosde32,sinde21,cosde21,deltae21,deltam32,deltam12,sindh32,sindh21,deltah32,deltah21;
@@ -136,6 +124,4 @@ void doubler(double cc1, double cc2, double magrsite1, double magrsite2, double 
     *f2=t3-deltam32/n;
 
     *q1=sqrt((*f1)*(*f1)+(*f2)*(*f2));
-
-    printf("Acabo\n");
 }
