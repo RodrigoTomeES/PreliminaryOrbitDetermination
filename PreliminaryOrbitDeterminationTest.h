@@ -1,20 +1,20 @@
-//$Header$ 
-//------------------------------------------------------------------------------ 
+//$Header$
+//------------------------------------------------------------------------------
 //                           PreliminaryOrbitDeterminationTest
 //------------------------------------------------------------------------------
-// POD: Preleminary Orbit Determination. 
-// 
+// POD: Preleminary Orbit Determination.
+//
 // Legal: MIT  License
-// 
+//
 // Author: David Lacalle & Rodrigo Tomé
-// Created: 2019/04/27 
-// 
-/**  
+// Created: 2019/04/27
+//
+/**
 * Provides the definitions of test function of PreliminaryOrbitDeterminationTest that
-* that are necesary for the proyect.  
-*  
-* @note     
-*/ 
+* that are necesary for the proyect.
+*
+* @note
+*/
 //------------------------------------------------------------------------------
 
 #ifndef PRELIMINARY_ORBIT_DETERMINATION_TEST
@@ -27,9 +27,11 @@
 #include "unit.h"
 #include "doubler.h"
 #include "angl.h"
+#include "newtonnu.h"
 
 void testUnit();
 void testDoubler();
 void testAngl();
+void testNewtonnu();
 
 #endif /* PRELIMINARY_ORBIT_DETERMINATION_TEST_H */

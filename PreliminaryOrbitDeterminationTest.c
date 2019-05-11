@@ -1,25 +1,26 @@
-//$Header$ 
-//------------------------------------------------------------------------------ 
+//$Header$
+//------------------------------------------------------------------------------
 //                           PreliminaryOrbitDeterminationTest
 //------------------------------------------------------------------------------
-// POD: Preleminary Orbit Determination. 
-// 
+// POD: Preleminary Orbit Determination.
+//
 // Legal: MIT  License
-// 
+//
 // Author: David Lacalle & Rodrigo Tomé
-// Created: 2019/04/27 
-// 
-/**  
+// Created: 2019/04/27
+//
+/**
 * Provides a basic test for PreliminaryOrbitDetermination.c.
-*  
-* @note     
-*/ 
+*
+* @note
+*/
 //------------------------------------------------------------------------------
 
 // Test MatLabUtilites
 #include "PreliminaryOrbitDeterminationTest.h"
 
 #define EPSILON pow(10, -7)
+#define PI 3.141592653589793
 // Epsilon es de 10⁻7 ya que es la precisión que deja ver matlab para el test
 
 //Colores para los mensajes
@@ -42,19 +43,19 @@
 #define BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
 #define TAM 3
 
-//------------------------------------------------------------------------------ 
+//------------------------------------------------------------------------------
 //  int main()
-//------------------------------------------------------------------------------ 
-/**  
+//------------------------------------------------------------------------------
+/**
 * Execute the test for Preliminary Orbit Determination Proyect
 * This function show the results of the tests.
-*  
+*
 * @param  - none
 * @return - none
 * @exception - none
-* @see - none  
-* @note - none  
-*/ 
+* @see - none
+* @note - none
+*/
 //------------------------------------------------------------------------------
 int main () {
     printf(BLUE "---- Test PreliminaryOrbitDetermination ----\n" RESET);
@@ -66,6 +67,9 @@ int main () {
 
     // Test Angl
     testAngl();
+
+    // Test Newtonnu
+    testNewtonnu();
 
     //Pasa todos los test
     printf(GREEN "---- All Pass Test From MatLabUtilities----\n" RESET);
@@ -216,7 +220,7 @@ void testDoubler(){
 
         deltae32 =
                         0.432542922260443
-    */   
+    */
 
 }
 
@@ -225,9 +229,9 @@ void testAngl() {
 
     double vector1[]={2,-2,-1};
     double vector2[]={4,-1,2};
-    
+
     double resultadoFuncion =  angl(vector1, vector2);
-    double resultadoReal; //PONER LO DE MATLAB
+    double resultadoReal = 0.949715633622426;
 
     assert(fabs(resultadoFuncion - resultadoReal) < EPSILON);
     printf("  Norma función: %f\n", resultadoFuncion);
@@ -235,4 +239,37 @@ void testAngl() {
     printf("  Diferencia: %f\n", fabs(resultadoFuncion - resultadoReal));
 
     printf(GREEN "---- Pass Test ANGL ----\n" RESET);
+}
+
+void testNewtonnu() {
+    printf("---- Test NEWTONNU ----\n");
+
+    // Input
+    double ecc = PI;
+    double nu = PI;
+    double result[2];
+
+    // Output
+    double e0 = 9.999999000000000e+05;
+    double m = 9.999999000000000e+05;
+
+    // Ejecution
+    newtonnu(ecc, nu, result);
+
+    // Test
+    printf("    --E0--\n");
+    assert(fabs(result[0] - e0) < EPSILON);
+    printf("  E0 función: %f\n", result[0]);
+    printf("  E0 real: %f\n", e0);
+    printf("  Diferencia: %f\n", fabs(result[0] - e0));\
+
+    printf("\n");
+
+    printf("    --M--\n");
+    assert(fabs(result[1] - m) < EPSILON);
+    printf("  M función: %f\n", result[0]);
+    printf("  M real: %f\n", m);
+    printf("  Diferencia: %f\n", fabs(result[1] - m));\
+
+    printf(GREEN "---- Pass Test NEWTONNU ----\n" RESET);
 }
