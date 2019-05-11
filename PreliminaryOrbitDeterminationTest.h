@@ -28,10 +28,18 @@
 #include "doubler.h"
 #include "angl.h"
 #include "newtonnu.h"
+#include "R_x.h"
+#include "R_y.h"
+#include "R_z.h"
+#include "Frac.h"
 
 void testUnit();
 void testDoubler();
 void testAngl();
 void testNewtonnu();
+void testR_x();
+void testR_y();
+void testR_z();
+void testFrac();
 
 #endif /* PRELIMINARY_ORBIT_DETERMINATION_TEST_H */

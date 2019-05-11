@@ -71,6 +71,18 @@ int main () {
     // Test Newtonnu
     testNewtonnu();
 
+    // Test R_x
+    testR_x();
+
+    // Test R_y
+    testR_y();
+
+    // Test R_z
+    testR_z();
+
+    // Test Frac
+    testFrac();
+
     //Pasa todos los test
     printf(GREEN "---- All Pass Test From MatLabUtilities----\n" RESET);
     printf("\n");
@@ -253,7 +265,7 @@ void testNewtonnu() {
     double e0 = 9.999999000000000e+05;
     double m = 9.999999000000000e+05;
 
-    // Ejecution
+    // Execution
     newtonnu(ecc, nu, result);
 
     // Test
@@ -272,4 +284,113 @@ void testNewtonnu() {
     printf("  Diferencia: %f\n", fabs(result[1] - m));\
 
     printf(GREEN "---- Pass Test NEWTONNU ----\n" RESET);
+}
+
+void testR_x() {
+    printf("---- Test R_x ----\n");
+
+    // Input
+    double angle = PI;
+    double rotmat[3][3];
+
+    // Output
+    double rotmat_result[3][3] = {{1.000000000000000,   0.000000000000000,   0.000000000000000},
+                                  {0.000000000000000,  -1.000000000000000,   0.000000000000000},
+                                  {0.000000000000000,  -0.000000000000000,  -1.000000000000000}};
+
+    // Execution
+    R_x(angle, rotmat);
+
+    // Test
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("  rotmat[%d][%d] función: %f\n", i, j, rotmat[i][j]);
+            printf("  rotmat_result[%d][%d] real: %f\n", i, j, rotmat_result[i][j]);
+            printf("  Diferencia: %f\n", fabs(rotmat[i][j] - rotmat_result[i][j]));
+            assert(fabs(rotmat[i][j] - rotmat_result[i][j]) < EPSILON);
+            printf("\n");
+        }
+    }
+
+    printf(GREEN "---- Pass Test R_x ----\n" RESET);
+}
+
+void testR_y() {
+    printf("---- Test R_y ----\n");
+
+    // Input
+    double angle = PI;
+    double rotmat[3][3];
+
+    // Output
+    double rotmat_result[3][3] = {{-1.000000000000000,  0.000000000000000,  -0.000000000000000},
+                                  { 0.000000000000000,  1.000000000000000,   0.000000000000000},
+                                  { 0.000000000000000,  0.000000000000000,  -1.000000000000000}};
+
+    // Execution
+    R_y(angle, rotmat);
+
+    // Test
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("  rotmat[%d][%d] función: %f\n", i, j, rotmat[i][j]);
+            printf("  rotmat_result[%d][%d] real: %f\n", i, j, rotmat_result[i][j]);
+            printf("  Diferencia: %f\n", fabs(rotmat[i][j] - rotmat_result[i][j]));
+            assert(fabs(rotmat[i][j] - rotmat_result[i][j]) < EPSILON);
+            printf("\n");
+        }
+    }
+
+    printf(GREEN "---- Pass Test R_y ----\n" RESET);
+}
+
+void testR_z() {
+    printf("---- Test R_z ----\n");
+
+    // Input
+    double angle = PI;
+    double rotmat[3][3];
+
+    // Output
+    double rotmat_result[3][3] = {{-1.000000000000000,  0.000000000000000, 0.000000000000000},
+                                  {-0.000000000000000, -1.000000000000000, 0.000000000000000},
+                                  { 0.000000000000000,  0.000000000000000, 1.000000000000000}};
+
+    // Execution
+    R_z(angle, rotmat);
+
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("  rotmat[%d][%d] función: %f\n", i, j, rotmat[i][j]);
+            printf("  rotmat_result[%d][%d] real: %f\n", i, j, rotmat_result[i][j]);
+            printf("  Diferencia: %f\n", fabs(rotmat[i][j] - rotmat_result[i][j]));
+            assert(fabs(rotmat[i][j] - rotmat_result[i][j]) < EPSILON);
+            printf("\n");
+        }
+    }
+
+    printf(GREEN "---- Pass Test R_z ----\n" RESET);
+}
+
+void testFrac() {
+    printf("---- Test FRAC ----\n");
+
+    // Input
+    double x = PI;
+    double res[1];
+
+    // Output
+    double resultadoReal = 0.141592653589793;
+
+    // Execution
+    Frac(x, res);
+
+    // Test
+    assert(fabs(res[0] - resultadoReal) < EPSILON);
+    printf("  Frac función: %f\n", res[0]);
+    printf("  Frac real: %f\n", resultadoReal);
+    printf("  Diferencia: %f\n", fabs(res[0] - resultadoReal));
+
+    printf(GREEN "---- Pass Test FRAC ----\n" RESET);
 }

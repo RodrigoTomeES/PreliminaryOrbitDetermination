@@ -1,6 +1,6 @@
 //$Header$
 //------------------------------------------------------------------------------
-//                                   Unit
+//                                   R_y
 //------------------------------------------------------------------------------
 // POD: Preleminary Orbit Determination.
 //
@@ -10,38 +10,33 @@
 // Created: 2019/04/27
 //
 /**
-* Provides a basic implementation of unit function.
+* Provides a basic implementation of R_y function.
 *
 * @note
 */
 //------------------------------------------------------------------------------
 
-#include "unit.h"
+#include "R_y.h"
 
 //------------------------------------------------------------------------------
-//  void unit(double vector[], double unit_vector[])
+//  void R_y(double angle, double rotmat[][])
 //------------------------------------------------------------------------------
 /**
-* This function make the unit vector of the vector parameter.
+* Make the rot matrix
 *
-* @param  - double vector[]
-* @return - double
+* @param - angle of rotation [rad]
+* @return - rotation matrix
 * @exception - none
 * @see - none
 * @note - none
 */
 //------------------------------------------------------------------------------
-void unit(double vector[], double unit_vector[]) {
-    double small = 0.000001;
-    double magv = norm(vector);
+void R_y(double angle, double rotmat[3][3]) {
+    double C = cos(angle);
+    double S = sin(angle);
+    zeros(rotmat);
 
-    if ( magv > small ) {
-        for (int i = 0; i < 3; i++) {
-            unit_vector[i] = vector[i]/magv;
-        }
-    } else {
-        for (int i = 0; i < 3; i++) {
-            unit_vector[i] = 0.0;
-        }
-    }
+    rotmat[0][0] =   C;  rotmat[0][1] = 0.0;  rotmat[0][2] = -1.0*S;
+    rotmat[1][0] = 0.0;  rotmat[1][1] = 1.0;  rotmat[1][2] =    0.0;
+    rotmat[2][0] =   S;  rotmat[2][1] = 0.0;  rotmat[2][2] =      C;
 }

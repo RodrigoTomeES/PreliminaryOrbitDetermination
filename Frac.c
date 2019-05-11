@@ -1,6 +1,6 @@
 //$Header$
 //------------------------------------------------------------------------------
-//                                   Unit
+//                                   Frac
 //------------------------------------------------------------------------------
 // POD: Preleminary Orbit Determination.
 //
@@ -10,38 +10,27 @@
 // Created: 2019/04/27
 //
 /**
-* Provides a basic implementation of unit function.
+* Provides a basic implementation of Frac function.
 *
 * @note
 */
 //------------------------------------------------------------------------------
 
-#include "unit.h"
+#include "Frac.h"
 
 //------------------------------------------------------------------------------
-//  void unit(double vector[], double unit_vector[])
+//  void Frac(double x, double res[][])
 //------------------------------------------------------------------------------
 /**
-* This function make the unit vector of the vector parameter.
+* Fractional part of a number (y=x-[x])
 *
-* @param  - double vector[]
-* @return - double
+* @param - x
+* @return - res
 * @exception - none
 * @see - none
 * @note - none
 */
 //------------------------------------------------------------------------------
-void unit(double vector[], double unit_vector[]) {
-    double small = 0.000001;
-    double magv = norm(vector);
-
-    if ( magv > small ) {
-        for (int i = 0; i < 3; i++) {
-            unit_vector[i] = vector[i]/magv;
-        }
-    } else {
-        for (int i = 0; i < 3; i++) {
-            unit_vector[i] = 0.0;
-        }
-    }
+void Frac(double x, double res[]) {
+	res[0] = x-floor(x);
 }

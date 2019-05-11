@@ -16,7 +16,11 @@
         "unit.c",
         "doubler.c",
         "angl.c",
-        "newtonnu.c"
+        "newtonnu.c",
+        "R_x.c",
+        "R_y.c",
+        "R_z.c",
+        "Frac.c",
         "PreliminaryOrbitDeterminationTest.c",
         "-o",
         "PreliminaryOrbitDeterminationTest.out",
