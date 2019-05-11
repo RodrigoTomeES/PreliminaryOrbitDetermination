@@ -21,6 +21,7 @@
         "R_y.c",
         "R_z.c",
         "Frac.c",
+        "timediff.c",
         "PreliminaryOrbitDeterminationTest.c",
         "-o",
         "PreliminaryOrbitDeterminationTest.out",

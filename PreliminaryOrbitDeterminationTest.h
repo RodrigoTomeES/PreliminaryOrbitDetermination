@@ -32,6 +32,7 @@
 #include "R_y.h"
 #include "R_z.h"
 #include "Frac.h"
+#include "timediff.h"
 
 void testUnit();
 void testDoubler();
@@ -41,5 +42,6 @@ void testR_x();
 void testR_y();
 void testR_z();
 void testFrac();
+void testTimediff();
 
 #endif /* PRELIMINARY_ORBIT_DETERMINATION_TEST_H */
