@@ -1,19 +1,19 @@
-//$Header$ 
-//------------------------------------------------------------------------------ 
+//$Header$
+//------------------------------------------------------------------------------
 //                           MatLabUtilitesTest
 //------------------------------------------------------------------------------
-// POD: Preleminary Orbit Determination. 
-// 
+// POD: Preleminary Orbit Determination.
+//
 // Legal: MIT  License
-// 
+//
 // Author: David Lacalle & Rodrigo Tomé
-// Created: 2019/04/27 
-// 
-/**  
-* Provides the definitions of Matlab functions that are not in C.  
-*  
-* @note     
-*/ 
+// Created: 2019/04/27
+//
+/**
+* Provides the definitions of Matlab functions that are not in C.
+*
+* @note
+*/
 //------------------------------------------------------------------------------
 
 #ifndef MATLABUTILITIES_H
@@ -21,6 +21,7 @@
 
 #include <math.h>
 #include <stdbool.h>
+#include "SAT_Const.h"
 
 #define ROWS 3
 #define COLS 3
@@ -56,5 +57,7 @@ void opuestoVector(double vector[], double res[]);
 void roots(double poly[], int numCoeficientes, double solucionesReales[], int *numSolucionesReales);
 
 void muestraVector(double vector[]);
+
+double matlab_mod(double a, double q);
 
 #endif /* MATLABUTILITIES_H */

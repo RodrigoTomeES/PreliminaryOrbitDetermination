@@ -33,6 +33,10 @@
 #include "R_z.h"
 #include "Frac.h"
 #include "timediff.h"
+#include "Mjday.h"
+#include "Position.h"
+#include "MeanObliquity.h"
+#include "NutAngles.h"
 
 void testUnit();
 void testDoubler();
@@ -43,5 +47,9 @@ void testR_y();
 void testR_z();
 void testFrac();
 void testTimediff();
+void testMjday();
+void testPosition();
+void testMeanObliquity();
+void testNutAngles();
 
 #endif /* PRELIMINARY_ORBIT_DETERMINATION_TEST_H */

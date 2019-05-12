@@ -20,7 +20,7 @@
 #include "PreliminaryOrbitDeterminationTest.h"
 
 #define EPSILON pow(10, -7)
-#define PI 3.141592653589793
+
 // Epsilon es de 10⁻7 ya que es la precisión que deja ver matlab para el test
 
 //Colores para los mensajes
@@ -85,6 +85,18 @@ int main () {
 
     // Test Timediff
     testTimediff();
+
+    // Test Mjday
+    testMjday();
+
+    // Test Position
+    testPosition();
+
+    // Test MeanObliquity
+    testMeanObliquity();
+
+    // Test MeanObliquity
+    testNutAngles();
 
     //Pasa todos los test
     printf(GREEN "---- All Pass Test From MatLabUtilities----\n" RESET);
@@ -236,7 +248,6 @@ void testDoubler(){
         deltae32 =
                         0.432542922260443
     */
-
 }
 
 void testAngl() {
@@ -260,8 +271,8 @@ void testNewtonnu() {
     printf("---- Test NEWTONNU ----\n");
 
     // Input
-    double ecc = PI;
-    double nu = PI;
+    double ecc = M_PI;
+    double nu = M_PI;
     double result[2];
 
     // Output
@@ -293,7 +304,7 @@ void testR_x() {
     printf("---- Test R_x ----\n");
 
     // Input
-    double angle = PI;
+    double angle = M_PI;
     double rotmat[3][3];
 
     // Output
@@ -322,7 +333,7 @@ void testR_y() {
     printf("---- Test R_y ----\n");
 
     // Input
-    double angle = PI;
+    double angle = M_PI;
     double rotmat[3][3];
 
     // Output
@@ -351,7 +362,7 @@ void testR_z() {
     printf("---- Test R_z ----\n");
 
     // Input
-    double angle = PI;
+    double angle = M_PI;
     double rotmat[3][3];
 
     // Output
@@ -380,7 +391,7 @@ void testFrac() {
     printf("---- Test FRAC ----\n");
 
     // Input
-    double x = PI;
+    double x = M_PI;
     double res[1];
 
     // Output
@@ -402,8 +413,8 @@ void testTimediff() {
     printf("---- Test TIMEDIFF ----\n");
 
     // Input
-    double UT1_UTC = PI;
-    double TAI_UTC = 3*PI;
+    double UT1_UTC = M_PI;
+    double TAI_UTC = 3*M_PI;
     double timediff_const[5];
 
     // Output
@@ -448,4 +459,106 @@ void testTimediff() {
     printf("\n");
 
     printf(GREEN "---- Pass Test TIMEDIFF ----\n" RESET);
+}
+
+void testMjday() {
+    printf("---- Test MJDAY ----\n");
+
+    // Input
+    double year = 2015.0;
+    double month = 11.0;
+    double day = 3.0;
+    double hour = 8.0;
+    double min = 3.0;
+    double sec = 4.0;
+
+    // Output
+    double Mjd_real = 5.732933546296274e+04;
+
+    // Execution
+    double Mjd = Mjday(year, month, day, hour, min, sec);
+
+    // Test
+    assert(fabs(Mjd - Mjd_real) < EPSILON);
+    printf("  Mjday función: %f\n", Mjd);
+    printf("  Mjday real: %f\n", Mjd_real);
+    printf("  Diferencia: %f\n", fabs(Mjd - Mjd_real));
+
+    printf(GREEN "---- Pass Test MJDAY ----\n" RESET);
+}
+
+void testPosition() {
+    printf("---- Test POSITION ----\n");
+
+    // Input
+    double lon = M_PI;
+    double lat = M_PI;
+    double h = 40;
+    double r[3];
+
+    // Output
+    double r_result[] = {6378177.000000000, -7.811014047445268e-10, 7.758724479233378e-10};
+
+    // Execution
+    Position(lon, lat, h, r);
+
+    // Test
+    for (int i = 0; i < 3; i++) {
+        printf("  r[%d] función: %f\n", i, r[i]);
+        printf("  r_result[%d] real: %f\n", i, r_result[i]);
+        printf("  Diferencia: %f\n", fabs(r[i] - r_result[i]));
+        assert(fabs(r[i] - r_result[i]) < EPSILON);
+        printf("\n");
+    }
+
+    printf(GREEN "---- Pass Test POSITION ----\n" RESET);
+}
+
+void testMeanObliquity() {
+    printf("---- Test MEAN OBLIQUITY ----\n");
+
+    // Input
+    double Mjd_TT = 5.732933546296274e+04;
+    double MOblq;
+
+    // Output
+    double MOblq_real = 0.409056857329232;
+
+    // Execution
+    MOblq = MeanObliquity(Mjd_TT);
+
+    // Test
+    printf("  MeanObliquity función: %f\n", MOblq);
+    printf("  MeanObliquity real: %f\n", MOblq_real);
+    printf("  Diferencia: %f\n", fabs(MOblq - MOblq_real));
+    assert(fabs(MOblq - MOblq_real) < EPSILON);
+
+    printf(GREEN "---- Pass Test MEAN OBLIQUITY ----\n" RESET);
+}
+
+void testNutAngles() {
+    printf("---- Test NUT ANGLES ----\n");
+    // Input
+    double Mjd_TT = 5.732933546296274e+04;
+    double NutAngles_const[2];
+
+    // Output
+    double NutAngles_const_real[] = {-7.840339161497435e-06, -4.469852616699864e-05};
+
+    // Execution
+    NutAngles(Mjd_TT, NutAngles_const);
+
+    // Test
+    printf("  dpsi función: %f\n", NutAngles_const[0]);
+    printf("  dpsi real: %f\n", NutAngles_const_real[0]);
+    printf("  Diferencia: %f\n", fabs(NutAngles_const[0] - NutAngles_const_real[0]));
+    assert(fabs(NutAngles_const[0] - NutAngles_const_real[0]) < EPSILON);
+    printf("\n");
+
+    printf("  deps función: %f\n", NutAngles_const[1]);
+    printf("  deps real: %f\n", NutAngles_const_real[1]);
+    printf("  Diferencia: %f\n", fabs(NutAngles_const[1] - NutAngles_const_real[1]));
+    assert(fabs(NutAngles_const[1] - NutAngles_const_real[1]) < EPSILON);
+
+    printf(GREEN "---- Pass Test NUT ANGLES ----\n" RESET);
 }

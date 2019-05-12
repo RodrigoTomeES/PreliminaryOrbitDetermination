@@ -9,10 +9,10 @@
 // Author: David Lacalle & Rodrigo Tomé
 // Created: 2019/04/27
 //
-/**  
-* Provides a basic implementation of Matlab functions that are not in C.  
-*  
-* @note     
+/**
+* Provides a basic implementation of Matlab functions that are not in C.
+*
+* @note
 */
 //------------------------------------------------------------------------------
 
@@ -26,15 +26,15 @@
 //------------------------------------------------------------------------------
 //  double norm(double vector[])
 //------------------------------------------------------------------------------
-/**  
-* Execute the test for MatLabUtilites.c  
+/**
+* Execute the test for MatLabUtilites.c
 * This function show the results of the tests.
-*  
+*
 * @param  - double vector[]
 * @return - double
 * @exception - none
-* @see - none  
-* @note - none  
+* @see - none
+* @note - none
 */
 //------------------------------------------------------------------------------
 double norm(double vector[])
@@ -45,15 +45,15 @@ double norm(double vector[])
 //------------------------------------------------------------------------------
 //  double dot(double vector1[], double vector2[])
 //------------------------------------------------------------------------------
-/**  
-* Execute the test for MatLabUtilites.c  
+/**
+* Execute the test for MatLabUtilites.c
 * This function show the results of the tests.
-*  
+*
 * @param  - double vector1[], double vector2[]
 * @return - double
 * @exception - none
-* @see - none  
-* @note - none  
+* @see - none
+* @note - none
 */
 //------------------------------------------------------------------------------
 double dot(double vector1[], double vector2[])
@@ -64,15 +64,15 @@ double dot(double vector1[], double vector2[])
 //------------------------------------------------------------------------------
 //  int sign(double numero)
 //------------------------------------------------------------------------------
-/**  
-* Evaluate the sign of the number and return a -1 when it is negative 
+/**
+* Evaluate the sign of the number and return a -1 when it is negative
 * (or zero) and a 1 when it is positive.
-*  
+*
 * @param  - double numero
 * @return - int
 * @exception - none
-* @see - none  
-* @note - none  
+* @see - none
+* @note - none
 */
 //------------------------------------------------------------------------------
 int sign(double numero)
@@ -90,14 +90,14 @@ int sign(double numero)
 //------------------------------------------------------------------------------
 //  void traspuesta(double matriz[ROWS][COLS], double resultado[ROWS][COLS])
 //------------------------------------------------------------------------------
-/**  
+/**
 * Performs the transpose of a matrix
-*  
+*
 * @param  - double matriz[ROWS][COLS], double resultado[ROWS][COLS]
 * @return - none
 * @exception - none
-* @see - none  
-* @note - none  
+* @see - none
+* @note - none
 */
 //------------------------------------------------------------------------------
 void traspuesta(double matriz[ROWS][COLS], double resultado[ROWS][COLS])
@@ -116,14 +116,14 @@ void traspuesta(double matriz[ROWS][COLS], double resultado[ROWS][COLS])
 //------------------------------------------------------------------------------
 //  bool matricesIguales(double matriz1[ROWS][COLS], double matriz2[ROWS][COLS])
 //------------------------------------------------------------------------------
-/**  
+/**
 * Given two matrices it says if they are equal component to component
-*  
+*
 * @param  - double matriz1[ROWS][COLS], double matriz2[ROWS][COLS]
 * @return - bool
 * @exception - none
-* @see - none  
-* @note - none  
+* @see - none
+* @note - none
 */
 //------------------------------------------------------------------------------
 bool matricesIguales(double matriz1[ROWS][COLS], double matriz2[ROWS][COLS])
@@ -134,14 +134,14 @@ bool matricesIguales(double matriz1[ROWS][COLS], double matriz2[ROWS][COLS])
 //------------------------------------------------------------------------------
 //  double det(double matriz[ROWS][COLS])
 //------------------------------------------------------------------------------
-/**  
+/**
 * Performs the determinant of the matrix passed by parameters
-*  
+*
 * @param  - double matriz[ROWS][COLS]
 * @return - double
 * @exception - none
-* @see - none  
-* @note - none  
+* @see - none
+* @note - none
 */
 //------------------------------------------------------------------------------
 double det(double matriz[ROWS][COLS])
@@ -152,14 +152,14 @@ double det(double matriz[ROWS][COLS])
 //------------------------------------------------------------------------------
 //  void zeros(double matriz[ROWS][COLS])
 //------------------------------------------------------------------------------
-/**  
+/**
 * Given a matrix it fills its zeros components
-*  
+*
 * @param  - double matriz[ROWS][COLS]
 * @return - none
 * @exception - none
-* @see - none  
-* @note - none  
+* @see - none
+* @note - none
 */
 //------------------------------------------------------------------------------
 void zeros(double matriz[ROWS][COLS])
@@ -178,16 +178,16 @@ void zeros(double matriz[ROWS][COLS])
 //------------------------------------------------------------------------------
 //  double fix(double num)
 //------------------------------------------------------------------------------
-/**  
-* fix(X) rounds each element of X to the nearest integer toward zero. 
-* For positive X, the behavior of fix is the same as floor. 
+/**
+* fix(X) rounds each element of X to the nearest integer toward zero.
+* For positive X, the behavior of fix is the same as floor.
 * For negative X, the behavior of fix is the same as ceil.
-*  
+*
 * @param  - double num
 * @return - double
 * @exception - none
-* @see - none  
-* @note - none  
+* @see - none
+* @note - none
 */
 //------------------------------------------------------------------------------
 double fix(double num)
@@ -209,15 +209,15 @@ double fix(double num)
 //------------------------------------------------------------------------------
 //  bool all(double matriz[ROWS][COLS], double num)
 //------------------------------------------------------------------------------
-/**  
-* Check if all the components of a matrix are equal to the number passed 
+/**
+* Check if all the components of a matrix are equal to the number passed
 * by parameter
-*  
+*
 * @param  - double matriz[ROWS][COLS], double num
 * @return - bool
 * @exception - none
-* @see - none  
-* @note - none  
+* @see - none
+* @note - none
 */
 //------------------------------------------------------------------------------
 bool all(double matriz[ROWS][COLS], double num)
@@ -234,17 +234,17 @@ bool all(double matriz[ROWS][COLS], double num)
 }
 
 //------------------------------------------------------------------------------
-//  void sumaMatrices(double matriz1[ROWS][COLS], 
+//  void sumaMatrices(double matriz1[ROWS][COLS],
 //                    double matriz2[ROWS][COLS], double resultado[ROWS][COLS])
 //------------------------------------------------------------------------------
-/**  
+/**
 * Make the sum of two matrix
-*  
+*
 * @param  - double matriz1[ROWS][COLS], double matriz2[ROWS][COLS], double resultado[ROWS][COLS]
 * @return - none
 * @exception - none
-* @see - none  
-* @note - none  
+* @see - none
+* @note - none
 */
 //------------------------------------------------------------------------------
 void sumaMatrices(double matriz1[ROWS][COLS], double matriz2[ROWS][COLS], double resultado[ROWS][COLS])
@@ -261,17 +261,17 @@ void sumaMatrices(double matriz1[ROWS][COLS], double matriz2[ROWS][COLS], double
 }
 
 //------------------------------------------------------------------------------
-//  void restaMatrices(double matriz1[ROWS][COLS], 
+//  void restaMatrices(double matriz1[ROWS][COLS],
 //                     double matriz2[ROWS][COLS], double resultado[ROWS][COLS])
 //------------------------------------------------------------------------------
-/**  
+/**
 * Make the subtraction of two matrix
-*  
+*
 * @param  - double matriz1[ROWS][COLS], double matriz2[ROWS][COLS], double resultado[ROWS][COLS]
 * @return - none
 * @exception - none
-* @see - none  
-* @note - none  
+* @see - none
+* @note - none
 */
 //------------------------------------------------------------------------------
 void restaMatrices(double matriz1[ROWS][COLS], double matriz2[ROWS][COLS], double resultado[ROWS][COLS])
@@ -288,17 +288,17 @@ void restaMatrices(double matriz1[ROWS][COLS], double matriz2[ROWS][COLS], doubl
 }
 
 //------------------------------------------------------------------------------
-//  void multiplicacionMatrices(double matriz1[ROWS][COLS], 
+//  void multiplicacionMatrices(double matriz1[ROWS][COLS],
 //                    double matriz2[ROWS][COLS], double resultado[ROWS][COLS])
 //------------------------------------------------------------------------------
-/**  
+/**
 * Make the multiplication of two matrix
-*  
+*
 * @param  - double matriz1[ROWS][COLS], double matriz2[ROWS][COLS], double resultado[ROWS][COLS]
 * @return - none
 * @exception - none
-* @see - none  
-* @note - none  
+* @see - none
+* @note - none
 */
 //------------------------------------------------------------------------------
 void multiplicacionMatrices(double matriz1[ROWS][COLS], double matriz2[ROWS][COLS], double resultado[ROWS][COLS])
@@ -323,14 +323,14 @@ void multiplicacionMatrices(double matriz1[ROWS][COLS], double matriz2[ROWS][COL
 //------------------------------------------------------------------------------
 //  void roots(double poly[], int numCoeficientes, double solucionesReales[], int *numSolucionesReales)
 //------------------------------------------------------------------------------
-/**  
+/**
 * Find the real roots of a polynomial of degree N
-*  
+*
 * @param  - double poly[], int numCoeficientes, double solucionesReales[], int *numSolucionesReales
 * @return - none
 * @exception - none
-* @see - none  
-* @note - none  
+* @see - none
+* @note - none
 */
 //------------------------------------------------------------------------------
 void roots(double poly[], int numCoeficientes, double solucionesReales[], int *numSolucionesReales)
@@ -355,14 +355,14 @@ void roots(double poly[], int numCoeficientes, double solucionesReales[], int *n
 //------------------------------------------------------------------------------
 //  bool vectoresIguales(double vector1[], double vector2[])
 //------------------------------------------------------------------------------
-/**  
+/**
 * Compare two component-to-component vectors
-*  
+*
 * @param  - double vector1[], double vector2[]
 * @return - bool
 * @exception - none
-* @see - none  
-* @note - none  
+* @see - none
+* @note - none
 */
 //------------------------------------------------------------------------------
 bool vectoresIguales(double vector1[], double vector2[])
@@ -374,14 +374,14 @@ bool vectoresIguales(double vector1[], double vector2[])
 //------------------------------------------------------------------------------
 //  void crossVector(double matriz1[], double matriz2[], double resultado[])
 //------------------------------------------------------------------------------
-/**  
+/**
 * Make the cross product of two matrices
-*  
+*
 * @param  - double matriz1[], double matriz2[], double resultado[]
 * @return - none
 * @exception - none
-* @see - none  
-* @note - none  
+* @see - none
+* @note - none
 */
 //------------------------------------------------------------------------------
 void crossVector(double matriz1[], double matriz2[], double resultado[])
@@ -421,4 +421,11 @@ void muestraVector(double vector[]){
   printf("%lf\n",vector[1]);
   printf("%lf\n",vector[2]);
   printf("\n");
+}
+
+// Mod in C doesn't equal than Matlab
+// https://stackoverflow.com/questions/28888619/modulo-function-in-c-that-behaves-like-mod-in-matlab
+double matlab_mod(double a, double q) {
+    double m = fmod(a, q);
+    return m + q * (m < 0.f);
 }
