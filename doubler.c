@@ -1,10 +1,45 @@
+//$Header$
+//------------------------------------------------------------------------------
+//                                   doubler
+//------------------------------------------------------------------------------
+// POD: Preleminary Orbit Determination.
+//
+// Legal: MIT  License
+//
+// Author: David Lacalle & Rodrigo Tomé
+// Created: 2019/04/27
+//
+/**
+* Provides a implementation of doubler function.
+*
+* @note
+*/
+//------------------------------------------------------------------------------
+
 #include "doubler.h"
 #include <stdio.h>
 #define TAM 3
 
-void doubler(double cc1, double cc2, double magrsite1, double magrsite2, double magrlin, double magr2in, double los1[], double los2[], 
-            double los3[], double rsite1[],double rsite2[], double rsite3[], double t1, double t3, char direct, double r2 [], 
-            double r3 [], double * f1,double *f2,double *q1,double * magr1, double * magr2,double *a , double * deltae32){
+//------------------------------------------------------------------------------
+//  void doubler(double cc1, double cc2, double magrsite1, double magrsite2,
+//              double magrlin, double magr2in, double los1[], double los2[],
+//              double los3[], double rsite1[],double rsite2[], double rsite3[],
+//              double t1, double t3, char direct, double r2 [], double r3 [],
+//              double * f1,double *f2,double *q1,double * magr1, double * magr2,
+//              double *a , double * deltae32)
+//------------------------------------------------------------------------------
+/**
+* This rountine accomplishes the iteration work for the double-r angles
+*
+* @param  - double vector[]
+* @return - double
+* @exception - none
+* @see - none
+* @note - none
+*/
+//------------------------------------------------------------------------------
+void doubler(double cc1, double cc2, double magrsite1, double magrsite2, double magrlin, double magr2in, double los1[], double los2[], double los3[], double rsite1[],double rsite2[], double rsite3[],double t1, double t3, char direct, double r2 [], double r3 [], double * f1,double *f2,double *q1,double * magr1, double * magr2,double *a , double * deltae32) {
+
     double mu = 398600.4418e9;
     double rho1 = (-cc1 + sqrt(cc1*cc1-4*(magrsite1*magrsite1-magrlin*magrlin)))/2.0;
     double rho2 = (-cc2 + sqrt(cc2*cc2-4*(magrsite2*magrsite2-magr2in*magr2in)))/2.0;
@@ -96,11 +131,11 @@ void doubler(double cc1, double cc2, double magrsite1, double magrsite2, double 
         sinde32 = magr3/sqrt((*a)*p)*sindv32-magr3/p*(1-cosdv32)*s;
         cosde32 = 1-(*magr2)*magr3/((*a)*p)*(1-cosdv32);
         *deltae32 = atan2(sinde32,cosde32);
-        
+
         sinde21 = (*magr1)/sqrt((*a)*p)*sindv21+(*magr1)/p*(1-cosdv21)*s;
         cosde21 = 1-(*magr2)*(*magr1)/((*a)*p)*(1-cosdv21);
         deltae21 = atan2(sinde21,cosde21);
-        
+
         deltam32 = (*deltae32)+2*s*(sin((*deltae32)/2))*(sin((*deltae32)/2))-c*sin((*deltae32));
         deltam12 = -deltae21+2*s*(sin(deltae21/2))*(sin(deltae21/2))+c*sin(deltae21);
     }else{
@@ -108,13 +143,13 @@ void doubler(double cc1, double cc2, double magrsite1, double magrsite2, double 
 
         s = (*magr2)/p*sqrt(e*e-1)*esinv2;
         c = (*magr2)/p*(e*e+ecosv2);
-        
+
         sindh32 = magr3/sqrt(-(*a)*p)*sindv32-magr3/p*(1-cosdv32)*s;
         sindh21 = (*magr1)/sqrt(-(*a)*p)*sindv21+(*magr1)/p*(1-cosdv21)*s;
-        
+
         deltah32 = log( sindh32 + sqrt(sindh32*sindh32 +1) );
         deltah21 = log( sindh21 + sqrt(sindh21*sindh21 +1) );
-        
+
         deltam32 = -deltah32+2*s*(sinh(deltah32/2))*(sinh(deltah32/2))+c*sinh(deltah32);
         deltam12 = deltah21+2*s*(sinh(deltah21/2))*(sinh(deltah21/2))-c*sinh(deltah21);
        *deltae32 = deltah32;
