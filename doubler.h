@@ -1,3 +1,21 @@
+//$Header$
+//------------------------------------------------------------------------------
+//                                   doubler.h
+//------------------------------------------------------------------------------
+// POD: Preleminary Orbit Determination.
+//
+// Legal: MIT  License
+//
+// Author: David Lacalle & Rodrigo Tomé
+// Created: 2019/04/27
+//
+/**
+* Provides the definitions of doubler function.
+*
+* @note
+*/
+//------------------------------------------------------------------------------
+
 #ifndef DOUBLER_H
 #define DOUBLER_H
 
