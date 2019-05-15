@@ -52,4 +52,6 @@ void testPosition();
 void testMeanObliquity();
 void testNutAngles();
 
+void testIERS();
+
 #endif /* PRELIMINARY_ORBIT_DETERMINATION_TEST_H */
