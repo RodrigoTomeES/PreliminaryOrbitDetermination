@@ -2,7 +2,8 @@
 
 double gast(double Mjd_UT1, double ** eop, double filas,double columnas){
     double UT1_UTC,TAI_UTC,x_pole,y_pole,ddpsi,ddeps;
-    IERS(eop,filas,columnas,Mjd_UT1,'1',&UT1_UTC,&TAI_UTC,&x_pole,&y_pole,&ddpsi,&ddeps);
+    IERS(eop,filas,columnas,Mjd_UT1,'l',&UT1_UTC,&TAI_UTC,&x_pole,&y_pole,&ddpsi,&ddeps);
+
     double UT1_TAI, UTC_GPS, UT1_GPS, TT_UTC, GPS_UTC;
 
     timediff(UT1_UTC,TAI_UTC,&UT1_TAI, &UTC_GPS, &UT1_GPS, &TT_UTC, &GPS_UTC);

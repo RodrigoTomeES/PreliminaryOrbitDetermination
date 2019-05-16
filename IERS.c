@@ -5,12 +5,12 @@ void IERS(double ** eop, double filas,double columnas,double Mjd_UTC, char inter
     
     //double Arcs = 3600*180/pi;
     
-    if(interp=='1'){
+    if(interp=='l'){
         double mj = floor(Mjd_UTC);
         double nop = columnas;
 
-        double * preeop;
-        double * nexteop;
+        double * preeop=(double *)malloc(filas*sizeof(double));
+        double * nexteop=(double *)malloc(filas*sizeof(double));
         for(int i=0;i<nop;i++){
             if(mj== eop[4][i]){
                 for(int j=0;j<filas;j++){

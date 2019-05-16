@@ -578,7 +578,8 @@ void testNutAngles() {
 }
 
 void testIERS(){
-
+    FILE *fp;
+    //fp = fopen("eop19620101.txt");
 }
 
 void testGmst(){
