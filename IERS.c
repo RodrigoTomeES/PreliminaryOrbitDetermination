@@ -1,7 +1,9 @@
+#include "IERS.h"
+
 void IERS(double ** eop, double filas,double columnas,double Mjd_UTC, char interp, double * UT1_UTC, double * TAI_UTC, double * x_pole, double * y_pole, double * ddpsi, double * ddeps){
     double pi = 3.14159265358979;
     
-    double Arcs = 3600*180/pi;
+    //double Arcs = 3600*180/pi;
     
     if(interp=='1'){
         double mj = floor(Mjd_UTC);

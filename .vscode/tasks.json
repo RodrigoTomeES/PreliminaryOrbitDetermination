@@ -29,6 +29,7 @@
         "gmst.c",
         "gibbs.c",
         "EqnEquinox.c",
+        "gast.c",
         "PreliminaryOrbitDeterminationTest.c",
         "-o",
         "PreliminaryOrbitDeterminationTest.out",

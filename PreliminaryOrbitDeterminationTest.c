@@ -428,7 +428,6 @@ void testTimediff() {
     // Input
     double UT1_UTC = M_PI;
     double TAI_UTC = 3*M_PI;
-    double timediff_const[5];
 
     // Output
     double UT1_TAI = -6.283185307179586;
@@ -437,38 +436,39 @@ void testTimediff() {
     double TT_UTC  = 41.608777960769373;
     double GPS_UTC = -9.575222039230621;
 
+    double UT1_TAIr, UTC_GPSr, UT1_GPSr, TT_UTCr, GPS_UTCr;
     // Execution
-    timediff(UT1_UTC, TAI_UTC, timediff_const);
+    timediff(UT1_UTC, TAI_UTC, &UT1_TAIr, &UTC_GPSr, &UT1_GPSr, &TT_UTCr, &GPS_UTCr);
 
     // Test
-    printf("  UT1_TAI funcion: %f\n", timediff_const[0]);
+    printf("  UT1_TAI funcion: %f\n", UT1_TAIr);
     printf("  UT1_TAI real: %f\n", UT1_TAI);
-    printf("  Diferencia: %f\n", fabs(timediff_const[0] - UT1_TAI));
-    assert(fabs(timediff_const[0] - UT1_TAI) < EPSILON);
+    printf("  Diferencia: %f\n", fabs(UT1_TAIr - UT1_TAI));
+    assert(fabs(UT1_TAIr - UT1_TAI) < EPSILON);
     printf("\n");
 
-    printf("  UTC_GPS funcion: %f\n", timediff_const[1]);
+    printf("  UTC_GPS funcion: %f\n", UTC_GPSr);
     printf("  UTC_GPS real: %f\n", UTC_GPS);
-    printf("  Diferencia: %f\n", fabs(timediff_const[1] - UTC_GPS));
-    assert(fabs(timediff_const[1] - UTC_GPS) < EPSILON);
+    printf("  Diferencia: %f\n", fabs(UTC_GPSr - UTC_GPS));
+    assert(fabs(UTC_GPSr - UTC_GPS) < EPSILON);
     printf("\n");
 
-    printf("  UT1_GPS funcion: %f\n", timediff_const[2]);
+    printf("  UT1_GPS funcion: %f\n", UT1_GPSr);
     printf("  UT1_GPS real: %f\n", UT1_GPS);
-    printf("  Diferencia: %f\n", fabs(timediff_const[2] - UT1_GPS));
-    assert(fabs(timediff_const[2] - UT1_GPS) < EPSILON);
+    printf("  Diferencia: %f\n", fabs(UT1_GPSr - UT1_GPS));
+    assert(fabs(UT1_GPSr - UT1_GPS) < EPSILON);
     printf("\n");
 
-    printf("  TT_UTC funcion: %f\n", timediff_const[3]);
+    printf("  TT_UTC funcion: %f\n", TT_UTCr);
     printf("  TT_UTC real: %f\n", TT_UTC);
-    printf("  Diferencia: %f\n", fabs(timediff_const[3] - TT_UTC));
-    assert(fabs(timediff_const[3] - TT_UTC) < EPSILON);
+    printf("  Diferencia: %f\n", fabs(TT_UTCr - TT_UTC));
+    assert(fabs(TT_UTCr - TT_UTC) < EPSILON);
     printf("\n");
 
-    printf("  GPS_UTC funcion: %f\n", timediff_const[4]);
+    printf("  GPS_UTC funcion: %f\n", GPS_UTCr);
     printf("  GPS_UTC real: %f\n", GPS_UTC);
-    printf("  Diferencia: %f\n", fabs(timediff_const[4] - GPS_UTC));
-    assert(fabs(timediff_const[4] - GPS_UTC) < EPSILON);
+    printf("  Diferencia: %f\n", fabs(GPS_UTCr - GPS_UTC));
+    assert(fabs(GPS_UTCr - GPS_UTC) < EPSILON);
     printf("\n");
 
     printf(GREEN "---- Pass Test TIMEDIFF ----\n" RESET);
