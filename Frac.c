@@ -32,5 +32,12 @@
 */
 //------------------------------------------------------------------------------
 double Frac(double x) {
-	return (x-floor(x));
+	double y = x;
+	printf("x %f \n",x);
+	double res = floor(y);
+	printf("floor %f \n",res);
+	double caguedios =x-res;
+	printf("caguen %f \n",caguedios);
+	return caguedios;
+	
 }

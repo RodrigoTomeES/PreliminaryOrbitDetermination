@@ -578,11 +578,11 @@ void testGmst(){
     printf("---- Test gmst ----\n");
 
     // Input
-    double Mjd_UT1 = 54977.6738510765;
+    double Mjd_UT1 = 54977.680795521;
     double gmstV;
 
     // Output
-    double gmst_real = 2.21562172211082;
+    double gmst_real = 2.25937441720215;
 
     // Execution
     gmstV = gmst(Mjd_UT1);
