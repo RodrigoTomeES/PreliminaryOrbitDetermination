@@ -107,6 +107,10 @@ int main () {
     // Test Gibbs
     testGibbs();
 
+
+    // Test EqnEquinox
+    testEqnEquinox();
+
     //Pasa todos los test
     printf(GREEN "---- All Pass Test From Preliminary Orbit Determination----\n" RESET);
     printf("\n");
@@ -655,4 +659,8 @@ void testGibbs() {
     printf("\n");
 
     printf(GREEN "---- Pass Test GIBBS ----\n" RESET);
+}
+
+void testEqnEquinox(){
+
 }

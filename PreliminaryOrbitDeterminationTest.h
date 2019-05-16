@@ -56,5 +56,6 @@ void testNutAngles();
 void testGibbs();
 void testIERS();
 void testGmst();
+void testEqnEquinox();
 
 #endif /* PRELIMINARY_ORBIT_DETERMINATION_TEST_H */
