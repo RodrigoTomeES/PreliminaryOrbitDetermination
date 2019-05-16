@@ -30,6 +30,7 @@
         "gibbs.c",
         "EqnEquinox.c",
         "gast.c",
+        "NutMatrix.c",
         "PreliminaryOrbitDeterminationTest.c",
         "-o",
         "PreliminaryOrbitDeterminationTest.out",
