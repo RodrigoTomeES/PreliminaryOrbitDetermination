@@ -40,50 +40,50 @@
 * @note - none
 */
 //------------------------------------------------------------------------------
-void newtonnu(double ecc, double nu, double result[]) {
-    double e0= 999999.9;
-    double m = 999999.9;
+void newtonnu(double ecc, double nu, double * e0, double * m) {
+    double e0V= 999999.9;
+    double mV = 999999.9;
     double small = 0.00000001;
 
     //--------------------------- circular ------------------------
     if ( fabs(ecc) < small  ){
-        m = nu;
-        e0= nu;
+        mV = nu;
+        e0V= nu;
     } else {
         //---------------------- elliptical -----------------------
         if ( ecc < 1.0-small  ){
             double sine= ( sqrt( 1.0 -ecc*ecc ) * sin(nu) ) / ( 1.0 +ecc*cos(nu) );
             double cose= ( ecc + cos(nu) ) / ( 1.0  + ecc*cos(nu) );
-            e0 = atan2( sine,cose );
-            m = e0 - ecc*sin(e0);
+            e0V = atan2( sine,cose );
+            mV = e0V - ecc*sin(e0V);
 
         } else {
             //-------------------- hyperbolic  --------------------
             if ( ecc > 1.0 + small){
                 if((ecc > 1.0)&(fabs(nu) + 0.00001 < M_PI-acos(1.0 /ecc))){
                     double sine= ( sqrt( ecc*ecc-1.0  ) * sin(nu) ) / ( 1.0  + ecc*cos(nu) );
-                    e0  = asinh( sine );
-                    m   = ecc*sinh(e0) - e0;
+                    e0V  = asinh( sine );
+                    mV   = ecc*sinh(e0V) - e0V;
                 }
             } else{
                 // ----------------- parabolic ---------------------
                 if ( fabs(nu) < 168.0*M_PI/180.0 ){
 
-                    e0= tan( nu*0.5);
-                    m = e0 + (e0*e0*e0)/3.0;
+                    e0V= tan( nu*0.5);
+                    mV = e0V + (e0V*e0V*e0V)/3.0;
                 }
             }
         }
     }
 
     if(ecc < 1.0){
-        m = drem(m,M_PI*2.0);
-        if (m < 0.0){
-            m = m + (2.0 *M_PI);
+        mV = drem(mV,M_PI*2.0);
+        if (mV < 0.0){
+            mV = mV + (2.0 *M_PI);
         }
-        e0 = drem(e0, 2.0 *M_PI);
+        e0V = drem(e0V, 2.0 *M_PI);
     }
 
-    result[0] = e0;
-    result[1] = m;
+    *e0 = e0V;
+    *m = mV;
 }

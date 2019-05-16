@@ -31,6 +31,6 @@
 * @note - none
 */
 //------------------------------------------------------------------------------
-void Frac(double x, double res[]) {
-	res[0] = x-floor(x);
+double Frac(double x) {
+	return (x-floor(x));
 }

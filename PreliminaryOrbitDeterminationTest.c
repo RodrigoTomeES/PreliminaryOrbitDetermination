@@ -101,6 +101,9 @@ int main () {
     // Test IERS
     testIERS();
 
+    //Test gmst
+    testGmst();
+
     //Pasa todos los test
     printf(GREEN "---- All Pass Test From Preliminary Orbit Determination----\n" RESET);
     printf("\n");
@@ -276,29 +279,29 @@ void testNewtonnu() {
     // Input
     double ecc = M_PI;
     double nu = M_PI;
-    double result[2];
+    double e0, m;
 
     // Output
-    double e0 = 9.999999000000000e+05;
-    double m = 9.999999000000000e+05;
+    double e0V = 9.999999000000000e+05;
+    double mV = 9.999999000000000e+05;
 
     // Execution
-    newtonnu(ecc, nu, result);
+    newtonnu(ecc, nu, &e0, &m);
 
     // Test
     printf("    --E0--\n");
-    assert(fabs(result[0] - e0) < EPSILON);
-    printf("  E0 función: %f\n", result[0]);
-    printf("  E0 real: %f\n", e0);
-    printf("  Diferencia: %f\n", fabs(result[0] - e0));\
+    assert(fabs(e0 - e0V) < EPSILON);
+    printf("  E0 función: %f\n", e0);
+    printf("  E0 real: %f\n", e0V);
+    printf("  Diferencia: %f\n", fabs(e0 - e0V));\
 
     printf("\n");
 
     printf("    --M--\n");
-    assert(fabs(result[1] - m) < EPSILON);
-    printf("  M función: %f\n", result[0]);
-    printf("  M real: %f\n", m);
-    printf("  Diferencia: %f\n", fabs(result[1] - m));\
+    assert(fabs(m - mV) < EPSILON);
+    printf("  M función: %f\n", m);
+    printf("  M real: %f\n", mV);
+    printf("  Diferencia: %f\n", fabs(m - mV));\
 
     printf(GREEN "---- Pass Test NEWTONNU ----\n" RESET);
 }
@@ -395,19 +398,19 @@ void testFrac() {
 
     // Input
     double x = M_PI;
-    double res[1];
+    double res;
 
     // Output
     double resultadoReal = 0.141592653589793;
 
     // Execution
-    Frac(x, res);
+    res=Frac(x);
 
     // Test
-    assert(fabs(res[0] - resultadoReal) < EPSILON);
-    printf("  Frac función: %f\n", res[0]);
+    assert(fabs(res - resultadoReal) < EPSILON);
+    printf("  Frac función: %f\n", res);
     printf("  Frac real: %f\n", resultadoReal);
-    printf("  Diferencia: %f\n", fabs(res[0] - resultadoReal));
+    printf("  Diferencia: %f\n", fabs(res - resultadoReal));
 
     printf(GREEN "---- Pass Test FRAC ----\n" RESET);
 }
@@ -543,29 +546,52 @@ void testNutAngles() {
     printf("---- Test NUT ANGLES ----\n");
     // Input
     double Mjd_TT = 5.732933546296274e+04;
-    double NutAngles_const[2];
+    double dpsi,deps;
 
     // Output
     double NutAngles_const_real[] = {-7.840339161497435e-06, -4.469852616699864e-05};
 
     // Execution
-    NutAngles(Mjd_TT, NutAngles_const);
+    NutAngles(Mjd_TT, &dpsi, &deps);
 
     // Test
-    printf("  dpsi función: %f\n", NutAngles_const[0]);
+    printf("  dpsi función: %f\n", dpsi);
     printf("  dpsi real: %f\n", NutAngles_const_real[0]);
-    printf("  Diferencia: %f\n", fabs(NutAngles_const[0] - NutAngles_const_real[0]));
-    assert(fabs(NutAngles_const[0] - NutAngles_const_real[0]) < EPSILON);
+    printf("  Diferencia: %f\n", fabs(dpsi - NutAngles_const_real[0]));
+    assert(fabs(dpsi - NutAngles_const_real[0]) < EPSILON);
     printf("\n");
 
-    printf("  deps función: %f\n", NutAngles_const[1]);
+    printf("  deps función: %f\n", deps);
     printf("  deps real: %f\n", NutAngles_const_real[1]);
-    printf("  Diferencia: %f\n", fabs(NutAngles_const[1] - NutAngles_const_real[1]));
-    assert(fabs(NutAngles_const[1] - NutAngles_const_real[1]) < EPSILON);
+    printf("  Diferencia: %f\n", fabs(deps - NutAngles_const_real[1]));
+    assert(fabs(deps - NutAngles_const_real[1]) < EPSILON);
 
     printf(GREEN "---- Pass Test NUT ANGLES ----\n" RESET);
 }
 
 void testIERS(){
 
+}
+
+void testGmst(){
+
+    printf("---- Test gmst ----\n");
+
+    // Input
+    double Mjd_UT1 = 54977.6738510765;
+    double gmstV;
+
+    // Output
+    double gmst_real = 2.21562172211082;
+
+    // Execution
+    gmstV = gmst(Mjd_UT1);
+
+    // Test
+    printf("  gmst función: %f\n", gmstV);
+    printf("  gmst real: %f\n", gmst_real);
+    printf("  Diferencia: %f\n", fabs(gmstV - gmst_real));
+    assert(fabs(gmstV - gmst_real) < EPSILON);
+
+    printf(GREEN "---- Pass Test gmst ----\n" RESET);
 }

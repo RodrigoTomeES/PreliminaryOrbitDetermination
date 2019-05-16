@@ -37,6 +37,7 @@
 #include "Position.h"
 #include "MeanObliquity.h"
 #include "NutAngles.h"
+#include "gmst.h"
 
 void testUnit();
 void testDoubler();
@@ -53,5 +54,6 @@ void testMeanObliquity();
 void testNutAngles();
 
 void testIERS();
+void testGmst();
 
 #endif /* PRELIMINARY_ORBIT_DETERMINATION_TEST_H */
