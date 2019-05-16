@@ -107,9 +107,11 @@ int main () {
     // Test Gibbs
     testGibbs();
 
-
     // Test EqnEquinox
     testEqnEquinox();
+
+    // Test NutMatrix
+    testNutMatrix();
 
     //Pasa todos los test
     printf(GREEN "---- All Pass Test From Preliminary Orbit Determination----\n" RESET);
@@ -683,3 +685,37 @@ void testEqnEquinox(){
 
     printf(GREEN "---- Pass Test EqnEquinox ----\n" RESET);
 }
+
+void testNutMatrix(){
+    printf("---- Test NUT MATRIX ----\n");
+
+    // Input
+    double Mjd_TT = 54977.6815585532;
+    double NutMat[3][3];
+
+    // Output
+    double NutMat_real[3][3] = {{   0.999999997895152,     -5.95287721488282e-05,     -2.58073726784525e-05},
+                                {5.95281964998585e-05,         0.999999997979423,     -2.23057957973194e-05},
+                                {2.58087004629423e-05,       2.2304259484005e-05,         0.999999999418215}};
+
+    // Execution
+    NutMatrix(Mjd_TT, NutMat);
+
+    // Test
+    muestraMatriz(NutMat);
+    printf("  NutMat iguales: %d\n", matricesIguales(NutMat, NutMat_real));
+    assert(matricesIguales(NutMat, NutMat_real));
+
+    printf(GREEN "---- Pass Test NUT MATRIX ----\n" RESET);
+}
+
+/*Mjd_TT =
+
+          54977.6815585532
+
+
+NutMat =
+
+         0.999999997895152     -5.95287721488282e-05     -2.58073726784525e-05
+      5.95281964998585e-05         0.999999997979423     -2.23057957973194e-05
+      2.58087004629423e-05       2.2304259484005e-05         0.999999999418215*/

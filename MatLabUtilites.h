@@ -59,6 +59,7 @@ void opuestoVector(double vector[], double res[]);
 void roots(double poly[], int numCoeficientes, double solucionesReales[], int *numSolucionesReales);
 
 void muestraVector(double vector[]);
+void muestraMatriz(double matrix[ROWS][COLS]);
 
 double matlab_mod(double a, double q);
 
