@@ -20,7 +20,10 @@
 #ifndef GIBBS_H
 #define GIBBS_H
 
+#include <string.h>
 #include "MatLabUtilites.h"
+#include "unit.h"
+#include "angl.h"
 
 void gibbs(double r1[], double r2[], double r3[], double v2[], double *theta, double *theta1, double *copa, char error[]);
 
