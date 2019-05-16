@@ -37,6 +37,7 @@
 #include "Position.h"
 #include "MeanObliquity.h"
 #include "NutAngles.h"
+#include "gibbs.h"
 
 void testUnit();
 void testDoubler();
@@ -51,5 +52,6 @@ void testMjday();
 void testPosition();
 void testMeanObliquity();
 void testNutAngles();
+void testGibbs();
 
 #endif /* PRELIMINARY_ORBIT_DETERMINATION_TEST_H */

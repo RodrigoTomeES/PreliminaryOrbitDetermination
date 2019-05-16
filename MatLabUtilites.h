@@ -37,6 +37,7 @@ bool vectoresIguales(double vector1[] , double vector2[]);
 double det(double matriz [ROWS][COLS]);
 
 void zeros(double matriz [ROWS][COLS]);
+void zeros_vector(double vector [ROWS]);
 
 double fix(double num);
 
@@ -49,6 +50,7 @@ void crossMatrix(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double 
 void crossVector(double matriz1 [],double matriz2 [],double resultado []);
 
 void sumaVectores(double vector1[], double vector2[], double res[]);
+void restaVectores(double vector1[], double vector2[], double res[]);
 void multiplicacionVectorPorEscalar(double vector[], double valor, double res[]);
 void devisionVectorPorEscalar(double vector[], double valor, double res[]);
 
