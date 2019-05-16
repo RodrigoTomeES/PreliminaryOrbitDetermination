@@ -22,6 +22,6 @@
 
 #include "MatLabUtilites.h"
 
-void Frac(double x, double res[]);
+double Frac(double x);
 
 #endif /* FRAC_H */

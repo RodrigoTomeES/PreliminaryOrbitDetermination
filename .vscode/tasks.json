@@ -26,6 +26,7 @@
         "Position.c",
         "MeanObliquity.c",
         "NutAngles.c",
+        "gmst.c",
         "gibbs.c",
         "PreliminaryOrbitDeterminationTest.c",
         "-o",

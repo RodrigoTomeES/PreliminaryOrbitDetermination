@@ -32,7 +32,7 @@
 * @note - none
 */
 //------------------------------------------------------------------------------
-void NutAngles(double Mjd_TT, double NutAngles_const[]) {
+void NutAngles(double Mjd_TT, double * dpsi, double * deps) {
     double T  = (Mjd_TT-MJD_J2000)/36525;
     double T2 = T*T;
     double T3 = T2*T;
@@ -164,19 +164,19 @@ void NutAngles(double Mjd_TT, double NutAngles_const[]) {
     double Om = matlab_mod (  450160.280 - (   5.0*rev +  482890.539)*T +  7.455*T2 + 0.008*T3, rev );
 
     // Nutation in longitude and obliquity [rad]
-    double dpsi = 0;
-    double deps = 0;
+    double dpsiV = 0;
+    double depsV = 0;
     double arg;
 
     for (int i = 0; i < N_coeff; i++) {
         arg  =  ( C[i][0]*l+C[i][1]*lp+C[i][2]*F+C[i][3]*D+C[i][4]*Om ) / Arcs;
-        dpsi = dpsi + ( C[i][5]+C[i][6]*T ) * sin(arg);
-        deps = deps + ( C[i][7]+C[i][8]*T ) * cos(arg);
+        dpsiV = dpsiV + ( C[i][5]+C[i][6]*T ) * sin(arg);
+        depsV = depsV + ( C[i][7]+C[i][8]*T ) * cos(arg);
     }
 
-    dpsi = 1e-5 * dpsi/Arcs;
-    deps = 1e-5 * deps/Arcs;
+    dpsiV = 1e-5 * dpsiV/Arcs;
+    depsV = 1e-5 * depsV/Arcs;
 
-    NutAngles_const[0] = dpsi;
-    NutAngles_const[1] = deps;
+    *dpsi = dpsiV;
+    *deps = depsV;
 }

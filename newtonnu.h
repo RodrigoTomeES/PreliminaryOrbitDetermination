@@ -22,6 +22,6 @@
 #include <math.h>
 #include "MatLabUtilites.h"
 
-void newtonnu(double ecc, double nu, double result[]);
+void newtonnu(double ecc, double nu, double * e0, double * m);
 
 #endif /* NEWTONNU_H */

@@ -22,6 +22,6 @@
 
 #include "MatLabUtilites.h"
 
-void NutAngles(double Mjd_TT, double NutAngles_const[]);
+void NutAngles(double Mjd_TT, double * dpsi, double * deps);
 
 #endif /* NUT_ANGLES_H */
