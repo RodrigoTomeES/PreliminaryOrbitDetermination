@@ -662,5 +662,23 @@ void testGibbs() {
 }
 
 void testEqnEquinox(){
+    printf("---- Test EqnEquinox ----\n");
 
+    // Input
+    double Mjd_TT = 54977.6815585532;
+    double EqnEquinoxV;
+
+    // Output
+    double EqnEquinox_real = 5.95287721905946e-05;
+
+    // Execution
+    EqnEquinoxV = EqnEquinox(Mjd_TT);
+
+    // Test
+    printf("  EqnEquinox función: %f\n", EqnEquinoxV);
+    printf("  EqnEquinox real: %f\n", EqnEquinox_real);
+    printf("  Diferencia: %f\n", fabs(EqnEquinoxV - EqnEquinox_real));
+    assert(fabs(EqnEquinoxV - EqnEquinox_real) < EPSILON);
+
+    printf(GREEN "---- Pass Test EqnEquinox ----\n" RESET);
 }

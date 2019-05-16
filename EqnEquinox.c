@@ -7,4 +7,5 @@ double EqnEquinox(double x){
     NutAngles(x,&dpsi,&deps);
 
     double res = dpsi*cos(MeanObliquity(x));
+    return res;
 }

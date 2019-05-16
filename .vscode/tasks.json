@@ -28,6 +28,7 @@
         "NutAngles.c",
         "gmst.c",
         "gibbs.c",
+        "EqnEquinox.c",
         "PreliminaryOrbitDeterminationTest.c",
         "-o",
         "PreliminaryOrbitDeterminationTest.out",

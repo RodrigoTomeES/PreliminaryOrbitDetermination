@@ -39,6 +39,7 @@
 #include "NutAngles.h"
 #include "gmst.h"
 #include "gibbs.h"
+#include "EqnEquinox.h"
 
 void testUnit();
 void testDoubler();
