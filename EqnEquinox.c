@@ -1,6 +1,7 @@
 #include "NutAngles.h"
 #include "MeanObliquity.h"
 #include "math.h"
+#include "EqnEquinox.h"
 
 double EqnEquinox(double x){
     double dpsi,deps;

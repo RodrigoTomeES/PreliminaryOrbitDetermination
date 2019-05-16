@@ -1,4 +1,4 @@
-#include "Frac.h"
+#include "gmst.h"
 double gmst(double Mjd_UT1){
     double res = 0;
 
