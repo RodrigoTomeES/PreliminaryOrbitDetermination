@@ -1,6 +1,6 @@
 //$Header$
 //------------------------------------------------------------------------------
-//                           PreliminaryOrbitDeterminationTest
+//                 PreliminaryOrbitDeterminationTest
 //------------------------------------------------------------------------------
 // POD: Preleminary Orbit Determination.
 //
@@ -103,6 +103,9 @@ int main () {
 
     //Test gmst
     testGmst();
+
+    // Test Gibbs
+    testGibbs();
 
     //Pasa todos los test
     printf(GREEN "---- All Pass Test From Preliminary Orbit Determination----\n" RESET);
@@ -265,10 +268,10 @@ void testAngl() {
     double resultadoFuncion =  angl(vector1, vector2);
     double resultadoReal = 0.949715633622426;
 
-    assert(fabs(resultadoFuncion - resultadoReal) < EPSILON);
     printf("  Norma función: %f\n", resultadoFuncion);
     printf("  Norma real: %f\n", resultadoReal);
     printf("  Diferencia: %f\n", fabs(resultadoFuncion - resultadoReal));
+    assert(fabs(resultadoFuncion - resultadoReal) < EPSILON);
 
     printf(GREEN "---- Pass Test ANGL ----\n" RESET);
 }
@@ -544,6 +547,7 @@ void testMeanObliquity() {
 
 void testNutAngles() {
     printf("---- Test NUT ANGLES ----\n");
+
     // Input
     double Mjd_TT = 5.732933546296274e+04;
     double dpsi,deps;
@@ -594,4 +598,61 @@ void testGmst(){
     assert(fabs(gmstV - gmst_real) < EPSILON);
 
     printf(GREEN "---- Pass Test gmst ----\n" RESET);
+}
+
+void testGibbs() {
+    printf("---- Test GIBBS ----\n");
+
+    // Input
+    double r1[] = {20387627.0717529,1865163.69633398,-109943.688555879};
+    double r2[] = {20435422.3521544,1070699.44671825,1012905.49143365};
+    double r3[] = {20398157.0666256,271778.615869788,2131538.39542076};
+    double v2[3];
+    double theta;
+    double theta1;
+    double copa;
+    char error[20];
+
+    // Output
+    double v2_result[] = {17.4448460090308,-2659.68695020331,3741.47770465728};
+    double theta_result = 0.0672088229314286;
+    double theta1_result = 0.0670842334897834;
+    double copa_result = -7.87130777224476e-16;
+    char error_result[] = "ok";
+
+    // Execution
+    gibbs(r1, r2, r3, v2, &theta, &theta1, &copa, error);
+
+    // Test
+    printf("  v2\n");
+    muestraVector(v2);
+    printf("  v2_result\n");
+    muestraVector(v2_result);
+    printf("  v2 iguales: %d\n", vectoresIguales(v2,v2_result));
+    assert(vectoresIguales(v2,v2_result));
+    printf("\n");
+
+    printf("  theta función: %f\n", theta);
+    printf("  theta real: %f\n", theta_result);
+    printf("  Diferencia: %f\n", fabs(theta - theta_result));
+    assert(fabs(theta - theta_result) < EPSILON);
+    printf("\n");
+
+    printf("  theta1 función: %f\n", theta1);
+    printf("  theta1 real: %f\n", theta1_result);
+    printf("  Diferencia: %f\n", fabs(theta1 - theta1_result));
+    assert(fabs(theta1 - theta1_result) < EPSILON);
+    printf("\n");
+
+    printf("  copa función: %f\n", copa);
+    printf("  copa real: %f\n", copa_result);
+    printf("  Diferencia: %f\n", fabs(copa - copa_result));
+    assert(fabs(copa - copa_result) < EPSILON);
+    printf("\n");
+
+    printf("  error igual: %d\n", vectoresIguales(v2,v2_result));
+    assert(vectoresIguales(v2,v2_result));
+    printf("\n");
+
+    printf(GREEN "---- Pass Test GIBBS ----\n" RESET);
 }

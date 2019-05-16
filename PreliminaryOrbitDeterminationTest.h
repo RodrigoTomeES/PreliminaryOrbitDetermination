@@ -38,6 +38,7 @@
 #include "MeanObliquity.h"
 #include "NutAngles.h"
 #include "gmst.h"
+#include "gibbs.h"
 
 void testUnit();
 void testDoubler();
@@ -52,7 +53,7 @@ void testMjday();
 void testPosition();
 void testMeanObliquity();
 void testNutAngles();
-
+void testGibbs();
 void testIERS();
 void testGmst();
 

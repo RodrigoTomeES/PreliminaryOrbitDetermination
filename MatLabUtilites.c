@@ -176,6 +176,26 @@ void zeros(double matriz[ROWS][COLS])
 }
 
 //------------------------------------------------------------------------------
+//  void zeros_vector(double vector[ROWS])
+//------------------------------------------------------------------------------
+/**
+* Given a vector it fills its zeros components
+*
+* @param  - double vector[ROWS]
+* @return - none
+* @exception - none
+* @see - none
+* @note - none
+*/
+//------------------------------------------------------------------------------
+void zeros_vector(double vector[ROWS])
+{
+  vector[0] = 0;
+  vector[1] = 0;
+  vector[2] = 0;
+}
+
+//------------------------------------------------------------------------------
 //  double fix(double num)
 //------------------------------------------------------------------------------
 /**
@@ -395,6 +415,12 @@ void sumaVectores(double vector1[], double vector2[], double res[]){
   res[0]=vector1 [0]+vector2[0];
   res[1]=vector1 [1]+vector2[1];
   res[2]=vector1 [2]+vector2[2];
+}
+
+void restaVectores(double vector1[], double vector2[], double res[]){
+  res[0]=vector1 [0]-vector2[0];
+  res[1]=vector1 [1]-vector2[1];
+  res[2]=vector1 [2]-vector2[2];
 }
 
 void multiplicacionVectorPorEscalar(double vector[], double valor, double res[]){
