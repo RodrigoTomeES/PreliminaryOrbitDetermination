@@ -1078,7 +1078,7 @@ void testGHAMatrix(){
     printf("  GHAmat iguales: %d\n", matricesIguales(GHAmat,GHAmat_real));
     assert(matricesIguales(GHAmat,GHAmat_real));
     printf("\n");
-    
+
 	printf(GREEN "---- Pass Test GHA_MATRIX ----\n" RESET);
 }
 
@@ -1087,8 +1087,7 @@ void testLambert_gooding(){
 }
 
 void testTLamb(){
-
-     printf("---- Test tlamb ----\n");
+    printf("---- Test tlamb ----\n");
 
     // Input
 
@@ -1104,7 +1103,7 @@ void testTLamb(){
     double d2t_result =  28.5802140304226;
     double d3t_result = 26.4789138610536;
 
-    
+
 
     // Execution
     tlamb(1,0.804611564466232,0.352600230327203,0.142219617787892,3, &t, &dt, &d2t, &d3t);
