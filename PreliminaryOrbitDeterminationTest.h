@@ -73,6 +73,7 @@ void testGHAMatrix();
 void testLambert_gooding();
 void testTLamb();
 void testd8rt();
+void testXLamb();
 
 
 #endif /* PRELIMINARY_ORBIT_DETERMINATION_TEST_H */
