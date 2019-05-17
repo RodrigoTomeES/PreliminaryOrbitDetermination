@@ -29,11 +29,8 @@ void tlamb(double m, double q, double qsqfm1, double x, double n, double *t, dou
     if (lm1 || m > 0 || x < 0.0 || fabs(u) > sw)
     {
         // direct computation (not series)
-        printf("%f \n",u);
         y = sqrt(fabs(u));
-        printf("%f \n",y);
         z = sqrt(qsqfm1 + qsq * xsq);
-        printf("%f \n",z);
         qx = q * x;
         if (qx <= 0.0)
         {
@@ -114,16 +111,16 @@ void tlamb(double m, double q, double qsqfm1, double x, double n, double *t, dou
                     d3tv = (8.0 * dtv + 7.0 * x * d2tv - 12.0 * qz * qz2 * x * qsqfm1) / u;
                 }
             }
-            
+
         }
         else{
                 dtv = b;
                 d2tv = bb;
                 d3tv = aa;
         }
-        
 
-        
+
+
     }
     else
         {
