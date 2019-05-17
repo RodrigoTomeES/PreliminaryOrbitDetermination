@@ -34,6 +34,7 @@
         "NutMatrix.c",
         "PoleMatrix.c",
         "PrecMatrix.c",
+        "GHAMatrix.c",
         "PreliminaryOrbitDeterminationTest.c",
         "-o",
         "PreliminaryOrbitDeterminationTest.out",

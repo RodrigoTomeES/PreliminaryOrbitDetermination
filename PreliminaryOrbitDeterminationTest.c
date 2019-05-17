@@ -118,6 +118,9 @@ int main () {
     // Test PrecMatrix
     testPrecMatrix();
 
+    //Test GHAMatrix
+    testGHAMatrix();
+
     //Pasa todos los test
     printf(GREEN "---- All Pass Test From Preliminary Orbit Determination----\n" RESET);
     printf("\n");
@@ -781,4 +784,8 @@ void testPrecMatrix(){
     }
 
     printf(GREEN "---- Pass Test PrecMatrix ----\n" RESET);
+}
+
+void testGHAMatrix(){
+
 }
