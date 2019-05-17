@@ -177,8 +177,6 @@ void NutAngles(double Mjd_TT, double * dpsi, double * deps) {
     dpsiV = 1e-5 * dpsiV/Arcs;
     depsV = 1e-5 * depsV/Arcs;
 
-    printf("dpsi NutAngles %f\n", dpsiV*100000);
-
     *dpsi = dpsiV;
     *deps = depsV;
 }

@@ -112,8 +112,9 @@ int main () {
 
     // Test PoleMatrix
     testPoleMatrix();
+
     // Test NutMatrix
-    //testNutMatrix();
+    testNutMatrix();
 
     // Test PrecMatrix
     testPrecMatrix();
@@ -588,8 +589,132 @@ void testNutAngles() {
 }
 
 void testIERS(){
-    FILE *fp;
-    //fp = fopen("eop19620101.txt");
+    printf("---- Test IERS ----\n");
+
+    FILE* fid = fopen("eop19620101.txt","rt");
+
+    int filas = 20026;
+    int columnas = 13;
+    int v1, v2, v3, v4, v13;
+    float v5, v6, v7, v8, v9, v10, v11, v12;
+
+    if (fid == NULL){
+        exit(EXIT_FAILURE);
+    }
+
+    double **eop;
+    eop = (double **) malloc (filas*sizeof(double *));
+
+    if (eop != NULL) {
+        for (int i = 0; i < filas; i++) {
+            eop[i] = (double *) malloc (columnas * sizeof(double));
+            if (fscanf(fid,"%d %d %d %d %f  %f  %f  %f  %f  %f  %f  %f   %d", &v1, &v2, &v3, &v4, &v5, &v6, &v7, &v8, &v9, &v10, &v11, &v12, &v13) == EOF) {
+                break;
+            }
+            eop[i][0]  =  v1;
+            eop[i][1]  =  v2;
+            eop[i][2]  =  v3;
+            eop[i][3]  =  v4;
+            eop[i][4]  =  v5;
+            eop[i][5]  =  v6;
+            eop[i][6]  =  v7;
+            eop[i][7]  =  v8;
+            eop[i][8]  =  v9;
+            eop[i][9]  = v10;
+            eop[i][10] = v11;
+            eop[i][11] = v12;
+            eop[i][12] = v13;
+
+            //printf("%d %d %d %d %f  %f  %f  %f  %f  %f  %f  %f   %d \n", v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13);
+        }
+    } else {
+        printf("Es null");
+    }
+
+    fclose(fid);
+
+    double ** traspuesta;
+    traspuesta=(double **) malloc (columnas*sizeof(double *));
+    double traspuestaFilas = columnas;
+    double traspuestaColumnas = filas;
+
+    if (traspuesta != NULL) {
+        for (int i = 0; i < columnas; i++) {
+            traspuesta[i] = (double *) malloc (filas * sizeof(double));
+            for(int j=0;j<filas;j++){
+                traspuesta[i][j]=eop[j][i];
+            }
+        }
+
+/*        for(int j=0;j<filas;j++){
+            for (int i = 0; i < columnas; i++) {
+                printf("%f ", traspuesta[i][j]);
+            }
+            printf("\n");
+
+        }*/
+    }
+
+    // Input
+    // double **eop;
+    double Mjd_UTC = 54977.6669036457;
+    char interp = 'l';
+    double UT1_UTC;
+    double TAI_UTC;
+    double x_pole;
+    double y_pole;
+    double ddpsi;
+    double ddeps;
+
+    // Output
+    double UT1_UTC_real = 0.258022690875596;
+    double TAI_UTC_real = 34;
+    double x_pole_real = 7.5789200806793e-08;
+    double y_pole_real = 2.56777193042581e-06;
+    double ddpsi_real = -2.91335538497448e-07;
+    double ddeps_real = -4.54223178651006e-08;
+
+    // Execution
+    IERS(traspuesta, traspuestaFilas, traspuestaColumnas,Mjd_UTC, interp, &UT1_UTC, &TAI_UTC, &x_pole, &y_pole, &ddpsi, &ddeps);
+
+    // Test
+    printf("  UT1_UTC función: %f\n", UT1_UTC);
+    printf("  UT1_UTC real: %f\n", UT1_UTC_real);
+    printf("  Diferencia: %f\n", fabs(UT1_UTC - UT1_UTC_real));
+    assert(fabs(UT1_UTC - UT1_UTC_real) < EPSILON);
+    printf("\n");
+
+    printf("  TAI_UTC función: %f\n", TAI_UTC);
+    printf("  TAI_UTC real: %f\n", TAI_UTC_real);
+    printf("  Diferencia: %f\n", fabs(TAI_UTC - TAI_UTC_real));
+    assert(fabs(TAI_UTC - TAI_UTC_real) < EPSILON);
+    printf("\n");
+
+    printf("  x_pole función: %f\n", x_pole);
+    printf("  x_pole real: %f\n", x_pole_real);
+    printf("  Diferencia: %f\n", fabs(x_pole - x_pole_real));
+    assert(fabs(x_pole - x_pole_real) < EPSILON);
+    printf("\n");
+
+    printf("  y_pole función: %f\n", y_pole);
+    printf("  y_pole real: %f\n", y_pole_real);
+    printf("  Diferencia: %f\n", fabs(y_pole - y_pole_real));
+    assert(fabs(y_pole - y_pole_real) < EPSILON);
+    printf("\n");
+
+    printf("  ddpsi función: %f\n", ddpsi);
+    printf("  ddpsi real: %f\n", ddpsi_real);
+    printf("  Diferencia: %f\n", fabs(ddpsi - ddpsi_real));
+    assert(fabs(ddpsi - ddpsi_real) < EPSILON);
+    printf("\n");
+
+    printf("  ddeps función: %f\n", ddeps);
+    printf("  ddeps real: %f\n", ddeps_real);
+    printf("  Diferencia: %f\n", fabs(ddeps - ddeps_real));
+    assert(fabs(ddeps - ddeps_real) < EPSILON);
+    printf("\n");
+
+    printf(GREEN "---- Pass Test IERS ----\n" RESET);
 }
 
 void testGmst(){
@@ -694,11 +819,15 @@ void testEqnEquinox(){
     printf(GREEN "---- Pass Test EqnEquinox ----\n" RESET);
 }
 
+void testGast() {
+
+}
+
 void testPoleMatrix(){
     printf("---- Test PoleMatrix ----\n");
 
     // Input
-    
+
     double PoleMat[3][3];
 
     // Output
@@ -722,6 +851,7 @@ void testPoleMatrix(){
 
     printf(GREEN "---- Pass Test PoleMatrix ----\n" RESET);
 }
+
 void testNutMatrix(){
     printf("---- Test NUT MATRIX ----\n");
 
@@ -745,23 +875,11 @@ void testNutMatrix(){
     printf(GREEN "---- Pass Test NUT MATRIX ----\n" RESET);
 }
 
-/*Mjd_TT =
-
-          54977.6815585532
-
-
-NutMat =
-
-         0.999999997895152     -5.95287721488282e-05     -2.58073726784525e-05
-      5.95281964998585e-05         0.999999997979423     -2.23057957973194e-05
-      2.58087004629423e-05       2.2304259484005e-05         0.999999999418215*/
-
-
 void testPrecMatrix(){
     printf("---- Test PrecMatrix ----\n");
 
     // Input
-    
+
     double PrecMat[3][3];
 
     // Output

@@ -2,9 +2,9 @@
 
 void IERS(double ** eop, double filas,double columnas,double Mjd_UTC, char interp, double * UT1_UTC, double * TAI_UTC, double * x_pole, double * y_pole, double * ddpsi, double * ddeps){
     double pi = 3.14159265358979;
-    
+
     //double Arcs = 3600*180/pi;
-    
+
     if(interp=='l'){
         double mj = floor(Mjd_UTC);
         double nop = columnas;
@@ -12,7 +12,7 @@ void IERS(double ** eop, double filas,double columnas,double Mjd_UTC, char inter
         double * preeop=(double *)malloc(filas*sizeof(double));
         double * nexteop=(double *)malloc(filas*sizeof(double));
         for(int i=0;i<nop;i++){
-            if(mj== eop[4][i]){
+            if(mj== eop[3][i]){
                 for(int j=0;j<filas;j++){
                     preeop[j]=eop[j][i];
                     nexteop[j]=eop[j][i+1];
@@ -38,7 +38,8 @@ void IERS(double ** eop, double filas,double columnas,double Mjd_UTC, char inter
 
         *ddpsi=((*ddpsi)/Arcs);
         *ddeps=((*ddeps)/Arcs);
-    }else if(interp == 'n'){
+
+    } else if(interp == 'n'){
         double mj = floor(Mjd_UTC);
         double nop = columnas;
 
@@ -60,6 +61,5 @@ void IERS(double ** eop, double filas,double columnas,double Mjd_UTC, char inter
 
         *ddpsi=preeop[8]/Arcs;
         *ddeps=preeop[9]/Arcs;
-
     }
 }
