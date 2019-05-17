@@ -218,3 +218,7 @@ void tlamb(double m, double q, double qsqfm1, double x, double n, double *t, dou
         *d2t = d2tv;
         *d3t = d3tv;
 }
+
+double d8rt(double x){
+    return sqrt(sqrt(sqrt(x)));
+}
