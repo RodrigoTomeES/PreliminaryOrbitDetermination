@@ -23,7 +23,7 @@
 #include "MatLabUtilites.h"
 
 // Mathematical constants
-#define pi2        M_2_PI              // 2pi
+#define pi2       (2*M_PI)             // 2pi
 #define Rad       (M_PI/180.0f)        // Radians per degree
 #define Deg       (180.0/M_PI)         // Degrees per radian
 // The parentheses are needed because otherwise C does

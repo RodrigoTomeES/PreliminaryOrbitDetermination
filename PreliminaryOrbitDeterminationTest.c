@@ -110,6 +110,9 @@ int main () {
     // Test EqnEquinox
     testEqnEquinox();
 
+    // Test Gast
+    testGast();
+
     // Test PoleMatrix
     testPoleMatrix();
 
@@ -648,15 +651,14 @@ void testIERS(){
                 traspuesta[i][j]=eop[j][i];
             }
         }
-
-/*        for(int j=0;j<filas;j++){
-            for (int i = 0; i < columnas; i++) {
-                printf("%f ", traspuesta[i][j]);
-            }
-            printf("\n");
-
-        }*/
     }
+
+    // for(int j=0;j<filas;j++){
+    //     for (int i = 0; i < columnas; i++) {
+    //         printf("%f ", traspuesta[i][j]);
+    //     }
+    //     printf("\n");
+    // }
 
     // Input
     // double **eop;
@@ -823,7 +825,90 @@ void testEqnEquinox(){
 }
 
 void testGast() {
+    printf("---- Test GAST ----\n");
 
+    FILE* fid = fopen("eop19620101.txt","rt");
+
+    int filas = 20026;
+    int columnas = 13;
+    int v1, v2, v3, v4, v13;
+    float v5, v6, v7, v8, v9, v10, v11, v12;
+
+    if (fid == NULL){
+        exit(EXIT_FAILURE);
+    }
+
+    double **eop;
+    eop = (double **) malloc (filas*sizeof(double *));
+
+    if (eop != NULL) {
+        for (int i = 0; i < filas; i++) {
+            eop[i] = (double *) malloc (columnas * sizeof(double));
+            if (fscanf(fid,"%d %d %d %d %f  %f  %f  %f  %f  %f  %f  %f   %d", &v1, &v2, &v3, &v4, &v5, &v6, &v7, &v8, &v9, &v10, &v11, &v12, &v13) == EOF) {
+                break;
+            }
+            eop[i][0]  =  v1;
+            eop[i][1]  =  v2;
+            eop[i][2]  =  v3;
+            eop[i][3]  =  v4;
+            eop[i][4]  =  v5;
+            eop[i][5]  =  v6;
+            eop[i][6]  =  v7;
+            eop[i][7]  =  v8;
+            eop[i][8]  =  v9;
+            eop[i][9]  = v10;
+            eop[i][10] = v11;
+            eop[i][11] = v12;
+            eop[i][12] = v13;
+
+            //printf("%d %d %d %d %f  %f  %f  %f  %f  %f  %f  %f   %d \n", v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13);
+        }
+    } else {
+        printf("Es null");
+    }
+
+    fclose(fid);
+
+    double ** traspuesta;
+    traspuesta=(double **) malloc (columnas*sizeof(double *));
+    double traspuestaFilas = columnas;
+    double traspuestaColumnas = filas;
+
+    if (traspuesta != NULL) {
+        for (int i = 0; i < columnas; i++) {
+            traspuesta[i] = (double *) malloc (filas * sizeof(double));
+            for(int j=0;j<filas;j++){
+                traspuesta[i][j]=eop[j][i];
+            }
+        }
+    }
+
+    // for(int j=0;j<filas;j++){
+    //     for (int i = 0; i < columnas; i++) {
+    //         printf("%f ", traspuesta[i][j]);
+    //     }
+    //     printf("\n");
+    // }
+
+    // Input
+    // double **eop;
+    double Mjd_UT1 = 54977.680795521;
+    double gstime;
+
+    // Output
+    double gstime_real = 2.25943394597434;
+
+    // Execution
+    gstime = gast(Mjd_UT1, traspuesta, traspuestaFilas, traspuestaColumnas);
+
+    // Test
+    printf("  gstime función: %f\n", gstime);
+    printf("  gstime real: %f\n", gstime_real);
+    printf("  Diferencia: %f\n", fabs(gstime - gstime_real));
+    assert(fabs(gstime - gstime_real) < EPSILON);
+    printf("\n");
+
+    printf(GREEN "---- Pass Test GAST ----\n" RESET);
 }
 
 void testPoleMatrix(){
@@ -908,7 +993,93 @@ void testPrecMatrix(){
 }
 
 void testGHAMatrix(){
+    printf("---- Test GHA_MATRIX ----\n");
 
+    FILE* fid = fopen("eop19620101.txt","rt");
+
+    int filas = 20026;
+    int columnas = 13;
+    int v1, v2, v3, v4, v13;
+    float v5, v6, v7, v8, v9, v10, v11, v12;
+
+    if (fid == NULL){
+        exit(EXIT_FAILURE);
+    }
+
+    double **eop;
+    eop = (double **) malloc (filas*sizeof(double *));
+
+    if (eop != NULL) {
+        for (int i = 0; i < filas; i++) {
+            eop[i] = (double *) malloc (columnas * sizeof(double));
+            if (fscanf(fid,"%d %d %d %d %f  %f  %f  %f  %f  %f  %f  %f   %d", &v1, &v2, &v3, &v4, &v5, &v6, &v7, &v8, &v9, &v10, &v11, &v12, &v13) == EOF) {
+                break;
+            }
+            eop[i][0]  =  v1;
+            eop[i][1]  =  v2;
+            eop[i][2]  =  v3;
+            eop[i][3]  =  v4;
+            eop[i][4]  =  v5;
+            eop[i][5]  =  v6;
+            eop[i][6]  =  v7;
+            eop[i][7]  =  v8;
+            eop[i][8]  =  v9;
+            eop[i][9]  = v10;
+            eop[i][10] = v11;
+            eop[i][11] = v12;
+            eop[i][12] = v13;
+
+            //printf("%d %d %d %d %f  %f  %f  %f  %f  %f  %f  %f   %d \n", v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13);
+        }
+    } else {
+        printf("Es null");
+    }
+
+    fclose(fid);
+
+    double ** traspuesta;
+    traspuesta=(double **) malloc (columnas*sizeof(double *));
+    double traspuestaFilas = columnas;
+    double traspuestaColumnas = filas;
+
+    if (traspuesta != NULL) {
+        for (int i = 0; i < columnas; i++) {
+            traspuesta[i] = (double *) malloc (filas * sizeof(double));
+            for(int j=0;j<filas;j++){
+                traspuesta[i][j]=eop[j][i];
+            }
+        }
+    }
+
+    // for(int j=0;j<filas;j++){
+    //     for (int i = 0; i < columnas; i++) {
+    //         printf("%f ", traspuesta[i][j]);
+    //     }
+    //     printf("\n");
+    // }
+
+    // Input
+    double Mjd_UT1 = 54977.680795521;
+    double GHAmat[3][3];
+
+    // Output
+    double GHAmat_real[3][3] = {{-0.635485861035896,         0.772112505029847,                         0},
+                                {-0.772112505029847,        -0.635485861035896,                         0},
+                                {                 0,                         0,                         1}};
+
+    // Execution
+    GHAMatrix(Mjd_UT1, traspuesta, traspuestaFilas, traspuestaColumnas, GHAmat);
+
+    // Test
+    printf("  GHAmat\n");
+    muestraMatriz(GHAmat);
+    printf("  GHAmat_real\n");
+    muestraMatriz(GHAmat_real);
+    printf("  GHAmat iguales: %d\n", matricesIguales(GHAmat,GHAmat_real));
+    assert(matricesIguales(GHAmat,GHAmat_real));
+    printf("\n");
+    
+	printf(GREEN "---- Pass Test GHA_MATRIX ----\n" RESET);
 }
 
 void testLambert_gooding(){
