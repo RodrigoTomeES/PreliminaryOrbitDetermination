@@ -41,6 +41,7 @@
 #include "gmst.h"
 #include "gibbs.h"
 #include "EqnEquinox.h"
+#include "gast.h"
 #include "PoleMatrix.h"
 #include "NutMatrix.h"
 #include "PrecMatrix.h"
@@ -64,6 +65,7 @@ void testGibbs();
 void testIERS();
 void testGmst();
 void testEqnEquinox();
+void testGast();
 void testPoleMatrix();
 void testNutMatrix();
 void testPrecMatrix();
