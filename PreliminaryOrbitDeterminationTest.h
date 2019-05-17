@@ -46,6 +46,7 @@
 #include "NutMatrix.h"
 #include "PrecMatrix.h"
 #include "GHAMatrix.h"
+#include "lambert_gooding.h"
 
 void testUnit();
 void testDoubler();
@@ -69,6 +70,8 @@ void testPoleMatrix();
 void testNutMatrix();
 void testPrecMatrix();
 void testGHAMatrix();
+void testLambert_gooding();
+void testTLamb();
 
 
 #endif /* PRELIMINARY_ORBIT_DETERMINATION_TEST_H */

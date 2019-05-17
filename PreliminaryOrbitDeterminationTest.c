@@ -125,6 +125,9 @@ int main () {
     //Test GHAMatrix
     testGHAMatrix();
 
+    //Test Lambert_gooding
+    testLambert_gooding();
+
     //Pasa todos los test
     printf(GREEN "---- All Pass Test From Preliminary Orbit Determination----\n" RESET);
     printf("\n");
@@ -1075,6 +1078,64 @@ void testGHAMatrix(){
     printf("  GHAmat iguales: %d\n", matricesIguales(GHAmat,GHAmat_real));
     assert(matricesIguales(GHAmat,GHAmat_real));
     printf("\n");
+    
+	printf(GREEN "---- Pass Test GHA_MATRIX ----\n" RESET);
+}
 
-    printf(GREEN "---- Pass Test GHA_MATRIX ----\n" RESET);
+void testLambert_gooding(){
+    testTLamb();
+}
+
+void testTLamb(){
+
+     printf("---- Test tlamb ----\n");
+
+    // Input
+
+    double t;
+    double dt;
+    double d2t;
+    double d3t;
+
+
+    // Output
+    double t_result = 8.22665277455477;
+    double dt_result = -3.54465085248612e-11;
+    double d2t_result =  28.5802140304226;
+    double d3t_result = 26.4789138610536;
+
+    
+
+    // Execution
+    tlamb(1,0.804611564466232,0.352600230327203,0.142219617787892,3, &t, &dt, &d2t, &d3t);
+
+    // Test
+
+
+    printf("  t función: %f\n", t);
+    printf("  t real: %f\n", t_result);
+    printf("  Diferencia: %f\n", fabs(t - t_result));
+    assert(fabs(t - t_result) < EPSILON);
+    printf("\n");
+
+    printf("  dt función: %f\n", dt);
+    printf("  dt real: %f\n", dt_result);
+    printf("  Diferencia: %f\n", fabs(dt - dt_result));
+    assert(fabs(dt - dt_result) < EPSILON);
+    printf("\n");
+
+    printf("  d2t función: %f\n", d2t);
+    printf("  d2t real: %f\n", d2t_result);
+    printf("  Diferencia: %f\n", fabs(d2t - d2t_result));
+    assert(fabs(d2t - d2t_result) < EPSILON);
+    printf("\n");
+
+    printf("  d3t función: %f\n", d3t);
+    printf("  d3t real: %f\n", d3t_result);
+    printf("  Diferencia: %f\n", fabs(d3t - d3t_result));
+    assert(fabs(d3t - d3t_result) < EPSILON);
+    printf("\n");
+
+
+    printf(GREEN "---- Pass Test tlamb ----\n" RESET);
 }
