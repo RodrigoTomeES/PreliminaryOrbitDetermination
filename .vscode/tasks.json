@@ -33,6 +33,7 @@
         "gast.c",
         "NutMatrix.c",
         "PoleMatrix.c",
+        "PrecMatrix.c",
         "PreliminaryOrbitDeterminationTest.c",
         "-o",
         "PreliminaryOrbitDeterminationTest.out",

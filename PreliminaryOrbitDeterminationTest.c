@@ -113,7 +113,10 @@ int main () {
     // Test PoleMatrix
     testPoleMatrix();
     // Test NutMatrix
-    testNutMatrix();
+    //testNutMatrix();
+
+    // Test PrecMatrix
+    testPrecMatrix();
 
     //Pasa todos los test
     printf(GREEN "---- All Pass Test From Preliminary Orbit Determination----\n" RESET);
@@ -749,3 +752,33 @@ NutMat =
          0.999999997895152     -5.95287721488282e-05     -2.58073726784525e-05
       5.95281964998585e-05         0.999999997979423     -2.23057957973194e-05
       2.58087004629423e-05       2.2304259484005e-05         0.999999999418215*/
+
+
+void testPrecMatrix(){
+    printf("---- Test PrecMatrix ----\n");
+
+    // Input
+    
+    double PrecMat[3][3];
+
+    // Output
+    double PrecMat_result[3][3] = {{0.99999737378108,       -0.0021019566973475,     -0.000913350417381566},
+                                  {0.00210195669733333,          0.99999779088612,     -9.59928282397388e-07},
+                                  { 0.000913350417414164,     -9.59897265411807e-07,          0.99999958289496}};
+
+    // Execution
+    PrecMatrix(51544.5,54977.6815585532,PrecMat);
+
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("  PrecMat[%d][%d] función: %f\n", i, j, PrecMat[i][j]);
+            printf("  PrecMat_result[%d][%d] real: %f\n", i, j, PrecMat_result[i][j]);
+            printf("  Diferencia: %f\n", fabs(PrecMat[i][j] - PrecMat_result[i][j]));
+            assert(fabs(PrecMat[i][j] - PrecMat_result[i][j]) < EPSILON);
+            printf("\n");
+        }
+    }
+
+    printf(GREEN "---- Pass Test PrecMatrix ----\n" RESET);
+}

@@ -43,6 +43,7 @@
 #include "EqnEquinox.h"
 #include "PoleMatrix.h"
 #include "NutMatrix.h"
+#include "PrecMatrix.h"
 
 void testUnit();
 void testDoubler();
@@ -63,5 +64,6 @@ void testGmst();
 void testEqnEquinox();
 void testPoleMatrix();
 void testNutMatrix();
+void testPrecMatrix();
 
 #endif /* PRELIMINARY_ORBIT_DETERMINATION_TEST_H */
