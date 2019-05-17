@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "unit.h": "c"
+        "unit.h": "c",
+        "polematrix.h": "c"
     }
 }

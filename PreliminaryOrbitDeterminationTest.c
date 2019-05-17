@@ -111,6 +111,9 @@ int main () {
     // Test EqnEquinox
     testEqnEquinox();
 
+    // Test PoleMatrix
+    testPoleMatrix();
+
     //Pasa todos los test
     printf(GREEN "---- All Pass Test From Preliminary Orbit Determination----\n" RESET);
     printf("\n");
@@ -682,4 +685,33 @@ void testEqnEquinox(){
     assert(fabs(EqnEquinoxV - EqnEquinox_real) < EPSILON);
 
     printf(GREEN "---- Pass Test EqnEquinox ----\n" RESET);
+}
+
+void testPoleMatrix(){
+    printf("---- Test PoleMatrix ----\n");
+
+    // Input
+    
+    double PoleMat[3][3];
+
+    // Output
+    double PoleMat_result[3][3] = {{0.999999999999997,  1.94609382460874e-13, 7.57892008065431e-08},
+                                  {0, 0.999999999996703, -2.56777193042298e-06},
+                                  { -7.57892008067929e-08,  2.56777193042298e-06, 0.9999999999967}};
+
+    // Execution
+    PoleMatrix(7.5789200806793e-08,2.56777193042581e-06,PoleMat);
+
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("  PoleMat[%d][%d] función: %f\n", i, j, PoleMat[i][j]);
+            printf("  PoleMat_result[%d][%d] real: %f\n", i, j, PoleMat_result[i][j]);
+            printf("  Diferencia: %f\n", fabs(PoleMat[i][j] - PoleMat_result[i][j]));
+            assert(fabs(PoleMat[i][j] - PoleMat_result[i][j]) < EPSILON);
+            printf("\n");
+        }
+    }
+
+    printf(GREEN "---- Pass Test PoleMatrix ----\n" RESET);
 }

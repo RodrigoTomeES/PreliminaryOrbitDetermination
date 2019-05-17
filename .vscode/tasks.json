@@ -32,6 +32,7 @@
         "IERS.c",
         "gast.c",
         "NutMatrix.c",
+        "PoleMatrix.c",
         "PreliminaryOrbitDeterminationTest.c",
         "-o",
         "PreliminaryOrbitDeterminationTest.out",
