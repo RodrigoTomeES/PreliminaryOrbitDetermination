@@ -42,6 +42,7 @@
 #include "gibbs.h"
 #include "EqnEquinox.h"
 #include "PoleMatrix.h"
+#include "NutMatrix.h"
 
 void testUnit();
 void testDoubler();
@@ -61,5 +62,6 @@ void testIERS();
 void testGmst();
 void testEqnEquinox();
 void testPoleMatrix();
+void testNutMatrix();
 
 #endif /* PRELIMINARY_ORBIT_DETERMINATION_TEST_H */

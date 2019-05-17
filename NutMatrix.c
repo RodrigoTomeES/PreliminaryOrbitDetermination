@@ -53,14 +53,3 @@ void NutMatrix(double Mjd_TT, double NutMat[TAM][TAM]) {
     multiplicacionMatrices(r_x, r_z, aux);
     multiplicacionMatrices(r_x2, aux, NutMat);
 }
-
-/*Mjd_TT =
-
-          54977.6815585532
-
-
-NutMat =
-
-         0.999999997895152     -5.95287721488282e-05     -2.58073726784525e-05
-      5.95281964998585e-05         0.999999997979423     -2.23057957973194e-05
-      2.58087004629423e-05       2.2304259484005e-05         0.999999999418215*/

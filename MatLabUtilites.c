@@ -128,7 +128,7 @@ void traspuesta(double matriz[ROWS][COLS], double resultado[ROWS][COLS])
 //------------------------------------------------------------------------------
 bool matricesIguales(double matriz1[ROWS][COLS], double matriz2[ROWS][COLS])
 {
-  return (matriz1[0][0] == matriz2[0][0] && matriz1[0][1] == matriz2[0][1] && matriz1[0][2] == matriz2[0][2] && matriz1[1][0] == matriz2[1][0] && matriz1[1][1] == matriz2[1][1] && matriz1[1][2] == matriz2[1][2] && matriz1[2][0] == matriz2[2][0] && matriz1[2][1] == matriz2[2][1] && matriz1[2][2] == matriz2[2][2]);
+  return ((fabs(matriz1[0][0] - matriz2[0][0]) < EPSILON) && (fabs(matriz1[0][1] - matriz2[0][1]) < EPSILON) && (fabs(matriz1[0][2] - matriz2[0][2]) < EPSILON) && (fabs(matriz1[1][0] - matriz2[1][0]) < EPSILON) && (fabs(matriz1[1][1] - matriz2[1][1]) < EPSILON) && (fabs(matriz1[1][2] - matriz2[1][2]) < EPSILON) && (fabs(matriz1[2][0] - matriz2[2][0]) < EPSILON) && (fabs(matriz1[2][1] - matriz2[2][1]) < EPSILON) && (fabs(matriz1[2][2] - matriz2[2][2]) < EPSILON));
 }
 
 //------------------------------------------------------------------------------
@@ -446,6 +446,17 @@ void muestraVector(double vector[]){
   printf("%lf\n",vector[0]);
   printf("%lf\n",vector[1]);
   printf("%lf\n",vector[2]);
+  printf("\n");
+}
+
+void muestraMatriz(double matrix[ROWS][COLS]) {
+  printf("\n");
+  for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+        printf("%lf ",matrix[i][j]);
+      }
+      printf("\n");
+  }
   printf("\n");
 }
 
