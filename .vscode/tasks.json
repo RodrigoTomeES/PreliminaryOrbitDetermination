@@ -35,6 +35,7 @@
         "PoleMatrix.c",
         "PrecMatrix.c",
         "GHAMatrix.c",
+        "lambert_gooding.c",
         "PreliminaryOrbitDeterminationTest.c",
         "-o",
         "PreliminaryOrbitDeterminationTest.out",
