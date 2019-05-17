@@ -1084,6 +1084,7 @@ void testGHAMatrix(){
 
 void testLambert_gooding(){
     testTLamb();
+    testd8rt();
 }
 
 void testTLamb(){
@@ -1137,4 +1138,29 @@ void testTLamb(){
 
 
     printf(GREEN "---- Pass Test tlamb ----\n" RESET);
+}
+
+void testd8rt(){
+    printf("---- Test d8rt ----\n");
+
+    // Input
+
+    double x;
+
+    // Output
+    double x_result = 0.780220027563195;
+
+    // Execution
+    x=d8rt(0.137320935252476);
+
+    // Test
+
+
+    printf("  t función: %f\n", x);
+    printf("  t real: %f\n", x_result);
+    printf("  Diferencia: %f\n", fabs(x - x_result));
+    assert(fabs(x - x_result) < EPSILON);
+    printf("\n");
+
+    printf(GREEN "---- Pass Test d8rt ----\n" RESET);
 }
