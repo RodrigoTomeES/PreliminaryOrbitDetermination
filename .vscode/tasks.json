@@ -36,6 +36,7 @@
         "PrecMatrix.c",
         "GHAMatrix.c",
         "lambert_gooding.c",
+        "rv2coe.c"
         "PreliminaryOrbitDeterminationTest.c",
         "-o",
         "PreliminaryOrbitDeterminationTest.out",

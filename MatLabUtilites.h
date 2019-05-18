@@ -47,7 +47,7 @@ void sumaMatrices(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double
 void restaMatrices(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double resultado [ROWS][COLS]);
 void multiplicacionMatrices(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double resultado [ROWS][COLS]);
 void crossMatrix(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double resultado [ROWS][COLS]);
-void crossVector(double matriz1 [],double matriz2 [],double resultado []);
+void crossVector(double vector1 [],double vector2 [],double resultado []);
 
 void sumaVectores(double vector1[], double vector2[], double res[]);
 void restaVectores(double vector1[], double vector2[], double res[]);

@@ -22,6 +22,8 @@
 
 #include <string.h>
 #include "MatLabUtilites.h"
+#include "angl.h"
+#include "newtonnu.h"
 #define ROWS 3
 #define COLS 3
 

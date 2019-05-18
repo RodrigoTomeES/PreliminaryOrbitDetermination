@@ -47,6 +47,7 @@
 #include "PrecMatrix.h"
 #include "GHAMatrix.h"
 #include "lambert_gooding.h"
+#include "rv2coe.h"
 
 void testUnit();
 void testDoubler();
@@ -73,6 +74,6 @@ void testGHAMatrix();
 void testLambert_gooding();
 void testTLamb();
 void testd8rt();
-
+void testRv2coe();
 
 #endif /* PRELIMINARY_ORBIT_DETERMINATION_TEST_H */

@@ -19,9 +19,8 @@
 // Test MatLabUtilites
 #include "PreliminaryOrbitDeterminationTest.h"
 
-#define EPSILON pow(10, -7)
-
-// Epsilon es de 10⁻7 ya que es la precisión que deja ver matlab para el test
+// cross function has a precision of 6 decimals
+#define EPSILON pow(10, -6)
 
 //Colores para los mensajes
 #define RESET   "\033[0m"
@@ -127,6 +126,9 @@ int main () {
 
     //Test Lambert_gooding
     testLambert_gooding();
+
+    // Test rv2coe
+    testRv2coe();
 
     //Pasa todos los test
     printf(GREEN "---- All Pass Test From Preliminary Orbit Determination----\n" RESET);
@@ -1144,7 +1146,6 @@ void testd8rt(){
     printf("---- Test d8rt ----\n");
 
     // Input
-
     double x;
 
     // Output
@@ -1154,13 +1155,128 @@ void testd8rt(){
     x=d8rt(0.137320935252476);
 
     // Test
-
-
     printf("  t función: %f\n", x);
     printf("  t real: %f\n", x_result);
     printf("  Diferencia: %f\n", fabs(x - x_result));
     assert(fabs(x - x_result) < EPSILON);
-    printf("\n");
 
     printf(GREEN "---- Pass Test d8rt ----\n" RESET);
+}
+
+void testRv2coe() {
+    printf("---- Test RV2COE ----\n");
+
+    // Input
+    double r[] = {20418280.3742389, 1067836.39923722, 1015404.95114477};
+    double v[] = {16.8797950290867, -2654.08002932654, 3734.1200461541};
+
+    // double r[] = {3,4,5};
+    // double v[] = {10,6,8};
+    double p;
+    double a;
+    double ecc;
+    double incl;
+    double omega;
+    double argp;
+    double nu;
+    double m;
+    double arglat;
+    double truelon;
+    double lonper;
+
+    // Output
+    double p_real = 22062031.7359055;
+    double a_real = 22201041.6868316;
+    double ecc_real = 0.0791291077785513;
+    double incl_real = 2.18716682303266;
+    double omega_real = 0.0874406813869261;
+    double argp_real = 6.15374268499539;
+    double nu_real = 0.190267237474694;
+    double m_real = 0.16199787056862;
+    double arglat_real = 999999.1;
+    double truelon_real = 999999.1;
+    double lonper_real = 999999.1;
+
+    // double p_real = 2.92021753599572e-12;
+    // double a_real = 3.53553390593901;
+    // double ecc_real = 0.999999999999587;
+    // double incl_real = 2.27159902873729;
+    // double omega_real = 3.06482076232001;
+    // double argp_real = 5.10178346758267;
+    // double nu_real = 3.14159265358979;
+    // double m_real = 5.82562114015612;
+    // double arglat_real = 999999.1;
+    // double truelon_real = 999999.1;
+    // double lonper_real = 999999.1;
+
+    // Execution
+    rv2coe(r, v, &p, &a, &ecc, &incl, &omega, &argp, &nu, &m, &arglat, &truelon, &lonper);
+
+    // Test
+    printf("  p función: %lf\n", p);
+    printf("  p real: %lf\n", p_real);
+    printf("  Diferencia: %lf\n", fabs(p - p_real));
+    assert(fabs(p - p_real) < EPSILON);
+    printf("\n");
+
+    printf("  a función: %.15f\n", a);
+    printf("  a real: %.15f\n", a_real);
+    printf("  Diferencia: %lf\n", fabs(a - a_real));
+    assert(fabs(a - a_real) < EPSILON);
+    printf("\n");
+
+    printf("  ecc función: %lf\n", ecc);
+    printf("  ecc real: %lf\n", ecc_real);
+    printf("  Diferencia: %lf\n", fabs(ecc - ecc_real));
+    assert(fabs(ecc - ecc_real) < EPSILON);
+    printf("\n");
+
+    printf("  incl función: %lf\n", incl);
+    printf("  incl real: %lf\n", incl_real);
+    printf("  Diferencia: %lf\n", fabs(incl - incl_real));
+    assert(fabs(incl - incl_real) < EPSILON);
+    printf("\n");
+
+    printf("  omega función: %lf\n", omega);
+    printf("  omega real: %lf\n", omega_real);
+    printf("  Diferencia: %lf\n", fabs(omega - omega_real));
+    assert(fabs(omega - omega_real) < EPSILON);
+    printf("\n");
+
+    printf("  argp función: %lf\n", argp);
+    printf("  argp real: %lf\n", argp_real);
+    printf("  Diferencia: %lf\n", fabs(argp - argp_real));
+    assert(fabs(argp - argp_real) < EPSILON);
+    printf("\n");
+
+    printf("  nu función: %lf\n", nu);
+    printf("  nu real: %lf\n", nu_real);
+    printf("  Diferencia: %lf\n", fabs(nu - nu_real));
+    assert(fabs(nu - nu_real) < EPSILON);
+    printf("\n");
+
+    printf("  m función: %lf\n", m);
+    printf("  m real: %lf\n", m_real);
+    printf("  Diferencia: %lf\n", fabs(m - m_real));
+    assert(fabs(m - m_real) < EPSILON);
+    printf("\n");
+
+    printf("  arglat función: %lf\n", arglat);
+    printf("  arglat real: %lf\n", arglat_real);
+    printf("  Diferencia: %lf\n", fabs(arglat - arglat_real));
+    assert(fabs(arglat - arglat_real) < EPSILON);
+    printf("\n");
+
+    printf("  truelon función: %lf\n", truelon);
+    printf("  truelon real: %lf\n", truelon_real);
+    printf("  Diferencia: %lf\n", fabs(truelon - truelon_real));
+    assert(fabs(truelon - truelon_real) < EPSILON);
+    printf("\n");
+
+    printf("  lonper función: %lf\n", lonper);
+    printf("  lonper real: %lf\n", lonper_real);
+    printf("  Diferencia: %lf\n", fabs(lonper - lonper_real));
+    assert(fabs(lonper - lonper_real) < EPSILON);
+
+    printf(GREEN "---- Pass Test RV2COE ----\n" RESET);
 }

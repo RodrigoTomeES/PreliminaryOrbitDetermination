@@ -404,11 +404,11 @@ bool vectoresIguales(double vector1[], double vector2[])
 * @note - none
 */
 //------------------------------------------------------------------------------
-void crossVector(double matriz1[], double matriz2[], double resultado[])
+void crossVector(double vector1[], double vector2[], double resultado[])
 {
-  resultado[0] = matriz1[1] * matriz2[2] - matriz1[2] * matriz2[1];
-  resultado[1] = matriz1[2] * matriz2[0] - matriz1[0] * matriz2[2];
-  resultado[2] = matriz1[0] * matriz2[1] - matriz1[1] * matriz2[0];
+  resultado[0] = vector1[1] * vector2[2] - vector1[2] * vector2[1];
+  resultado[1] = vector1[2] * vector2[0] - vector1[0] * vector2[2];
+  resultado[2] = vector1[0] * vector2[1] - vector1[1] * vector2[0];
 }
 
 void sumaVectores(double vector1[], double vector2[], double res[]){
@@ -443,9 +443,9 @@ void opuestoVector(double vector[], double res[]){
 
 void muestraVector(double vector[]){
   printf("\n");
-  printf("%lf\n",vector[0]);
-  printf("%lf\n",vector[1]);
-  printf("%lf\n",vector[2]);
+  printf("%.15lf\n",vector[0]);
+  printf("%.15lf\n",vector[1]);
+  printf("%.15lf\n",vector[2]);
   printf("\n");
 }
 
@@ -453,7 +453,7 @@ void muestraMatriz(double matrix[ROWS][COLS]) {
   printf("\n");
   for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
-        printf("%lf ",matrix[i][j]);
+        printf("%.15lf ",matrix[i][j]);
       }
       printf("\n");
   }
