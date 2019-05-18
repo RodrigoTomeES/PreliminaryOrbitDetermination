@@ -1259,6 +1259,8 @@ void testVLamb(){
     }
 
     printf(GREEN "---- Pass Test vlamb ----\n" RESET);
+
+}
 void testRv2coe() {
     printf("---- Test RV2COE ----\n");
 
