@@ -114,6 +114,26 @@ void traspuesta(double matriz[ROWS][COLS], double resultado[ROWS][COLS])
 }
 
 //------------------------------------------------------------------------------
+//  void traspuesta_vector(double vector [], double resultado [1][COLS])
+//------------------------------------------------------------------------------
+/**
+* Performs the transpose of a vector
+*
+* @param  - double vector [], double resultado [1][COLS]
+* @return - none
+* @exception - none
+* @see - none
+* @note - none
+*/
+//------------------------------------------------------------------------------
+void traspuesta_vector(double vector [], double resultado [1][COLS])
+{
+  resultado[0][0] = vector[0];
+  resultado[0][1] = vector[1];
+  resultado[0][2] = vector[2];
+}
+
+//------------------------------------------------------------------------------
 //  bool matricesIguales(double matriz1[ROWS][COLS], double matriz2[ROWS][COLS])
 //------------------------------------------------------------------------------
 /**
@@ -312,11 +332,11 @@ void restaMatrices(double matriz1[ROWS][COLS], double matriz2[ROWS][COLS], doubl
 }
 
 //------------------------------------------------------------------------------
-//  void multiplicacionMatrices(double matriz1[ROWS][COLS],
+//  void crossMatrix(double matriz1[ROWS][COLS],
 //                    double matriz2[ROWS][COLS], double resultado[ROWS][COLS])
 //------------------------------------------------------------------------------
 /**
-* Make the multiplication of two matrix
+* Make the cross of two matrix
 *
 * @param  - double matriz1[ROWS][COLS], double matriz2[ROWS][COLS], double resultado[ROWS][COLS]
 * @return - none
@@ -325,7 +345,7 @@ void restaMatrices(double matriz1[ROWS][COLS], double matriz2[ROWS][COLS], doubl
 * @note - none
 */
 //------------------------------------------------------------------------------
-void multiplicacionMatrices(double matriz1[ROWS][COLS], double matriz2[ROWS][COLS], double resultado[ROWS][COLS])
+void crossMatrix(double matriz1[ROWS][COLS], double matriz2[ROWS][COLS], double resultado[ROWS][COLS])
 {
   resultado[0][0] = matriz1[0][0] * matriz2[0][0] + matriz1[0][1] * matriz2[1][0] + matriz1[0][2] * matriz2[2][0];
   resultado[0][1] = matriz1[0][0] * matriz2[0][1] + matriz1[0][1] * matriz2[1][1] + matriz1[0][2] * matriz2[2][1];
@@ -340,9 +360,26 @@ void multiplicacionMatrices(double matriz1[ROWS][COLS], double matriz2[ROWS][COL
   resultado[2][2] = matriz1[2][0] * matriz2[0][2] + matriz1[2][1] * matriz2[1][2] + matriz1[2][2] * matriz2[2][2];
 }
 
-// void crossMatrix(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double resultado [ROWS][COLS]){
-
-// }
+//------------------------------------------------------------------------------
+//  void crossMatrixVector(double matriz [ROWS][COLS],double vector [],
+//                         double resultado [])
+//------------------------------------------------------------------------------
+/**
+* Make the cross of two matrix
+*
+* @param  - double matriz [ROWS][COLS],double vector [],double resultado []
+* @return - none
+* @exception - none
+* @see - none
+* @note - none
+*/
+//------------------------------------------------------------------------------
+void crossMatrixVector(double matriz [ROWS][COLS],double vector [],double resultado [])
+{
+  resultado[0] = matriz[0][0] * vector[0] + matriz[0][1] * vector[1] + matriz[0][2] * vector[2];
+  resultado[1] = matriz[1][0] * vector[0] + matriz[1][1] * vector[1] + matriz[1][2] * vector[2];
+  resultado[2] = matriz[2][0] * vector[0] + matriz[2][1] * vector[1] + matriz[2][2] * vector[2];
+}
 
 //------------------------------------------------------------------------------
 //  void roots(double poly[], int numCoeficientes, double solucionesReales[], int *numSolucionesReales)
@@ -433,7 +470,7 @@ void multiplicacionVectorPorEscalar(double vector[], double valor, double res[])
   res[2]=vector[2]*valor;
 }
 
-void devisionVectorPorEscalar(double vector[], double valor, double res[]){
+void divisionVectorPorEscalar(double vector[], double valor, double res[]){
   res[0]=vector[0]/valor;
   res[1]=vector[1]/valor;
   res[2]=vector[2]/valor;
@@ -469,18 +506,6 @@ void muestraMatriz(double matrix[ROWS][COLS]) {
 double matlab_mod(double a, double q) {
     double m = fmod(a, q);
     return m + q * (m < 0.f);
-}
-
-void divideComponentesVectorEntreValor(double vector[], double valor, double res[]){
-  res[0]= vector[0]/valor;
-  res[1]= vector[1]/valor;
-  res[2]= vector[2]/valor;
-}
-
-void multiplicaComponentesVectorPorValor(double vector[], double valor, double res[]){
-  res[0]= vector[0]*valor;
-  res[1]= vector[1]*valor;
-  res[2]= vector[2]*valor;
 }
 
 void copiaVector(double original [], double copia[]){

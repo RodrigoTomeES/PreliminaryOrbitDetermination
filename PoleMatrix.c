@@ -6,5 +6,5 @@ void PoleMatrix(double xp, double yp, double PoleMat[ROWS][COLS]){
 
     R_y(-xp,Ry);
     R_x(-yp,Rx);
-    multiplicacionMatrices(Ry,Rx,PoleMat);
+    crossMatrix(Ry,Rx,PoleMat);
 }

@@ -24,6 +24,8 @@
 // hgibbs v2 operators has a precision of 5 decimals
 #define EPSILON pow(10, -5)
 
+#define TAM 3
+
 //Colores para los mensajes
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"      /* Black */
@@ -42,7 +44,6 @@
 #define BOLDMAGENTA "\033[1m\033[35m"      /* Bold Magenta */
 #define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
 #define BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
-#define TAM 3
 
 //------------------------------------------------------------------------------
 //  int main()
@@ -1093,35 +1094,21 @@ void testLambert_gooding(){
     testXLamb();
     testVLamb();
 
-     printf("---- Test lambert_gooding ----\n");
+    printf("---- Test lambert_gooding ----\n");
 
     // Input
-
-    
     double * v1;
     double * v2;
-    
-    
-
 
     // Output
-    
     double v1_result[] = {  591.415679718178,5838.8636504518,-2988.63988326117};
     double v2_result[] = { -2113.65377040404,5180.39299606432,-3480.83071307979};
-    
-    
-
     double r1[]={8794276.58098402,           404708.19494349,          2543973.80563716};
     double r2[]={8330586.99620506,          3762923.08212875,          572416.996345513};
 
-    
     lambert_gooding(r1,r2,600.000004470348,398600441800000,0,1 ,&v1, &v2);
 
     // Test
-
-
-    
-
     for(int aux=0;aux<3;aux++){
         printf("  v1 función: %f\n", v1[aux]);
         printf("  v1 real: %f\n", v1_result[aux]);

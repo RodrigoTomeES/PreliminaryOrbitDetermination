@@ -38,6 +38,7 @@
         "lambert_gooding.c",
         "rv2coe.c",
         "hgibbs.c",
+        "anglesg.c",
         "PreliminaryOrbitDeterminationTest.c",
         "-o",
         "PreliminaryOrbitDeterminationTest.out",

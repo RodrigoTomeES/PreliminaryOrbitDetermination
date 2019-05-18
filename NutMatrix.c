@@ -53,6 +53,6 @@ void NutMatrix(double Mjd_TT, double NutMat[TAM][TAM]) {
     muestraMatriz(r_x2);
 
     double aux[TAM][TAM];
-    multiplicacionMatrices(r_x, r_z, aux);
-    multiplicacionMatrices(aux, r_x2, NutMat);
+    crossMatrix(r_x, r_z, aux);
+    crossMatrix(aux, r_x2, NutMat);
 }

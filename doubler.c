@@ -63,10 +63,10 @@ void doubler(double cc1, double cc2, double magrsite1, double magrsite2, double 
 
     if(direct=='y'){
         crossVector(r1,r2,aux);
-        devisionVectorPorEscalar(aux,(*magr1)*(*magr2),w);
+        divisionVectorPorEscalar(aux,(*magr1)*(*magr2),w);
     }else{
         crossVector(r1,r2,aux);
-        devisionVectorPorEscalar(aux,(*magr1)*(*magr2),aux1);
+        divisionVectorPorEscalar(aux,(*magr1)*(*magr2),aux1);
         opuestoVector(aux1,w);
     }
 
