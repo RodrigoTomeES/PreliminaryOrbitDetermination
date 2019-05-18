@@ -2,6 +2,7 @@
     "files.associations": {
         "unit.h": "c",
         "polematrix.h": "c",
-        "precmatrix.h": "c"
+        "precmatrix.h": "c",
+        "cmath": "c"
     }
 }

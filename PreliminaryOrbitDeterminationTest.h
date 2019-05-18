@@ -50,6 +50,7 @@
 #include "lambert_gooding.h"
 #include "rv2coe.h"
 #include "hgibbs.h"
+#include "anglesdr.h"
 
 void testUnit();
 void testDoubler();
@@ -80,5 +81,6 @@ void testXLamb();
 void testVLamb();
 void testRv2coe();
 void testHgibbs();
+void testAnglesDR();
 
 #endif /* PRELIMINARY_ORBIT_DETERMINATION_TEST_H */
