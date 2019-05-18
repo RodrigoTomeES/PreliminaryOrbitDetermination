@@ -1087,6 +1087,7 @@ void testGHAMatrix(){
 void testLambert_gooding(){
     testTLamb();
     testd8rt();
+    testXLamb();
 }
 
 void testTLamb(){
@@ -1161,6 +1162,51 @@ void testd8rt(){
     assert(fabs(x - x_result) < EPSILON);
 
     printf(GREEN "---- Pass Test d8rt ----\n" RESET);
+}
+
+void testXLamb(){
+    printf("---- Test xlamb ----\n");
+
+    // Input
+
+    double n;
+    double x1;
+    double x2;
+    
+
+
+    // Output
+    double n_result = 0;
+    double x1_result = 0;
+    double x2_result =  0;
+    
+
+    
+
+    xlamb(1,0.804611564466232,0.352600230327203,0.913438160983316, &n, &x1, &x2);
+
+    // Test
+
+
+    printf("  n función: %f\n", n);
+    printf("  n real: %f\n", n_result);
+    printf("  Diferencia: %f\n", fabs(n - n_result));
+    assert(fabs(n - n_result) < EPSILON);
+    printf("\n");
+
+    printf("  x1 función: %f\n", x1);
+    printf("  x1 real: %f\n", x1_result);
+    printf("  Diferencia: %f\n", fabs(x1 - x1_result));
+    assert(fabs(x1 - x1_result) < EPSILON);
+    printf("\n");
+
+    printf("  x2 función: %f\n", x2);
+    printf("  x2 real: %f\n", x2_result);
+    printf("  Diferencia: %f\n", fabs(x2 - x2_result));
+    assert(fabs(x2 - x2_result) < EPSILON);
+    printf("\n");
+
+    printf(GREEN "---- Pass Test xlamb ----\n" RESET);
 }
 
 void testRv2coe() {
