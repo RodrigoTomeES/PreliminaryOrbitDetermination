@@ -10,7 +10,7 @@
 // Created: 2019/04/27
 //
 /**
-* Provides a basic implementation of Frac function.
+* Provides a implementation of Frac function.
 *
 * @note
 */
