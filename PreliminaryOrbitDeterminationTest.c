@@ -19,8 +19,10 @@
 // Test MatLabUtilites
 #include "PreliminaryOrbitDeterminationTest.h"
 
+// Epsilon is 10⁻7, since it is the precision that matlab shows for the test
 // cross function has a precision of 6 decimals
-#define EPSILON pow(10, -6)
+// hgibbs v2 operators has a precision of 5 decimals
+#define EPSILON pow(10, -5)
 
 //Colores para los mensajes
 #define RESET   "\033[0m"
@@ -130,6 +132,9 @@ int main () {
     // Test rv2coe
     testRv2coe();
 
+    // Test Hgibbs
+    testHgibbs();
+
     //Pasa todos los test
     printf(GREEN "---- All Pass Test From Preliminary Orbit Determination----\n" RESET);
     printf("\n");
@@ -194,7 +199,7 @@ void testDoubler(){
     double q1;
     double magr1;
     double magr2;
-    double a ;
+    double a;
     double deltae32;
 
     double cc1 = 5972180.93003294;
@@ -796,8 +801,10 @@ void testGibbs() {
     assert(fabs(copa - copa_result) < EPSILON);
     printf("\n");
 
-    printf("  error igual: %d\n", vectoresIguales(v2,v2_result));
-    assert(vectoresIguales(v2,v2_result));
+    printf("  error función: %s\n", error);
+    printf("  error real: %s\n", error_result);
+    printf("  error igual: %d, 0 = true\n", strcmp(error,error_result));
+    assert(strcmp(error,error_result) == 0);
 
     printf(GREEN "---- Pass Test GIBBS ----\n" RESET);
 }
@@ -1195,14 +1202,11 @@ void testVLamb(){
     printf("---- Test vlamb ----\n");
 
     // Input
-
     double n;
     double * vri;
     double * vti;
     double * vrf;
     double * vtf;
-    
-
 
     // Output
     double n_result = 1;
@@ -1210,16 +1214,13 @@ void testVLamb(){
     double vti_result[] = { 6585.8979308205,0};
     double vrf_result[] = { -11.6872756516642,0};
     double vtf_result[] = { 6589.38917620768,0};
-    
-
     double r1[]={9163781.53546157,0,0};
     double r2[]={9158926.30394324,0,0};
 
+    // Execution
     vlamb(398600441800000,r1,r2,0.431406120912815,600.000004470348, &n, &vri,&vti,&vrf,&vtf);
 
     // Test
-
-
     printf("  n función: %f\n", n);
     printf("  n real: %f\n", n_result);
     printf("  Diferencia: %f\n", fabs(n - n_result));
@@ -1377,4 +1378,65 @@ void testRv2coe() {
     assert(fabs(lonper - lonper_real) < EPSILON);
 
     printf(GREEN "---- Pass Test RV2COE ----\n" RESET);
+}
+
+void testHgibbs() {
+    printf("---- Test HGIBBS ----\n");
+
+    // Input
+    double r1[] = {20370508.3427397, 1861271.24297514, -106173.66558631};
+    double r2[] = {20418280.3742389, 1067836.39923722, 1015404.95114477};
+    double r3[] = {20381175.2942483, 269961.239831346, 2132764.59236707};
+    double MJD1 = 55565.9044073611;
+    double MJD2 = 55565.9078795835;
+    double MJD3 = 55565.9113518056;
+    double v2[3];
+    double theta;
+    double theta1;
+    double copa;
+    char error[20];
+
+    // Output
+    double v2_real[] = {17.6568312949239, -2654.03774223829, 3734.15636872554};
+    double theta_real = 0.0671856257189745;
+    double theta1_real = 0.0670590138174678;
+    double copa_real = -1.47017814589034e-15;
+    char error_real[] = "angl > 1ø";
+
+    // Execution
+    hgibbs(r1, r2, r3, MJD1, MJD2, MJD3, v2, &theta, &theta1, &copa, error);
+
+    // Test
+    printf("  v2\n");
+    muestraVector(v2);
+    printf("  v2_real\n");
+    muestraVector(v2_real);
+    printf("  v2 iguales: %d\n", vectoresIguales(v2,v2_real));
+    assert(vectoresIguales(v2,v2_real));
+    printf("\n");
+
+    printf("  theta función: %lf\n", theta);
+    printf("  theta real: %lf\n", theta_real);
+    printf("  Diferencia: %lf\n", fabs(theta - theta_real));
+    assert(fabs(theta - theta_real) < EPSILON);
+    printf("\n");
+
+    printf("  theta1 función: %lf\n", theta1);
+    printf("  theta1 real: %lf\n", theta1_real);
+    printf("  Diferencia: %lf\n", fabs(theta1 - theta1_real));
+    assert(fabs(theta1 - theta1_real) < EPSILON);
+    printf("\n");
+
+    printf("  copa función: %lf\n", copa);
+    printf("  copa real: %lf\n", copa_real);
+    printf("  Diferencia: %lf\n", fabs(copa - copa_real));
+    assert(fabs(copa - copa_real) < EPSILON);
+    printf("\n");
+
+    printf("  error función: %s\n", error);
+    printf("  error real: %s\n", error_real);
+    printf("  error igual: %d, 0 = true\n", strcmp(error,error_real));
+    assert(strcmp(error,error_real) == 0);
+
+    printf(GREEN "---- Pass Test HGIBBS ----\n" RESET);
 }
