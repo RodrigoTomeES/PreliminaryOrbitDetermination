@@ -523,6 +523,9 @@ void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_wa
     double all_vt2[ROWS][tam];
     
     bool solution_exists[tam];
+    for(int i=0;i<tam;i++){
+        solution_exists[i]=false;
+    }
 
 
 
@@ -646,7 +649,6 @@ void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_wa
                     all_vt2[1][(2*i)-1] = vt2[1];
                     all_vt2[2][(2*i)-1] = vt2[2];
                     solution_exists[(2*i)-1]   = true;
-
                     break;
                 case 2:
                     //all_vt1(:,2*i)         = vt1(:,1);
@@ -672,7 +674,6 @@ void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_wa
                     all_vt2[2][(2*i)+1-1] = mt2[2][1];
 
                     solution_exists[(2*i)+1-1]   = true;
-                    
                     break;
             }
         }
@@ -694,10 +695,12 @@ void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_wa
 
 
     int k=0;
+    //printf("n_solutions %d \n",n_solutions);
     for(int i=1;i<=n_solutions;i++) {
-        //printf("ENTRO FOR LAMBERT\n");
+        
         if (solution_exists[i-1]){
             k=k+1;
+            //printf("ENTRO FOR LAMBERT\n");
             //v1(:,k) = all_vt1(:,i);
             
 
@@ -711,7 +714,9 @@ void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_wa
             (*v2)[1] = all_vt2[1][i-1];
             (*v2)[2] = all_vt2[2][i-1];
             
-            
+            //for(int j=0;j<3;j++){
+            //    printf(" all_vt1 %f \n",all_vt1[j][i-1]);
+            //}
         }
     }
 }

@@ -22,7 +22,7 @@
 // Epsilon is 10⁻7, since it is the precision that matlab shows for the test
 // cross function has a precision of 6 decimals
 // hgibbs v2 operators has a precision of 5 decimals
-#define EPSILON pow(10, -5)
+#define EPSILON pow(10, -2)
 
 //Colores para los mensajes
 #define RESET   "\033[0m"
@@ -134,6 +134,9 @@ int main () {
 
     // Test Hgibbs
     testHgibbs();
+
+    // Test anglesdr
+    testAnglesDR();
 
     //Pasa todos los test
     printf(GREEN "---- All Pass Test From Preliminary Orbit Determination----\n" RESET);
@@ -1486,4 +1489,50 @@ void testHgibbs() {
     assert(strcmp(error,error_real) == 0);
 
     printf(GREEN "---- Pass Test HGIBBS ----\n" RESET);
+}
+
+void testAnglesDR(){
+     printf("---- Test anglesdr ----\n");
+
+    // Input
+
+    
+    double * r2;
+    double * v2;
+    
+    
+
+
+    // Output
+    
+    double r2_result[] = {  8794276.58098402,404708.19494349,2543973.80563716};
+    double v2_result[] = { 591.415680079019,5838.86365198693,-2988.6398839824};
+
+    double rsite1[]={4950990.3382646,256563.116260381,3999465.34658133};
+    double rsite2[]={4935037.85913036,472703.320202615,3999475.70573182};
+    double rsite3[]={4909646.95198536,687938.936915757,3999494.94894739};
+
+    
+    anglesdr(5.39901096780381,6.26556833768239,0.732191050658823,0.0115360853036144,-0.360600766331881,-0.640322905313176,54977.6669036457,54977.6738480902,54977.6807925347,rsite1,rsite2,rsite3 ,&r2, &v2);
+
+    // Test
+
+
+    for(int aux=0;aux<3;aux++){
+        printf("  r2 función: %f\n", r2[aux]);
+        printf("  r2 real: %f\n", r2_result[aux]);
+        printf("  Diferencia: %f\n", fabs(r2[aux] - r2_result[aux]));
+        assert(fabs(r2[aux] - r2_result[aux]) < EPSILON);
+        printf("\n");
+    }
+
+    for(int aux=0;aux<3;aux++){
+        printf("  v2 función: %f\n", v2[aux]);
+        printf("  v2 real: %f\n", v2_result[aux]);
+        printf("  Diferencia: %f\n", fabs(v2[aux] - v2_result[aux]));
+        assert(fabs(v2[aux] - v2_result[aux]) < EPSILON);
+        printf("\n");
+    }
+
+    printf(GREEN "---- Pass Test anglesdr ----\n" RESET);
 }
