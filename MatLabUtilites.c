@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include "MatLabUtilites.h"
 #include "rpoly.h"
-#define EPSILON pow(10, -7)
+#define EPSILON pow(10, -5)
 
 // Como Juan Félix dijo que los vectores son de tamaño fijo para ser coherentes no es necesario poner el tamaño
 
