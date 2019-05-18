@@ -467,3 +467,251 @@ void vlamb(double gm,double * r1,double * r2,double th,double tdelt,double * n,d
         (*vtf)[i-1] = vt2;
     }
 }
+
+void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_way,double multi_revs,double **  v1,double **  v2){
+    // temp arrays to hold all the solutions:
+    // they will be packed into the output arrays
+    // logical,dimension(2*multi_revs+1) :: solution_exists
+    // real(wp),dimension(3,1+2*multi_revs) :: all_vt1, all_vt2
+
+
+    double r1mag = norm(r1);
+    double r2mag = norm(r2);
+
+    if ( r1mag==0.0 || r2mag==0.0 || mu<=0.0 || tof<=0.0 ){
+        printf("Error in solve_lambert_gooding: invalid input\n");
+        return;
+    }
+
+    // initialize:
+    
+    double dr       = r1mag - r2mag;
+    double r1r2     = r1mag*r2mag;
+
+    double  aux1[ROWS];
+    double  aux2[ROWS];
+    double  aux3[ROWS];
+
+    copiaVector(r1,aux1);
+    copiaVector(r2,aux2);
+
+    double  r1hat[ROWS];
+    double  r2hat[ROWS];
+    divideComponentesVectorEntreValor(aux1,r1mag,r1hat);//r1hat    = r1/r1mag;
+    divideComponentesVectorEntreValor(aux2,r2mag,r2hat);//r2hat    = r2/r2mag;
+    
+
+    double r1xr2 [ROWS];
+    crossVector(r1,r2,r1xr2);
+    if (allVector(r1xr2,0.0)){ // the vectors are parallel, so the transfer plane is undefined
+        // degenerate conic...choose the x-y plane
+        r1xr2[0]=0.0;
+        r1xr2[0]=0.0;
+        r1xr2[0]=1.0;
+    }
+    double r1xr2_hat[ROWS];
+    unit(r1xr2,r1xr2_hat);
+
+    // a trick to make sure argument is between [-1 and 1]:
+    double pa = acos(fmax(-1.0,fmin(1.0,dot(r1hat,r2hat))));
+
+
+
+
+    int tam=2*multi_revs;
+    double all_vt1[ROWS][tam];
+    double all_vt2[ROWS][tam];
+    
+    bool solution_exists[tam];
+
+
+
+    for (int i=0;i<=multi_revs;i++){
+        int num_revs = i; //number of complete revs for this case
+
+        // transfer angle and normal vector:
+        double ta=0;
+        double rho[ROWS];
+        if (long_way){ // greater than pi
+            ta    =  num_revs * 2*M_PI + (2*M_PI - pa);
+            
+            opuestoVector(r1xr2_hat,rho);
+        }else{ // less than M_PI
+            ta    = num_revs * 2*M_PI + pa;
+            rho[0]   = r1xr2_hat[0];
+            rho[1]   = r1xr2_hat[1];
+            rho[2]   = r1xr2_hat[2];
+        }
+
+        double etai[ROWS];
+        double etaf[ROWS];
+        crossVector(rho,r1hat,etai);
+        crossVector(rho,r2hat,etaf);
+        
+        // Gooding routine:
+        
+        double n;
+        double * vri;
+        double * vti;
+        double * vrf;
+        double * vtf;
+        double r1[3];
+        r1[0]=r1mag;
+        r1[1]=0.0;
+        r1[2]=0.0;
+        double r2[3];
+        r2[0]=r2mag;
+        r2[1]=0.0;
+        r2[2]=0.0;
+        vlamb(mu,r1,r2,ta,tof,&n, &vri,&vti,&vrf,&vtf);
+        int nv = (int)n;
+        double vt1[ROWS];
+        double vt2[ROWS];
+
+        double mt1[ROWS][2];
+        double mt2[ROWS][2];
+        switch (nv){ // number of solutions
+            case 1:
+                //vt1(:,1) = vri(1)*r1hat + vti(1)*etai;
+                multiplicacionVectorPorEscalar(r1hat,vri[0],aux1);
+                multiplicacionVectorPorEscalar(etai,vti[0],aux2);
+                sumaVectores(aux1,aux2,aux3);
+                vt1[0]=aux3[0];
+                vt1[1]=aux3[1];
+                vt1[2]=aux3[2];
+
+                //vt2(:,1) = vrf(1)*r2hat + vtf(1)*etaf;
+                multiplicacionVectorPorEscalar(r2hat,vrf[0],aux1);
+                multiplicacionVectorPorEscalar(etaf,vtf[0],aux2);
+                sumaVectores(aux1,aux2,aux3);
+                vt2[0]=aux3[0];
+                vt2[1]=aux3[1];
+                vt2[2]=aux3[2];
+                
+                break;                
+            case 2:
+                multiplicacionVectorPorEscalar(r1hat,vri[0],aux1);
+                multiplicacionVectorPorEscalar(etai,vti[0],aux2);
+                sumaVectores(aux1,aux2,aux3);
+                mt1[0][0]=aux3[0];
+                mt1[1][0]=aux3[1];
+                mt1[2][0]=aux3[2];
+
+                multiplicacionVectorPorEscalar(r2hat,vrf[0],aux1);
+                multiplicacionVectorPorEscalar(etaf,vtf[0],aux2);
+                sumaVectores(aux1,aux2,aux3);
+                mt2[0][0]=aux3[0];
+                mt2[1][0]=aux3[1];
+                mt2[2][0]=aux3[2];
+
+                multiplicacionVectorPorEscalar(r1hat,vri[1],aux1);
+                multiplicacionVectorPorEscalar(etai,vti[1],aux2);
+                sumaVectores(aux1,aux2,aux3);
+                mt1[0][1]=aux3[0];
+                mt1[1][1]=aux3[1];
+                mt1[2][1]=aux3[2];
+
+                multiplicacionVectorPorEscalar(r2hat,vrf[1],aux1);
+                multiplicacionVectorPorEscalar(etaf,vtf[1],aux2);
+                sumaVectores(aux1,aux2,aux3);
+                mt2[0][1]=aux3[0];
+                mt2[1][1]=aux3[1];
+                mt2[2][1]=aux3[2];
+
+                break;
+        }
+
+        
+        if (i==0 && nv==1){ // there can be only one solution
+            all_vt1[0][0] = vt1[0];
+            all_vt1[1][0] = vt1[1];
+            all_vt1[2][0] = vt1[2];
+
+            all_vt2[0][0] = vt2[0];
+            all_vt2[1][0] = vt2[1];
+            all_vt2[2][0] = vt2[2];
+
+            solution_exists[0] = true;
+        }else{
+            switch (nv){
+                case 1:
+                    //all_vt1(:,2*i)         = vt1(:,1);
+                    
+                    all_vt1[0][(2*i)-1] = vt1[0];
+                    all_vt1[1][(2*i)-1] = vt1[1];
+                    all_vt1[2][(2*i)-1] = vt1[2];
+
+                    //all_vt2(:,2*i)         = vt2(:,1);
+                    all_vt2[0][(2*i)-1] = vt2[0];
+                    all_vt2[1][(2*i)-1] = vt2[1];
+                    all_vt2[2][(2*i)-1] = vt2[2];
+                    solution_exists[(2*i)-1]   = true;
+
+                    break;
+                case 2:
+                    //all_vt1(:,2*i)         = vt1(:,1);
+                    all_vt1[0][(2*i)-1] = mt1[0][0];
+                    all_vt1[1][(2*i)-1] = mt1[1][0];
+                    all_vt1[2][(2*i)-1] = mt1[2][0];
+
+                    //all_vt2(:,2*i)         = vt2(:,1);
+                    all_vt2[0][(2*i)-1] = mt2[0][0];
+                    all_vt2[1][(2*i)-1] = mt2[1][0];
+                    all_vt2[2][(2*i)-1] = mt2[2][0];
+
+                    solution_exists[(2*i)-1]   = true;
+
+                    //all_vt1(:,2*i+1)       = vt1(:,2);
+                    all_vt1[0][(2*i)+1-1] = mt1[0][1];
+                    all_vt1[1][(2*i)+1-1] = mt1[1][1];
+                    all_vt1[2][(2*i)+1-1] = mt1[2][1];
+
+                    //all_vt2(:,2*i+1)       = vt2(:,2);
+                    all_vt2[0][(2*i)+1-1] = mt2[0][1];
+                    all_vt2[1][(2*i)+1-1] = mt2[1][1];
+                    all_vt2[2][(2*i)+1-1] = mt2[2][1];
+
+                    solution_exists[(2*i)+1-1]   = true;
+                    
+                    break;
+            }
+        }
+    }
+
+    // return all the solutions:
+    int n_solutions = 0;
+    for(int i=0;i<tam;i++){
+        if(solution_exists[i]==true){
+            n_solutions++;
+        }
+    }
+    //printf("n_solutions %d\n",n_solutions);
+
+    //OJO AQUI
+    *v1 = (double *)calloc(3,sizeof(double));//v1 = zeros(3,n_solutions);
+    *v2 = (double *)calloc(3,sizeof(double));//v2 = zeros(3,n_solutions);
+    
+
+
+    int k=0;
+    for(int i=1;i<=n_solutions;i++) {
+        //printf("ENTRO FOR LAMBERT\n");
+        if (solution_exists[i-1]){
+            k=k+1;
+            //v1(:,k) = all_vt1(:,i);
+            
+
+            (*v1)[0] = all_vt1[0][i-1]; 
+            (*v1)[1] = all_vt1[1][i-1];
+            (*v1)[2] = all_vt1[2][i-1];
+
+            
+            //v2(:,k) = all_vt2(:,i);
+            (*v2)[0] = all_vt2[0][i-1];
+            (*v2)[1] = all_vt2[1][i-1];
+            (*v2)[2] = all_vt2[2][i-1];
+            
+            
+        }
+    }
+}

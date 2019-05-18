@@ -253,6 +253,10 @@ bool all(double matriz[ROWS][COLS], double num)
          matriz[2][2] == num;
 }
 
+bool allVector(double vector[],double num){
+  return vector[0]==num&vector[1]==num&vector[2]==num;
+}
+
 //------------------------------------------------------------------------------
 //  void sumaMatrices(double matriz1[ROWS][COLS],
 //                    double matriz2[ROWS][COLS], double resultado[ROWS][COLS])
@@ -466,3 +470,22 @@ double matlab_mod(double a, double q) {
     double m = fmod(a, q);
     return m + q * (m < 0.f);
 }
+
+void divideComponentesVectorEntreValor(double vector[], double valor, double res[]){
+  res[0]= vector[0]/valor;
+  res[1]= vector[1]/valor;
+  res[2]= vector[2]/valor;
+}
+
+void multiplicaComponentesVectorPorValor(double vector[], double valor, double res[]){
+  res[0]= vector[0]*valor;
+  res[1]= vector[1]*valor;
+  res[2]= vector[2]*valor;
+}
+
+void copiaVector(double original [], double copia[]){
+  copia[0]=original[0];
+  copia[1]=original[1];
+  copia[2]=original[2];
+}
+

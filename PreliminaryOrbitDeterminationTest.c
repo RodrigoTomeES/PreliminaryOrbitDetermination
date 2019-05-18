@@ -1085,6 +1085,53 @@ void testLambert_gooding(){
     testd8rt();
     testXLamb();
     testVLamb();
+
+     printf("---- Test lambert_gooding ----\n");
+
+    // Input
+
+    
+    double * v1;
+    double * v2;
+    
+    
+
+
+    // Output
+    
+    double v1_result[] = {  591.415679718178,5838.8636504518,-2988.63988326117};
+    double v2_result[] = { -2113.65377040404,5180.39299606432,-3480.83071307979};
+    
+    
+
+    double r1[]={8794276.58098402,           404708.19494349,          2543973.80563716};
+    double r2[]={8330586.99620506,          3762923.08212875,          572416.996345513};
+
+    
+    lambert_gooding(r1,r2,600.000004470348,398600441800000,0,1 ,&v1, &v2);
+
+    // Test
+
+
+    
+
+    for(int aux=0;aux<3;aux++){
+        printf("  v1 función: %f\n", v1[aux]);
+        printf("  v1 real: %f\n", v1_result[aux]);
+        printf("  Diferencia: %f\n", fabs(v1[aux] - v1_result[aux]));
+        assert(fabs(v1[aux] - v1_result[aux]) < EPSILON);
+        printf("\n");
+    }
+
+    for(int aux=0;aux<3;aux++){
+        printf("  v2 función: %f\n", v2[aux]);
+        printf("  v2 real: %f\n", v2_result[aux]);
+        printf("  Diferencia: %f\n", fabs(v2[aux] - v2_result[aux]));
+        assert(fabs(v2[aux] - v2_result[aux]) < EPSILON);
+        printf("\n");
+    }
+
+    printf(GREEN "---- Pass Test lambert_gooding ----\n" RESET);
 }
 
 void testTLamb(){

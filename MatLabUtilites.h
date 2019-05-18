@@ -42,6 +42,7 @@ void zeros_vector(double vector [ROWS]);
 double fix(double num);
 
 bool all(double matriz [ROWS][COLS], double num);
+bool allVector(double vector[],double num);
 
 void sumaMatrices(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double resultado [ROWS][COLS]);
 void restaMatrices(double matriz1 [ROWS][COLS],double matriz2 [ROWS][COLS],double resultado [ROWS][COLS]);
@@ -62,5 +63,10 @@ void muestraVector(double vector[]);
 void muestraMatriz(double matrix[ROWS][COLS]);
 
 double matlab_mod(double a, double q);
+
+void divideComponentesVectorEntreValor(double vector[], double valor, double res[]);
+void multiplicaComponentesVectorPorValor(double vector[], double valor, double res[]);
+
+void copiaVector(double original [], double copia[]);
 
 #endif /* MATLABUTILITIES_H */
