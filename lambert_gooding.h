@@ -10,5 +10,6 @@ void tlamb(double m,double q,double qsqfm1,double x,double n,double * t,double *
 double d8rt(double x);
 
 void xlamb(double m,double q,double qsqfm1,double tin, double * n,double * x,double * xpl);
+void vlamb(double gm,double * r1,double * r2,double th,double tdelt,double * n,double ** vri,double ** vti,double ** vrf,double ** vtf);
 
 #endif /* LAMBERTGOODING_H */

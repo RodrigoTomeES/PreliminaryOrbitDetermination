@@ -1086,6 +1086,7 @@ void testLambert_gooding(){
     testTLamb();
     testd8rt();
     testXLamb();
+    testVLamb();
 }
 
 void testTLamb(){
@@ -1210,4 +1211,74 @@ void testXLamb(){
     printf("\n");
 
     printf(GREEN "---- Pass Test xlamb ----\n" RESET);
+}
+
+void testVLamb(){
+    printf("---- Test vlamb ----\n");
+
+    // Input
+
+    double n;
+    double * vri;
+    double * vti;
+    double * vrf;
+    double * vtf;
+    
+
+
+    // Output
+    double n_result = 1;
+    double vri_result[] = { -4.24634165279188,0};
+    double vti_result[] = { 6585.8979308205,0};
+    double vrf_result[] = { -11.6872756516642,0};
+    double vtf_result[] = { 6589.38917620768,0};
+    
+
+    double r1[]={9163781.53546157,0,0};
+    double r2[]={9158926.30394324,0,0};
+
+    vlamb(398600441800000,r1,r2,0.431406120912815,600.000004470348, &n, &vri,&vti,&vrf,&vtf);
+
+    // Test
+
+
+    printf("  n función: %f\n", n);
+    printf("  n real: %f\n", n_result);
+    printf("  Diferencia: %f\n", fabs(n - n_result));
+    assert(fabs(n - n_result) < EPSILON);
+    printf("\n");
+
+    for(int aux=0;aux<n;aux++){
+        printf("  vri función: %f\n", vri[aux]);
+        printf("  vri real: %f\n", vri_result[aux]);
+        printf("  Diferencia: %f\n", fabs(vri[aux] - vri_result[aux]));
+        assert(fabs(vri[aux] - vri_result[aux]) < EPSILON);
+        printf("\n");
+    }
+
+    for(int aux=0;aux<n;aux++){
+        printf("  vti función: %f\n", vti[aux]);
+        printf("  vti real: %f\n", vti_result[aux]);
+        printf("  Diferencia: %f\n", fabs(vti[aux] - vti_result[aux]));
+        assert(fabs(vti[aux] - vti_result[aux]) < EPSILON);
+        printf("\n");
+    }
+
+    for(int aux=0;aux<n;aux++){
+        printf("  vrf función: %f\n", vrf[aux]);
+        printf("  vrf real: %f\n", vrf_result[aux]);
+        printf("  Diferencia: %f\n", fabs(vrf[aux] - vrf_result[aux]));
+        assert(fabs(vrf[aux] - vrf_result[aux]) < EPSILON);
+        printf("\n");
+    }
+
+    for(int aux=0;aux<n;aux++){
+        printf("  vtf función: %f\n", vtf[aux]);
+        printf("  vtf real: %f\n", vtf_result[aux]);
+        printf("  Diferencia: %f\n", fabs(vtf[aux] - vtf_result[aux]));
+        assert(fabs(vtf[aux] - vtf_result[aux]) < EPSILON);
+        printf("\n");
+    }
+
+    printf(GREEN "---- Pass Test vlamb ----\n" RESET);
 }

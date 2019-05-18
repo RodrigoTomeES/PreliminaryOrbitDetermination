@@ -378,3 +378,92 @@ void xlamb(double m,double q,double qsqfm1,double tin, double * n,double * x,dou
             }
         }
 }
+
+//https://stackoverflow.com/questions/33132384/c-function-returning-pointer-and-a-dynamic-array
+/*
+
+
+    You can modify your code to set a pointer passed into your function by address, like this:
+
+    void create(int n, int** res) {
+        *res = malloc(n*sizeof(int));
+    }
+
+    Here is how you call this function now:
+
+    int *nn
+    int n = 5;
+    create(n, &nn);
+
+*/
+void vlamb(double gm,double * r1,double * r2,double th,double tdelt,double * n,double ** vri,double ** vti,double ** vrf,double ** vtf){
+    // Gooding support routine
+    // Note: this contains the modification from [2]
+
+    *vri = (double *)calloc(2,sizeof(double));
+    *vti = (double *)calloc(2,sizeof(double));
+    *vrf = (double *)calloc(2,sizeof(double));
+    *vtf = (double *)calloc(2,sizeof(double));
+
+    // the following yields m = 0 when th = 2 pi exactly
+    // neither this nor the original code works for th < 0.0
+    double thr2 = th;
+    double m = 0;
+    while (thr2 > 2*M_PI){
+        thr2 = thr2 - 2*M_PI;
+        m = m + 1;
+    }
+    thr2 = thr2/2;
+
+    // note: dr and r1r2 are computed in the calling routine
+    double r1mag = norm(r1);
+    double r2mag = norm(r2);
+    double dr = r1mag-r2mag;
+    double r1r2 = r1mag*r2mag;
+    double r1r2th = 4.0*r1r2*(sin(thr2)*sin(thr2));
+    double csq    = dr*dr + r1r2th;
+    double c      = sqrt(csq);
+    double s      = (r1mag + r2mag + c)/2.0;
+    double gms    = sqrt(gm*s/2.0);
+    double qsqfm1 = c/s;
+    double q      = sqrt(r1r2)*cos(thr2)/s;
+    double rho=0,sig=0;
+    if (c!=0.0){
+        rho = dr/c;
+        sig = r1r2th/csq;
+    }else{
+        rho = 0.0;
+        sig = 1.0;
+    }
+
+    double t = 4.0*gms*tdelt/(s*s);
+    double nv,x1,x2,x;
+    xlamb(m,q,qsqfm1,t,&nv,&x1,&x2);
+    *n=nv;
+    // proceed for single solution, or a pair
+    for (int i=1;i<=nv;i++){
+        if (i==1){
+            x = x1;
+        }else{
+            x = x2;
+        }
+        double unused,qzminx,qzplx,zplqx;
+        tlamb(m,q,qsqfm1,x,-1,&unused,&qzminx,&qzplx,&zplqx);
+        double vt2 = gms*zplqx*sqrt(sig);
+        double vr1 = gms*(qzminx - qzplx*rho)/r1mag;
+        double vt1 = vt2/r1mag;
+        double vr2 = -gms*(qzminx + qzplx*rho)/r2mag;
+        vt2 = vt2/r2mag;
+
+
+        //printf("vt2 %f \n",vt2);
+        //printf("vr1 %f \n",vr1);
+        //printf("vt1 %f \n",vt1);
+        //printf("vr2 %f \n",vr2);
+
+        (*vri)[i-1] = vr1;
+        (*vti)[i-1] = vt1;
+        (*vrf)[i-1] = vr2;
+        (*vtf)[i-1] = vt2;
+    }
+}
