@@ -19,9 +19,8 @@
 // Test MatLabUtilites
 #include "PreliminaryOrbitDeterminationTest.h"
 
-#define EPSILON pow(10, -7)
-
-// Epsilon es de 10⁻7 ya que es la precisión que deja ver matlab para el test
+// cross function has a precision of 6 decimals
+#define EPSILON pow(10, -6)
 
 //Colores para los mensajes
 #define RESET   "\033[0m"
@@ -127,6 +126,9 @@ int main () {
 
     //Test Lambert_gooding
     testLambert_gooding();
+
+    // Test rv2coe
+    testRv2coe();
 
     //Pasa todos los test
     printf(GREEN "---- All Pass Test From Preliminary Orbit Determination----\n" RESET);
@@ -289,9 +291,9 @@ void testAngl() {
     double resultadoFuncion =  angl(vector1, vector2);
     double resultadoReal = 0.949715633622426;
 
-    printf("  Norma función: %f\n", resultadoFuncion);
-    printf("  Norma real: %f\n", resultadoReal);
-    printf("  Diferencia: %f\n", fabs(resultadoFuncion - resultadoReal));
+    printf("  Norma función: %lf\n", resultadoFuncion);
+    printf("  Norma real: %lf\n", resultadoReal);
+    printf("  Diferencia: %lf\n", fabs(resultadoFuncion - resultadoReal));
     assert(fabs(resultadoFuncion - resultadoReal) < EPSILON);
 
     printf(GREEN "---- Pass Test ANGL ----\n" RESET);
@@ -315,17 +317,17 @@ void testNewtonnu() {
     // Test
     printf("    --E0--\n");
     assert(fabs(e0 - e0V) < EPSILON);
-    printf("  E0 función: %f\n", e0);
-    printf("  E0 real: %f\n", e0V);
-    printf("  Diferencia: %f\n", fabs(e0 - e0V));\
+    printf("  E0 función: %lf\n", e0);
+    printf("  E0 real: %lf\n", e0V);
+    printf("  Diferencia: %lf\n", fabs(e0 - e0V));\
 
     printf("\n");
 
     printf("    --M--\n");
     assert(fabs(m - mV) < EPSILON);
-    printf("  M función: %f\n", m);
-    printf("  M real: %f\n", mV);
-    printf("  Diferencia: %f\n", fabs(m - mV));\
+    printf("  M función: %lf\n", m);
+    printf("  M real: %lf\n", mV);
+    printf("  Diferencia: %lf\n", fabs(m - mV));\
 
     printf(GREEN "---- Pass Test NEWTONNU ----\n" RESET);
 }
@@ -348,9 +350,9 @@ void testR_x() {
     // Test
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            printf("  rotmat[%d][%d] función: %f\n", i, j, rotmat[i][j]);
-            printf("  rotmat_result[%d][%d] real: %f\n", i, j, rotmat_result[i][j]);
-            printf("  Diferencia: %f\n", fabs(rotmat[i][j] - rotmat_result[i][j]));
+            printf("  rotmat[%d][%d] función: %lf\n", i, j, rotmat[i][j]);
+            printf("  rotmat_result[%d][%d] real: %lf\n", i, j, rotmat_result[i][j]);
+            printf("  Diferencia: %lf\n", fabs(rotmat[i][j] - rotmat_result[i][j]));
             assert(fabs(rotmat[i][j] - rotmat_result[i][j]) < EPSILON);
             printf("\n");
         }
@@ -377,9 +379,9 @@ void testR_y() {
     // Test
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            printf("  rotmat[%d][%d] función: %f\n", i, j, rotmat[i][j]);
-            printf("  rotmat_result[%d][%d] real: %f\n", i, j, rotmat_result[i][j]);
-            printf("  Diferencia: %f\n", fabs(rotmat[i][j] - rotmat_result[i][j]));
+            printf("  rotmat[%d][%d] función: %lf\n", i, j, rotmat[i][j]);
+            printf("  rotmat_result[%d][%d] real: %lf\n", i, j, rotmat_result[i][j]);
+            printf("  Diferencia: %lf\n", fabs(rotmat[i][j] - rotmat_result[i][j]));
             assert(fabs(rotmat[i][j] - rotmat_result[i][j]) < EPSILON);
             printf("\n");
         }
@@ -406,9 +408,9 @@ void testR_z() {
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            printf("  rotmat[%d][%d] función: %f\n", i, j, rotmat[i][j]);
-            printf("  rotmat_result[%d][%d] real: %f\n", i, j, rotmat_result[i][j]);
-            printf("  Diferencia: %f\n", fabs(rotmat[i][j] - rotmat_result[i][j]));
+            printf("  rotmat[%d][%d] función: %lf\n", i, j, rotmat[i][j]);
+            printf("  rotmat_result[%d][%d] real: %lf\n", i, j, rotmat_result[i][j]);
+            printf("  Diferencia: %lf\n", fabs(rotmat[i][j] - rotmat_result[i][j]));
             assert(fabs(rotmat[i][j] - rotmat_result[i][j]) < EPSILON);
             printf("\n");
         }
@@ -432,9 +434,9 @@ void testFrac() {
 
     // Test
     assert(fabs(res - resultadoReal) < EPSILON);
-    printf("  Frac función: %f\n", res);
-    printf("  Frac real: %f\n", resultadoReal);
-    printf("  Diferencia: %f\n", fabs(res - resultadoReal));
+    printf("  Frac función: %lf\n", res);
+    printf("  Frac real: %lf\n", resultadoReal);
+    printf("  Diferencia: %lf\n", fabs(res - resultadoReal));
 
     printf(GREEN "---- Pass Test FRAC ----\n" RESET);
 }
@@ -458,33 +460,33 @@ void testTimediff() {
     timediff(UT1_UTC, TAI_UTC, &UT1_TAIr, &UTC_GPSr, &UT1_GPSr, &TT_UTCr, &GPS_UTCr);
 
     // Test
-    printf("  UT1_TAI funcion: %f\n", UT1_TAIr);
-    printf("  UT1_TAI real: %f\n", UT1_TAI);
-    printf("  Diferencia: %f\n", fabs(UT1_TAIr - UT1_TAI));
+    printf("  UT1_TAI funcion: %lf\n", UT1_TAIr);
+    printf("  UT1_TAI real: %lf\n", UT1_TAI);
+    printf("  Diferencia: %lf\n", fabs(UT1_TAIr - UT1_TAI));
     assert(fabs(UT1_TAIr - UT1_TAI) < EPSILON);
     printf("\n");
 
-    printf("  UTC_GPS funcion: %f\n", UTC_GPSr);
-    printf("  UTC_GPS real: %f\n", UTC_GPS);
-    printf("  Diferencia: %f\n", fabs(UTC_GPSr - UTC_GPS));
+    printf("  UTC_GPS funcion: %lf\n", UTC_GPSr);
+    printf("  UTC_GPS real: %lf\n", UTC_GPS);
+    printf("  Diferencia: %lf\n", fabs(UTC_GPSr - UTC_GPS));
     assert(fabs(UTC_GPSr - UTC_GPS) < EPSILON);
     printf("\n");
 
-    printf("  UT1_GPS funcion: %f\n", UT1_GPSr);
-    printf("  UT1_GPS real: %f\n", UT1_GPS);
-    printf("  Diferencia: %f\n", fabs(UT1_GPSr - UT1_GPS));
+    printf("  UT1_GPS funcion: %lf\n", UT1_GPSr);
+    printf("  UT1_GPS real: %lf\n", UT1_GPS);
+    printf("  Diferencia: %lf\n", fabs(UT1_GPSr - UT1_GPS));
     assert(fabs(UT1_GPSr - UT1_GPS) < EPSILON);
     printf("\n");
 
-    printf("  TT_UTC funcion: %f\n", TT_UTCr);
-    printf("  TT_UTC real: %f\n", TT_UTC);
-    printf("  Diferencia: %f\n", fabs(TT_UTCr - TT_UTC));
+    printf("  TT_UTC funcion: %lf\n", TT_UTCr);
+    printf("  TT_UTC real: %lf\n", TT_UTC);
+    printf("  Diferencia: %lf\n", fabs(TT_UTCr - TT_UTC));
     assert(fabs(TT_UTCr - TT_UTC) < EPSILON);
     printf("\n");
 
-    printf("  GPS_UTC funcion: %f\n", GPS_UTCr);
-    printf("  GPS_UTC real: %f\n", GPS_UTC);
-    printf("  Diferencia: %f\n", fabs(GPS_UTCr - GPS_UTC));
+    printf("  GPS_UTC funcion: %lf\n", GPS_UTCr);
+    printf("  GPS_UTC real: %lf\n", GPS_UTC);
+    printf("  Diferencia: %lf\n", fabs(GPS_UTCr - GPS_UTC));
     assert(fabs(GPS_UTCr - GPS_UTC) < EPSILON);
     printf("\n");
 
@@ -510,9 +512,9 @@ void testMjday() {
 
     // Test
     assert(fabs(Mjd - Mjd_real) < EPSILON);
-    printf("  Mjday función: %f\n", Mjd);
-    printf("  Mjday real: %f\n", Mjd_real);
-    printf("  Diferencia: %f\n", fabs(Mjd - Mjd_real));
+    printf("  Mjday función: %lf\n", Mjd);
+    printf("  Mjday real: %lf\n", Mjd_real);
+    printf("  Diferencia: %lf\n", fabs(Mjd - Mjd_real));
 
     printf(GREEN "---- Pass Test MJDAY ----\n" RESET);
 }
@@ -534,9 +536,9 @@ void testPosition() {
 
     // Test
     for (int i = 0; i < 3; i++) {
-        printf("  r[%d] función: %f\n", i, r[i]);
-        printf("  r_result[%d] real: %f\n", i, r_result[i]);
-        printf("  Diferencia: %f\n", fabs(r[i] - r_result[i]));
+        printf("  r[%d] función: %lf\n", i, r[i]);
+        printf("  r_result[%d] real: %lf\n", i, r_result[i]);
+        printf("  Diferencia: %lf\n", fabs(r[i] - r_result[i]));
         assert(fabs(r[i] - r_result[i]) < EPSILON);
         printf("\n");
     }
@@ -558,9 +560,9 @@ void testMeanObliquity() {
     MOblq = MeanObliquity(Mjd_TT);
 
     // Test
-    printf("  MeanObliquity función: %f\n", MOblq);
-    printf("  MeanObliquity real: %f\n", MOblq_real);
-    printf("  Diferencia: %f\n", fabs(MOblq - MOblq_real));
+    printf("  MeanObliquity función: %lf\n", MOblq);
+    printf("  MeanObliquity real: %lf\n", MOblq_real);
+    printf("  Diferencia: %lf\n", fabs(MOblq - MOblq_real));
     assert(fabs(MOblq - MOblq_real) < EPSILON);
 
     printf(GREEN "---- Pass Test MEAN OBLIQUITY ----\n" RESET);
@@ -580,15 +582,15 @@ void testNutAngles() {
     NutAngles(Mjd_TT, &dpsi, &deps);
 
     // Test
-    printf("  dpsi función: %f\n", dpsi);
-    printf("  dpsi real: %f\n", NutAngles_const_real[0]);
-    printf("  Diferencia: %f\n", fabs(dpsi - NutAngles_const_real[0]));
+    printf("  dpsi función: %lf\n", dpsi);
+    printf("  dpsi real: %lf\n", NutAngles_const_real[0]);
+    printf("  Diferencia: %lf\n", fabs(dpsi - NutAngles_const_real[0]));
     assert(fabs(dpsi - NutAngles_const_real[0]) < EPSILON);
     printf("\n");
 
-    printf("  deps función: %f\n", deps);
-    printf("  deps real: %f\n", NutAngles_const_real[1]);
-    printf("  Diferencia: %f\n", fabs(deps - NutAngles_const_real[1]));
+    printf("  deps función: %lf\n", deps);
+    printf("  deps real: %lf\n", NutAngles_const_real[1]);
+    printf("  Diferencia: %lf\n", fabs(deps - NutAngles_const_real[1]));
     assert(fabs(deps - NutAngles_const_real[1]) < EPSILON);
 
     printf(GREEN "---- Pass Test NUT ANGLES ----\n" RESET);
@@ -655,7 +657,7 @@ void testIERS(){
 
     // for(int j=0;j<filas;j++){
     //     for (int i = 0; i < columnas; i++) {
-    //         printf("%f ", traspuesta[i][j]);
+    //         printf("%lf ", traspuesta[i][j]);
     //     }
     //     printf("\n");
     // }
@@ -683,41 +685,40 @@ void testIERS(){
     IERS(traspuesta, traspuestaFilas, traspuestaColumnas,Mjd_UTC, interp, &UT1_UTC, &TAI_UTC, &x_pole, &y_pole, &ddpsi, &ddeps);
 
     // Test
-    printf("  UT1_UTC función: %f\n", UT1_UTC);
-    printf("  UT1_UTC real: %f\n", UT1_UTC_real);
-    printf("  Diferencia: %f\n", fabs(UT1_UTC - UT1_UTC_real));
+    printf("  UT1_UTC función: %lf\n", UT1_UTC);
+    printf("  UT1_UTC real: %lf\n", UT1_UTC_real);
+    printf("  Diferencia: %lf\n", fabs(UT1_UTC - UT1_UTC_real));
     assert(fabs(UT1_UTC - UT1_UTC_real) < EPSILON);
     printf("\n");
 
-    printf("  TAI_UTC función: %f\n", TAI_UTC);
-    printf("  TAI_UTC real: %f\n", TAI_UTC_real);
-    printf("  Diferencia: %f\n", fabs(TAI_UTC - TAI_UTC_real));
+    printf("  TAI_UTC función: %lf\n", TAI_UTC);
+    printf("  TAI_UTC real: %lf\n", TAI_UTC_real);
+    printf("  Diferencia: %lf\n", fabs(TAI_UTC - TAI_UTC_real));
     assert(fabs(TAI_UTC - TAI_UTC_real) < EPSILON);
     printf("\n");
 
-    printf("  x_pole función: %f\n", x_pole);
-    printf("  x_pole real: %f\n", x_pole_real);
-    printf("  Diferencia: %f\n", fabs(x_pole - x_pole_real));
+    printf("  x_pole función: %lf\n", x_pole);
+    printf("  x_pole real: %lf\n", x_pole_real);
+    printf("  Diferencia: %lf\n", fabs(x_pole - x_pole_real));
     assert(fabs(x_pole - x_pole_real) < EPSILON);
     printf("\n");
 
-    printf("  y_pole función: %f\n", y_pole);
-    printf("  y_pole real: %f\n", y_pole_real);
-    printf("  Diferencia: %f\n", fabs(y_pole - y_pole_real));
+    printf("  y_pole función: %lf\n", y_pole);
+    printf("  y_pole real: %lf\n", y_pole_real);
+    printf("  Diferencia: %lf\n", fabs(y_pole - y_pole_real));
     assert(fabs(y_pole - y_pole_real) < EPSILON);
     printf("\n");
 
-    printf("  ddpsi función: %f\n", ddpsi);
-    printf("  ddpsi real: %f\n", ddpsi_real);
-    printf("  Diferencia: %f\n", fabs(ddpsi - ddpsi_real));
+    printf("  ddpsi función: %lf\n", ddpsi);
+    printf("  ddpsi real: %lf\n", ddpsi_real);
+    printf("  Diferencia: %lf\n", fabs(ddpsi - ddpsi_real));
     assert(fabs(ddpsi - ddpsi_real) < EPSILON);
     printf("\n");
 
-    printf("  ddeps función: %f\n", ddeps);
-    printf("  ddeps real: %f\n", ddeps_real);
-    printf("  Diferencia: %f\n", fabs(ddeps - ddeps_real));
+    printf("  ddeps función: %lf\n", ddeps);
+    printf("  ddeps real: %lf\n", ddeps_real);
+    printf("  Diferencia: %lf\n", fabs(ddeps - ddeps_real));
     assert(fabs(ddeps - ddeps_real) < EPSILON);
-    printf("\n");
 
     printf(GREEN "---- Pass Test IERS ----\n" RESET);
 }
@@ -737,9 +738,9 @@ void testGmst(){
     gmstV = gmst(Mjd_UT1);
 
     // Test
-    printf("  gmst función: %f\n", gmstV);
-    printf("  gmst real: %f\n", gmst_real);
-    printf("  Diferencia: %f\n", fabs(gmstV - gmst_real));
+    printf("  gmst función: %lf\n", gmstV);
+    printf("  gmst real: %lf\n", gmst_real);
+    printf("  Diferencia: %lf\n", fabs(gmstV - gmst_real));
     assert(fabs(gmstV - gmst_real) < EPSILON);
 
     printf(GREEN "---- Pass Test gmst ----\n" RESET);
@@ -777,27 +778,26 @@ void testGibbs() {
     assert(vectoresIguales(v2,v2_result));
     printf("\n");
 
-    printf("  theta función: %f\n", theta);
-    printf("  theta real: %f\n", theta_result);
-    printf("  Diferencia: %f\n", fabs(theta - theta_result));
+    printf("  theta función: %lf\n", theta);
+    printf("  theta real: %lf\n", theta_result);
+    printf("  Diferencia: %lf\n", fabs(theta - theta_result));
     assert(fabs(theta - theta_result) < EPSILON);
     printf("\n");
 
-    printf("  theta1 función: %f\n", theta1);
-    printf("  theta1 real: %f\n", theta1_result);
-    printf("  Diferencia: %f\n", fabs(theta1 - theta1_result));
+    printf("  theta1 función: %lf\n", theta1);
+    printf("  theta1 real: %lf\n", theta1_result);
+    printf("  Diferencia: %lf\n", fabs(theta1 - theta1_result));
     assert(fabs(theta1 - theta1_result) < EPSILON);
     printf("\n");
 
-    printf("  copa función: %f\n", copa);
-    printf("  copa real: %f\n", copa_result);
-    printf("  Diferencia: %f\n", fabs(copa - copa_result));
+    printf("  copa función: %lf\n", copa);
+    printf("  copa real: %lf\n", copa_result);
+    printf("  Diferencia: %lf\n", fabs(copa - copa_result));
     assert(fabs(copa - copa_result) < EPSILON);
     printf("\n");
 
     printf("  error igual: %d\n", vectoresIguales(v2,v2_result));
     assert(vectoresIguales(v2,v2_result));
-    printf("\n");
 
     printf(GREEN "---- Pass Test GIBBS ----\n" RESET);
 }
@@ -816,9 +816,9 @@ void testEqnEquinox(){
     EqnEquinoxV = EqnEquinox(Mjd_TT);
 
     // Test
-    printf("  EqnEquinox función: %f\n", EqnEquinoxV);
-    printf("  EqnEquinox real: %f\n", EqnEquinox_real);
-    printf("  Diferencia: %f\n", fabs(EqnEquinoxV - EqnEquinox_real));
+    printf("  EqnEquinox función: %lf\n", EqnEquinoxV);
+    printf("  EqnEquinox real: %lf\n", EqnEquinox_real);
+    printf("  Diferencia: %lf\n", fabs(EqnEquinoxV - EqnEquinox_real));
     assert(fabs(EqnEquinoxV - EqnEquinox_real) < EPSILON);
 
     printf(GREEN "---- Pass Test EqnEquinox ----\n" RESET);
@@ -885,7 +885,7 @@ void testGast() {
 
     // for(int j=0;j<filas;j++){
     //     for (int i = 0; i < columnas; i++) {
-    //         printf("%f ", traspuesta[i][j]);
+    //         printf("%lf ", traspuesta[i][j]);
     //     }
     //     printf("\n");
     // }
@@ -902,11 +902,10 @@ void testGast() {
     gstime = gast(Mjd_UT1, traspuesta, traspuestaFilas, traspuestaColumnas);
 
     // Test
-    printf("  gstime función: %f\n", gstime);
-    printf("  gstime real: %f\n", gstime_real);
-    printf("  Diferencia: %f\n", fabs(gstime - gstime_real));
+    printf("  gstime función: %lf\n", gstime);
+    printf("  gstime real: %lf\n", gstime_real);
+    printf("  Diferencia: %lf\n", fabs(gstime - gstime_real));
     assert(fabs(gstime - gstime_real) < EPSILON);
-    printf("\n");
 
     printf(GREEN "---- Pass Test GAST ----\n" RESET);
 }
@@ -929,9 +928,9 @@ void testPoleMatrix(){
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            printf("  PoleMat[%d][%d] función: %f\n", i, j, PoleMat[i][j]);
-            printf("  PoleMat_result[%d][%d] real: %f\n", i, j, PoleMat_result[i][j]);
-            printf("  Diferencia: %f\n", fabs(PoleMat[i][j] - PoleMat_result[i][j]));
+            printf("  PoleMat[%d][%d] función: %lf\n", i, j, PoleMat[i][j]);
+            printf("  PoleMat_result[%d][%d] real: %lf\n", i, j, PoleMat_result[i][j]);
+            printf("  Diferencia: %lf\n", fabs(PoleMat[i][j] - PoleMat_result[i][j]));
             assert(fabs(PoleMat[i][j] - PoleMat_result[i][j]) < EPSILON);
             printf("\n");
         }
@@ -981,9 +980,9 @@ void testPrecMatrix(){
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            printf("  PrecMat[%d][%d] función: %f\n", i, j, PrecMat[i][j]);
-            printf("  PrecMat_result[%d][%d] real: %f\n", i, j, PrecMat_result[i][j]);
-            printf("  Diferencia: %f\n", fabs(PrecMat[i][j] - PrecMat_result[i][j]));
+            printf("  PrecMat[%d][%d] función: %lf\n", i, j, PrecMat[i][j]);
+            printf("  PrecMat_result[%d][%d] real: %lf\n", i, j, PrecMat_result[i][j]);
+            printf("  Diferencia: %lf\n", fabs(PrecMat[i][j] - PrecMat_result[i][j]));
             assert(fabs(PrecMat[i][j] - PrecMat_result[i][j]) < EPSILON);
             printf("\n");
         }
@@ -1077,8 +1076,7 @@ void testGHAMatrix(){
     muestraMatriz(GHAmat_real);
     printf("  GHAmat iguales: %d\n", matricesIguales(GHAmat,GHAmat_real));
     assert(matricesIguales(GHAmat,GHAmat_real));
-    printf("\n");
-    
+
 	printf(GREEN "---- Pass Test GHA_MATRIX ----\n" RESET);
 }
 
@@ -1090,16 +1088,13 @@ void testLambert_gooding(){
 }
 
 void testTLamb(){
-
-     printf("---- Test tlamb ----\n");
+    printf("---- Test tlamb ----\n");
 
     // Input
-
     double t;
     double dt;
     double d2t;
     double d3t;
-
 
     // Output
     double t_result = 8.22665277455477;
@@ -1107,38 +1102,32 @@ void testTLamb(){
     double d2t_result =  28.5802140304226;
     double d3t_result = 26.4789138610536;
 
-    
-
     // Execution
     tlamb(1,0.804611564466232,0.352600230327203,0.142219617787892,3, &t, &dt, &d2t, &d3t);
 
     // Test
-
-
-    printf("  t función: %f\n", t);
-    printf("  t real: %f\n", t_result);
-    printf("  Diferencia: %f\n", fabs(t - t_result));
+    printf("  t función: %lf\n", t);
+    printf("  t real: %lf\n", t_result);
+    printf("  Diferencia: %lf\n", fabs(t - t_result));
     assert(fabs(t - t_result) < EPSILON);
     printf("\n");
 
-    printf("  dt función: %f\n", dt);
-    printf("  dt real: %f\n", dt_result);
-    printf("  Diferencia: %f\n", fabs(dt - dt_result));
+    printf("  dt función: %lf\n", dt);
+    printf("  dt real: %lf\n", dt_result);
+    printf("  Diferencia: %lf\n", fabs(dt - dt_result));
     assert(fabs(dt - dt_result) < EPSILON);
     printf("\n");
 
-    printf("  d2t función: %f\n", d2t);
-    printf("  d2t real: %f\n", d2t_result);
-    printf("  Diferencia: %f\n", fabs(d2t - d2t_result));
+    printf("  d2t función: %lf\n", d2t);
+    printf("  d2t real: %lf\n", d2t_result);
+    printf("  Diferencia: %lf\n", fabs(d2t - d2t_result));
     assert(fabs(d2t - d2t_result) < EPSILON);
     printf("\n");
 
-    printf("  d3t función: %f\n", d3t);
-    printf("  d3t real: %f\n", d3t_result);
-    printf("  Diferencia: %f\n", fabs(d3t - d3t_result));
+    printf("  d3t función: %lf\n", d3t);
+    printf("  d3t real: %lf\n", d3t_result);
+    printf("  Diferencia: %lf\n", fabs(d3t - d3t_result));
     assert(fabs(d3t - d3t_result) < EPSILON);
-    printf("\n");
-
 
     printf(GREEN "---- Pass Test tlamb ----\n" RESET);
 }
@@ -1147,23 +1136,19 @@ void testd8rt(){
     printf("---- Test d8rt ----\n");
 
     // Input
-
     double x;
 
     // Output
     double x_result = 0.780220027563195;
 
     // Execution
-    x=d8rt(0.137320935252476);
+    x = d8rt(0.137320935252476);
 
     // Test
-
-
-    printf("  t función: %f\n", x);
-    printf("  t real: %f\n", x_result);
-    printf("  Diferencia: %f\n", fabs(x - x_result));
+    printf("  t función: %lf\n", x);
+    printf("  t real: %lf\n", x_result);
+    printf("  Diferencia: %lf\n", fabs(x - x_result));
     assert(fabs(x - x_result) < EPSILON);
-    printf("\n");
 
     printf(GREEN "---- Pass Test d8rt ----\n" RESET);
 }
@@ -1172,41 +1157,34 @@ void testXLamb(){
     printf("---- Test xlamb ----\n");
 
     // Input
-
     double n;
     double x1;
     double x2;
-    
-
 
     // Output
     double n_result = 0;
     double x1_result = 0;
     double x2_result =  0;
-    
 
-    
-
+    // Execution
     xlamb(1,0.804611564466232,0.352600230327203,0.913438160983316, &n, &x1, &x2);
 
     // Test
-
-
-    printf("  n función: %f\n", n);
-    printf("  n real: %f\n", n_result);
-    printf("  Diferencia: %f\n", fabs(n - n_result));
+    printf("  n función: %lf\n", n);
+    printf("  n real: %lf\n", n_result);
+    printf("  Diferencia: %lf\n", fabs(n - n_result));
     assert(fabs(n - n_result) < EPSILON);
     printf("\n");
 
-    printf("  x1 función: %f\n", x1);
-    printf("  x1 real: %f\n", x1_result);
-    printf("  Diferencia: %f\n", fabs(x1 - x1_result));
+    printf("  x1 función: %lf\n", x1);
+    printf("  x1 real: %lf\n", x1_result);
+    printf("  Diferencia: %lf\n", fabs(x1 - x1_result));
     assert(fabs(x1 - x1_result) < EPSILON);
     printf("\n");
 
-    printf("  x2 función: %f\n", x2);
-    printf("  x2 real: %f\n", x2_result);
-    printf("  Diferencia: %f\n", fabs(x2 - x2_result));
+    printf("  x2 función: %lf\n", x2);
+    printf("  x2 real: %lf\n", x2_result);
+    printf("  Diferencia: %lf\n", fabs(x2 - x2_result));
     assert(fabs(x2 - x2_result) < EPSILON);
     printf("\n");
 
@@ -1281,4 +1259,120 @@ void testVLamb(){
     }
 
     printf(GREEN "---- Pass Test vlamb ----\n" RESET);
+void testRv2coe() {
+    printf("---- Test RV2COE ----\n");
+
+    // Input
+    double r[] = {20418280.3742389, 1067836.39923722, 1015404.95114477};
+    double v[] = {16.8797950290867, -2654.08002932654, 3734.1200461541};
+
+    // double r[] = {3,4,5};
+    // double v[] = {10,6,8};
+    double p;
+    double a;
+    double ecc;
+    double incl;
+    double omega;
+    double argp;
+    double nu;
+    double m;
+    double arglat;
+    double truelon;
+    double lonper;
+
+    // Output
+    double p_real = 22062031.7359055;
+    double a_real = 22201041.6868316;
+    double ecc_real = 0.0791291077785513;
+    double incl_real = 2.18716682303266;
+    double omega_real = 0.0874406813869261;
+    double argp_real = 6.15374268499539;
+    double nu_real = 0.190267237474694;
+    double m_real = 0.16199787056862;
+    double arglat_real = 999999.1;
+    double truelon_real = 999999.1;
+    double lonper_real = 999999.1;
+
+    // double p_real = 2.92021753599572e-12;
+    // double a_real = 3.53553390593901;
+    // double ecc_real = 0.999999999999587;
+    // double incl_real = 2.27159902873729;
+    // double omega_real = 3.06482076232001;
+    // double argp_real = 5.10178346758267;
+    // double nu_real = 3.14159265358979;
+    // double m_real = 5.82562114015612;
+    // double arglat_real = 999999.1;
+    // double truelon_real = 999999.1;
+    // double lonper_real = 999999.1;
+
+    // Execution
+    rv2coe(r, v, &p, &a, &ecc, &incl, &omega, &argp, &nu, &m, &arglat, &truelon, &lonper);
+
+    // Test
+    printf("  p función: %lf\n", p);
+    printf("  p real: %lf\n", p_real);
+    printf("  Diferencia: %lf\n", fabs(p - p_real));
+    assert(fabs(p - p_real) < EPSILON);
+    printf("\n");
+
+    printf("  a función: %.15f\n", a);
+    printf("  a real: %.15f\n", a_real);
+    printf("  Diferencia: %lf\n", fabs(a - a_real));
+    assert(fabs(a - a_real) < EPSILON);
+    printf("\n");
+
+    printf("  ecc función: %lf\n", ecc);
+    printf("  ecc real: %lf\n", ecc_real);
+    printf("  Diferencia: %lf\n", fabs(ecc - ecc_real));
+    assert(fabs(ecc - ecc_real) < EPSILON);
+    printf("\n");
+
+    printf("  incl función: %lf\n", incl);
+    printf("  incl real: %lf\n", incl_real);
+    printf("  Diferencia: %lf\n", fabs(incl - incl_real));
+    assert(fabs(incl - incl_real) < EPSILON);
+    printf("\n");
+
+    printf("  omega función: %lf\n", omega);
+    printf("  omega real: %lf\n", omega_real);
+    printf("  Diferencia: %lf\n", fabs(omega - omega_real));
+    assert(fabs(omega - omega_real) < EPSILON);
+    printf("\n");
+
+    printf("  argp función: %lf\n", argp);
+    printf("  argp real: %lf\n", argp_real);
+    printf("  Diferencia: %lf\n", fabs(argp - argp_real));
+    assert(fabs(argp - argp_real) < EPSILON);
+    printf("\n");
+
+    printf("  nu función: %lf\n", nu);
+    printf("  nu real: %lf\n", nu_real);
+    printf("  Diferencia: %lf\n", fabs(nu - nu_real));
+    assert(fabs(nu - nu_real) < EPSILON);
+    printf("\n");
+
+    printf("  m función: %lf\n", m);
+    printf("  m real: %lf\n", m_real);
+    printf("  Diferencia: %lf\n", fabs(m - m_real));
+    assert(fabs(m - m_real) < EPSILON);
+    printf("\n");
+
+    printf("  arglat función: %lf\n", arglat);
+    printf("  arglat real: %lf\n", arglat_real);
+    printf("  Diferencia: %lf\n", fabs(arglat - arglat_real));
+    assert(fabs(arglat - arglat_real) < EPSILON);
+    printf("\n");
+
+    printf("  truelon función: %lf\n", truelon);
+    printf("  truelon real: %lf\n", truelon_real);
+    printf("  Diferencia: %lf\n", fabs(truelon - truelon_real));
+    assert(fabs(truelon - truelon_real) < EPSILON);
+    printf("\n");
+
+    printf("  lonper función: %lf\n", lonper);
+    printf("  lonper real: %lf\n", lonper_real);
+    printf("  Diferencia: %lf\n", fabs(lonper - lonper_real));
+    assert(fabs(lonper - lonper_real) < EPSILON);
+
+    printf(GREEN "---- Pass Test RV2COE ----\n" RESET);
 }
