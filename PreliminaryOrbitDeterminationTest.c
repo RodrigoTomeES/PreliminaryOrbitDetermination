@@ -136,8 +136,11 @@ int main () {
     // Test Hgibbs
     testHgibbs();
 
-    // Test anglesdr
+    // Test Anglesdr
     testAnglesDR();
+
+    // Test Anglesg
+    testAnglesG();
 
     //Pasa todos los test
     printf(GREEN "---- All Pass Test From Preliminary Orbit Determination----\n" RESET);
@@ -1479,19 +1482,13 @@ void testHgibbs() {
 }
 
 void testAnglesDR(){
-     printf("---- Test anglesdr ----\n");
+    printf("---- Test anglesdr ----\n");
 
     // Input
-
-    
     double * r2;
     double * v2;
-    
-    
-
 
     // Output
-    
     double r2_result[] = {  8794276.58098402,404708.19494349,2543973.80563716};
     double v2_result[] = { 591.415680079019,5838.86365198693,-2988.6398839824};
 
@@ -1499,12 +1496,10 @@ void testAnglesDR(){
     double rsite2[]={4935037.85913036,472703.320202615,3999475.70573182};
     double rsite3[]={4909646.95198536,687938.936915757,3999494.94894739};
 
-    
+
     anglesdr(5.39901096780381,6.26556833768239,0.732191050658823,0.0115360853036144,-0.360600766331881,-0.640322905313176,54977.6669036457,54977.6738480902,54977.6807925347,rsite1,rsite2,rsite3 ,&r2, &v2);
 
     // Test
-
-
     for(int aux=0;aux<3;aux++){
         printf("  r2 función: %f\n", r2[aux]);
         printf("  r2 real: %f\n", r2_result[aux]);
@@ -1522,4 +1517,49 @@ void testAnglesDR(){
     }
 
     printf(GREEN "---- Pass Test anglesdr ----\n" RESET);
+}
+
+void testAnglesG() {
+    printf("---- Test ANGLESG ----\n");
+
+    // Input
+    double Alpha1 = 0.223578422509726;
+    double Alpha2 = 0.165492119674102;
+    double Alpha3 = 0.106613437358074;
+    double Delta1 = -0.211533905341713;
+    double Delta2 = -0.142837745983216;
+    double Delta3 = -0.0716736910623991;
+    double JD1 = 55565.9044073611;
+    double JD2 = 55565.9078795835;
+    double JD3 = 55565.9113518056;
+    double RS1[3] = {5270137.35006701, -1572248.25164427, 3219350.41084204};
+    double RS2[3] = {5303269.31336066, -1456667.74823777, 3219314.05463487};
+    double RS3[3] = {5333865.06903306, -1340390.16746883, 3219280.50120838};
+    double R2[3];
+    double V2[3];
+
+    // Output
+    double R2_real[] = {20486511.5116966,1079232.34124514,1005456.21710952};
+    double V2_real[] = {16.8797950290867,-2654.08002932654,3734.1200461541};
+
+    anglesg(Alpha1, Alpha2, Alpha3, Delta1, Delta2, Delta3, JD1, JD2, JD3, RS1, RS2, RS3, R2, V2);
+
+    // Test
+    for(int aux=0;aux<3;aux++){
+        printf("  R2 función: %f\n", R2[aux]);
+        printf("  R2 real: %f\n", R2_real[aux]);
+        printf("  Diferencia: %f\n", fabs(R2[aux] - R2_real[aux]));
+        assert(fabs(R2[aux] - R2_real[aux]) < 10);
+        printf("\n");
+    }
+
+    for(int aux=0;aux<3;aux++){
+        printf("  V2 función: %f\n", V2[aux]);
+        printf("  V2 real: %f\n", V2_real[aux]);
+        printf("  Diferencia: %f\n", fabs(V2[aux] - V2_real[aux]));
+        assert(fabs(V2[aux] - V2_real[aux]) < 10);
+        printf("\n");
+    }
+
+    printf(GREEN "---- Pass Test ANGLESG ----\n" RESET);
 }

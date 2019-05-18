@@ -51,6 +51,7 @@
 #include "rv2coe.h"
 #include "hgibbs.h"
 #include "anglesdr.h"
+#include "anglesg.h"
 
 void testUnit();
 void testDoubler();
@@ -82,5 +83,6 @@ void testVLamb();
 void testRv2coe();
 void testHgibbs();
 void testAnglesDR();
+void testAnglesG();
 
 #endif /* PRELIMINARY_ORBIT_DETERMINATION_TEST_H */

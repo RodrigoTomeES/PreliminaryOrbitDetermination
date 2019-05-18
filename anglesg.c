@@ -97,15 +97,15 @@ void anglesg(double Alpha1, double Alpha2, double Alpha3, double Delta1, double 
 
     //------------------ Now assign the inverse -------------------
     double LMatI[ROWS][COLS];
-    LMatI[1][1] = ( L2[2]*L3[3]-L2[3]*L3[2])/D;
-    LMatI[2][1] = (-L1[2]*L3[3]+L1[3]*L3[2])/D;
-    LMatI[3][1] = ( L1[2]*L2[3]-L1[3]*L2[2])/D;
-    LMatI[1][2] = (-L2[1]*L3[3]+L2[3]*L3[1])/D;
-    LMatI[2][2] = ( L1[1]*L3[3]-L1[3]*L3[1])/D;
-    LMatI[3][2] = (-L1[1]*L2[3]+L1[3]*L2[1])/D;
-    LMatI[1][3] = ( L2[1]*L3[2]-L2[2]*L3[1])/D;
-    LMatI[2][3] = (-L1[1]*L3[2]+L1[2]*L3[1])/D;
-    LMatI[3][3] = ( L1[1]*L2[2]-L1[2]*L2[1])/D;
+    LMatI[0][0] = ( L2[1]*L3[2]-L2[2]*L3[1])/D;
+    LMatI[1][0] = (-L1[1]*L3[2]+L1[2]*L3[1])/D;
+    LMatI[2][0] = ( L1[1]*L2[2]-L1[2]*L2[1])/D;
+    LMatI[0][1] = (-L2[0]*L3[2]+L2[2]*L3[0])/D;
+    LMatI[1][1] = ( L1[0]*L3[2]-L1[2]*L3[0])/D;
+    LMatI[2][1] = (-L1[0]*L2[2]+L1[2]*L2[0])/D;
+    LMatI[0][2] = ( L2[0]*L3[1]-L2[1]*L3[0])/D;
+    LMatI[1][2] = (-L1[0]*L3[1]+L1[1]*L3[0])/D;
+    LMatI[2][2] = ( L1[0]*L2[1]-L1[1]*L2[0])/D;
 
     double LIR[ROWS][COLS];
     crossMatrix(LMatI,RSMat,LIR);
@@ -120,33 +120,27 @@ void anglesg(double Alpha1, double Alpha2, double Alpha3, double Delta1, double 
     double a3u = -(Tau1*((Tau3-Tau1)*(Tau3-Tau1) - Tau1*Tau1 ))/(6.0*(Tau3 - Tau1));
 
     //--- Form initial guess of r2 ----
-    double D1 = LIR[2][1]*a1 - LIR[2][2] + LIR[2][3]*a3;
-    double D2 = LIR[2][1]*a1u + LIR[2][3]*a3u;
+
+    double D1 = LIR[1][0]*a1 - LIR[1][1] + LIR[1][2]*a3;
+    double D2 = LIR[1][0]*a1u + LIR[1][2]*a3u;
 
     //------- Solve eighth order poly NOT same as LAPLACE ---------
     double L2DotRS= dot(L2,RS2);
     double magRS2 = norm(RS2);
-    double Poly[17];
-    Poly[ 1]=  1.0;  // r2^8th variable!!!!!!!!!!!!!!
-    Poly[ 2]=  0.0;
-    Poly[ 3]=  -(D1*D1 + 2.0*D1*L2DotRS + magRS2*magRS2);
+    double Poly[9];
+    Poly[ 0]=  1.0;  // r2^8th variable!!!!!!!!!!!!!!
+    Poly[ 1]=  0.0;
+    Poly[ 2]=  -(D1*D1 + 2.0*D1*L2DotRS + magRS2*magRS2);
+    Poly[ 3]=  0.0;
     Poly[ 4]=  0.0;
-    Poly[ 5]=  0.0;
-    Poly[ 6]=  -2.0*Mu*(L2DotRS*D2 + D1*D2);
+    Poly[ 5]=  -2.0*Mu*(L2DotRS*D2 + D1*D2);
+    Poly[ 6]=  0.0;
     Poly[ 7]=  0.0;
-    Poly[ 8]=  0.0;
-    Poly[ 9]=  -Mu*Mu*D2*D2;
-    Poly[10]=  0.0;
-    Poly[11]=  0.0;
-    Poly[12]=  0.0;
-    Poly[13]=  0.0;
-    Poly[14]=  0.0;
-    Poly[15]=  0.0;
-    Poly[16]=  0.0;
+    Poly[ 8]=  -Mu*Mu*D2*D2;
 
-    double rootarr[17];
+    double rootarr[8];
     int numSolucionesReales;
-    roots(Poly, 17, rootarr, &numSolucionesReales);
+    roots(Poly, 9, rootarr, &numSolucionesReales);
 
     //------------------ Select the correct root ------------------
     double BigR2 = 0.0;
@@ -202,11 +196,6 @@ void anglesg(double Alpha1, double Alpha2, double Alpha3, double Delta1, double 
         // traspuesta_vector(R2, R2_traspuesta);
         lambert_gooding(R1, R2, (JD2-JD1)*86400, Mu, 0, 1, &V1, &V2_aux);
         copiaVector(V2_aux,V2);
-
-        // PRUEBA
-        muestraVector(V2_aux);
-        muestraVector(V2);
-        // PRUEBA
 
         rv2coe(R2, V2, &p, &a, &ecc, &incl, &omega, &argp, &Nu, &m, &u, &l, &ArgPer);
         magR2 = norm(R2);
