@@ -4,6 +4,8 @@
         "polematrix.h": "c",
         "precmatrix.h": "c",
         "cmath": "c",
-        "position.h": "c"
+        "position.h": "c",
+        "anglesg.h": "c",
+        "ghamatrix.h": "c"
     }
 }
