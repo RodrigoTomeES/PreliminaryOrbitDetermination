@@ -14,6 +14,9 @@ all:
 	gcc MatLabUtilites.c Mjday.c Position.c rpoly.c timediff.c IERS.c PrecMatrix.c NutMatrix.c PoleMatrix.c GHAMatrix.c anglesdr.c R_z.c R_y.c lambert_gooding.c MeanObliquity.c NutAngles.c R_x.c gast.c doubler.c unit.c example3.c -o example3.out gmst.c EqnEquinox.c Frac.c -lm
 	./example3.out
 
+	gcc MatLabUtilites.c Mjday.c Position.c rpoly.c timediff.c IERS.c PrecMatrix.c NutMatrix.c PoleMatrix.c GHAMatrix.c anglesg.c R_z.c R_y.c lambert_gooding.c MeanObliquity.c NutAngles.c R_x.c gast.c doubler.c unit.c gibbs.c hgibbs.c rv2coe.c angl.c newtonnu.c example5.c -o example5.out gmst.c EqnEquinox.c Frac.c -lm
+	./example5.out
+
 	gcc MatLabUtilites.c Mjday.c Position.c rpoly.c timediff.c IERS.c PrecMatrix.c NutMatrix.c PoleMatrix.c GHAMatrix.c anglesdr.c R_z.c R_y.c lambert_gooding.c MeanObliquity.c NutAngles.c R_x.c gast.c doubler.c unit.c example6.c -o example6.out gmst.c EqnEquinox.c Frac.c -lm
 	./example6.out
 
