@@ -1,6 +1,6 @@
 //$Header$
 //------------------------------------------------------------------------------
-//                           Example1
+//                           Example7
 //------------------------------------------------------------------------------
 // POD: Preleminary Orbit Determination.
 //
@@ -10,7 +10,7 @@
 // Created: 2019/05/19
 //
 /**
-* Integration test 1.
+* Integration test 7.
 *
 * @note
 */
@@ -48,7 +48,7 @@
 */
 //------------------------------------------------------------------------------
 int main () {
-    printf("EXAMPLE 1\n");
+    printf("EXAMPLE 7\n");
     // read Earth orientation parameters
     FILE* fid = fopen("eop19620101.txt","rt");
 
@@ -94,7 +94,7 @@ int main () {
     fclose(fid);
 
     // read observations
-    fid = fopen("sat1.txt","rt");
+    fid = fopen("sat7.txt","rt");
     printf("\n");
     int filasOBS = 3;
     int columnasOBS = 3;
@@ -126,9 +126,9 @@ int main () {
     fclose(fid);
 
     // station
-    double lat = Rad*39.13607;     // [rad]
-    double lon = Rad*(-121.35072); // [rad]
-    double alt = 0.09981638e3;     // [m]
+    double lat = Rad*40.0;     // [rad]
+    double lon = Rad*(-110.0); // [rad]
+    double alt = 2000.0;     // [m]
     double Rs[TAM];
     Position(lon, lat, alt, Rs);
 
