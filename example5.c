@@ -1,3 +1,21 @@
+//$Header$
+//------------------------------------------------------------------------------
+//                           Example5
+//------------------------------------------------------------------------------
+// POD: Preleminary Orbit Determination.
+//
+// Legal: MIT  License
+//
+// Author: David Lacalle & Rodrigo Tomé
+// Created: 2019/05/19
+//
+/**
+* Integration test 5.
+*
+* @note
+*/
+//------------------------------------------------------------------------------
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -30,6 +48,7 @@
 */
 //------------------------------------------------------------------------------
 int main () {
+    printf("EXAMPLE 5\n");
     // read Earth orientation parameters
     FILE* fid = fopen("eop19620101.txt","rt");
 
@@ -39,6 +58,7 @@ int main () {
     float columna5, columna6, columna7, columna8, columna9, columna10, columna11, columna12;
 
     if (fid == NULL){
+        printf("Fichero eop no encontrado\n");
         exit(EXIT_FAILURE);
     }
 
@@ -82,6 +102,7 @@ int main () {
     float s, rtasc, decl;
 
     if (fid == NULL){
+        printf("Fichero constantes no encontrado\n");
         exit(EXIT_FAILURE);
     }
 
@@ -192,4 +213,6 @@ int main () {
     for (int i = 0; i < 6; i++) {
         printf("%lf\n", Y_apr[i]);
     }
+
+    printf("\n");
 }
