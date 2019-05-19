@@ -9,6 +9,13 @@ script:
   - build-wrapper-linux-x86-64 --out-dir bw-output make all
   - sonar-scanner -X
   - ./matlabutilites.out
+  - ./PreliminaryOrbitDeterminationTest.out
+  - ./example1.out
+  - ./example2.out
+  - ./example3.out
+  - ./example5.out
+  - ./example6.out
+  - ./example7.out
 deploy:
   provider: pages
   skip-cleanup: true
