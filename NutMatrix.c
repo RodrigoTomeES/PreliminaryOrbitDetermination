@@ -46,11 +46,8 @@ void NutMatrix(double Mjd_TT, double NutMat[TAM][TAM]) {
     double r_x[TAM][TAM], r_z[TAM][TAM], r_x2[TAM][TAM];
 
     R_x(-ep-deps,r_x);
-    muestraMatriz(r_x);
     R_z(-dpsi,r_z);
-    muestraMatriz(r_z);
     R_x(+ep,r_x2);
-    muestraMatriz(r_x2);
 
     double aux[TAM][TAM];
     crossMatrix(r_x, r_z, aux);
