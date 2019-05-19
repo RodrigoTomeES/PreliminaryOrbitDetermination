@@ -3,6 +3,7 @@
         "unit.h": "c",
         "polematrix.h": "c",
         "precmatrix.h": "c",
-        "cmath": "c"
+        "cmath": "c",
+        "position.h": "c"
     }
 }
