@@ -1,19 +1,19 @@
-//$Header$ 
-//------------------------------------------------------------------------------ 
+//$Header$
+//------------------------------------------------------------------------------
 //                           MatLabUtilitesTest
 //------------------------------------------------------------------------------
-// POD: Preleminary Orbit Determination. 
-// 
+// POD: Preleminary Orbit Determination.
+//
 // Legal: MIT  License
-// 
+//
 // Author: David Lacalle & Rodrigo Tomé
-// Created: 2019/04/27 
-// 
-/**  
-* Provides a basic test for MatLabUtilites.c.  
-*  
-* @note     
-*/ 
+// Created: 2019/04/27
+//
+/**
+* Provides a basic test for MatLabUtilites.c.
+*
+* @note
+*/
 //------------------------------------------------------------------------------
 
 // Test MatLabUtilites
@@ -48,19 +48,19 @@ double v2[]={4,-1,2};
 double v3[]={2,-2,-1};
 
 
-//------------------------------------------------------------------------------ 
+//------------------------------------------------------------------------------
 //  int main()
-//------------------------------------------------------------------------------ 
-/**  
-* Execute the test for MatLabUtilites.c  
+//------------------------------------------------------------------------------
+/**
+* Execute the test for MatLabUtilites.c
 * This function show the results of the tests.
-*  
+*
 * @param  - none
 * @return - none
 * @exception - none
-* @see - none  
-* @note - none  
-*/ 
+* @see - none
+* @note - none
+*/
 //------------------------------------------------------------------------------
 int main () {
   printf(BLUE "---- Test MatLabUtlites ----\n" RESET);
@@ -68,7 +68,7 @@ int main () {
   // Test norm
 
   printf("---- Test NORM ----\n");
-  
+
   assert(fabs(norm(v1) - 0.0) < EPSILON);
   printf("  Norma función: %f\n", norm(v1));
   printf("  Norma real: %f\n", 0.0);
@@ -76,7 +76,7 @@ int main () {
 
   printf("\n");
 
-  double vDoubler[] = {8794373.698572,404706.483849,2543937.177990};  
+  double vDoubler[] = {8794373.698572,404706.483849,2543937.177990};
   assert(fabs(norm(vDoubler) - 9.163864493420018e+06) < EPSILON);
   printf("  Norma función: %f\n", norm(vDoubler));
   printf("  Norma real: %f\n", 9.163864493420018e+06);
@@ -146,7 +146,7 @@ int main () {
   assert(fabs(fix(-4.5) + 4.0) < EPSILON);
   assert(fabs(fix(4.5) - 4.0) < EPSILON);
   printf(GREEN "---- Pass Test FIX ----\n" RESET);
-  
+
   //Test abs
   printf("---- Test ABS ----\n");
   double positive = 3.0;
@@ -181,16 +181,16 @@ int main () {
   assert(matricesIguales(res,xRestaMatrices));
   printf(GREEN "---- Pass Test RESTA MATRICES ----\n" RESET);
 
-  //Test multiplicacionMatrices
+  //Test crossMatrix
   printf("---- Test MULTIPLICACION MATRICES ----\n");
   double matrixA [3][3] = {{1,-1,1},{2,2,3},{-2,-3,-1}};
   double matrixB [3][3] = {{1,0,4},{0,2,5},{1,3,0}};
   double matrixC [3][3];
   double matrixResultado [3][3] = {{2,1,-1}, {5,13,18},{-3,-9,-23}};
-  multiplicacionMatrices(matrixA,matrixB,matrixC);
+  crossMatrix(matrixA,matrixB,matrixC);
   assert(matricesIguales(matrixC,matrixResultado));
   printf(GREEN "---- Pass Test MULTIPLICACION MATRICES ----\n" RESET);
-  
+
   //Test cross
   printf("---- Test CROSS ----\n");
   //Cross vectores
@@ -204,7 +204,7 @@ int main () {
   //Cross matrices
 
   printf(GREEN "---- Pass Test CROSS ----\n" RESET);
-  
+
   //Test roots
   printf("---- Test ROOTS ----\n");
   double polinome[9] = {1,0, -73120740632072, 0, 0, -1.58793679567638e+36, 0, 0, -1.19853848536909e+58};

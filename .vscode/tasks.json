@@ -39,6 +39,7 @@
         "rv2coe.c",
         "hgibbs.c",
         "anglesdr.c",
+        "anglesg.c",
         "PreliminaryOrbitDeterminationTest.c",
         "-o",
         "PreliminaryOrbitDeterminationTest.out",

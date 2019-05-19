@@ -270,7 +270,7 @@ void xlamb(double m,double q,double qsqfm1,double tin, double * n,double * x,dou
         int i=1;
         for (i;i<=12;i++){
             tlamb(m,q,qsqfm1,xm,3,&tmin,&dt,&d2t,&d3t);
-            
+
             if (d2t==0.0){
                 break;
             }
@@ -281,7 +281,7 @@ void xlamb(double m,double q,double qsqfm1,double tin, double * n,double * x,dou
                 break;
             }
         }
-        
+
         if (i>12){
             // (break; off & exit if tmin not located - should never happen)
             // now proceed from t(min) to full starter
@@ -340,7 +340,7 @@ void xlamb(double m,double q,double qsqfm1,double tin, double * n,double * x,dou
         // (now have a starter, so proceed by halley)
     // while(1)
         for (int i=1;i<=3;i++){
-            
+
             tlamb(m,q,qsqfm1,(*x),2,&t,&dt,&d2t,&d3t);
             t = tin - t;
             if (dt!=0.0){
@@ -354,7 +354,7 @@ void xlamb(double m,double q,double qsqfm1,double tin, double * n,double * x,dou
         (*n) = 2;
         (*xpl) = (*x);
         // (second multi-rev starter)
-        
+
         tlamb(m,q,qsqfm1,0.0,0,&t0,&dt,&d2t,&d3t); //3
         tdiff0 = t0 - tmin;
         tdiff = tin - t0;
@@ -484,7 +484,7 @@ void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_wa
     }
 
     // initialize:
-    
+
     double dr       = r1mag - r2mag;
     double r1r2     = r1mag*r2mag;
 
@@ -497,9 +497,9 @@ void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_wa
 
     double  r1hat[ROWS];
     double  r2hat[ROWS];
-    divideComponentesVectorEntreValor(aux1,r1mag,r1hat);//r1hat    = r1/r1mag;
-    divideComponentesVectorEntreValor(aux2,r2mag,r2hat);//r2hat    = r2/r2mag;
-    
+    divisionVectorPorEscalar(aux1,r1mag,r1hat);//r1hat    = r1/r1mag;
+    divisionVectorPorEscalar(aux2,r2mag,r2hat);//r2hat    = r2/r2mag;
+
 
     double r1xr2 [ROWS];
     crossVector(r1,r2,r1xr2);
@@ -521,7 +521,7 @@ void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_wa
     int tam=2*multi_revs;
     double all_vt1[ROWS][tam];
     double all_vt2[ROWS][tam];
-    
+
     bool solution_exists[tam];
     for(int i=0;i<tam;i++){
         solution_exists[i]=false;
@@ -537,7 +537,7 @@ void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_wa
         double rho[ROWS];
         if (long_way){ // greater than pi
             ta    =  num_revs * 2*M_PI + (2*M_PI - pa);
-            
+
             opuestoVector(r1xr2_hat,rho);
         }else{ // less than M_PI
             ta    = num_revs * 2*M_PI + pa;
@@ -550,9 +550,9 @@ void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_wa
         double etaf[ROWS];
         crossVector(rho,r1hat,etai);
         crossVector(rho,r2hat,etaf);
-        
+
         // Gooding routine:
-        
+
         double n;
         double * vri;
         double * vti;
@@ -590,8 +590,8 @@ void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_wa
                 vt2[0]=aux3[0];
                 vt2[1]=aux3[1];
                 vt2[2]=aux3[2];
-                
-                break;                
+
+                break;
             case 2:
                 multiplicacionVectorPorEscalar(r1hat,vri[0],aux1);
                 multiplicacionVectorPorEscalar(etai,vti[0],aux2);
@@ -624,7 +624,7 @@ void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_wa
                 break;
         }
 
-        
+
         if (i==0 && nv==1){ // there can be only one solution
             all_vt1[0][0] = vt1[0];
             all_vt1[1][0] = vt1[1];
@@ -639,7 +639,7 @@ void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_wa
             switch (nv){
                 case 1:
                     //all_vt1(:,2*i)         = vt1(:,1);
-                    
+
                     all_vt1[0][(2*i)-1] = vt1[0];
                     all_vt1[1][(2*i)-1] = vt1[1];
                     all_vt1[2][(2*i)-1] = vt1[2];
@@ -674,6 +674,7 @@ void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_wa
                     all_vt2[2][(2*i)+1-1] = mt2[2][1];
 
                     solution_exists[(2*i)+1-1]   = true;
+
                     break;
             }
         }
@@ -691,7 +692,7 @@ void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_wa
     //OJO AQUI
     *v1 = (double *)calloc(3,sizeof(double));//v1 = zeros(3,n_solutions);
     *v2 = (double *)calloc(3,sizeof(double));//v2 = zeros(3,n_solutions);
-    
+
 
 
     int k=0;
@@ -702,13 +703,13 @@ void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_wa
             k=k+1;
             //printf("ENTRO FOR LAMBERT\n");
             //v1(:,k) = all_vt1(:,i);
-            
 
-            (*v1)[0] = all_vt1[0][i-1]; 
+
+            (*v1)[0] = all_vt1[0][i-1];
             (*v1)[1] = all_vt1[1][i-1];
             (*v1)[2] = all_vt1[2][i-1];
 
-            
+
             //v2(:,k) = all_vt2(:,i);
             (*v2)[0] = all_vt2[0][i-1];
             (*v2)[1] = all_vt2[1][i-1];

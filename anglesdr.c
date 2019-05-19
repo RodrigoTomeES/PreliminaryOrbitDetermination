@@ -54,12 +54,12 @@ void anglesdr(double rtasc1, double rtasc2, double rtasc3, double decl1, double 
     los2[0]=cos(decl2)*cos(rtasc2);
     los2[1]=cos(decl2)*sin(rtasc2);
     los2[2]=sin(decl2);
-     
+
     double los3[ROWS];
     los3[0]=cos(decl3)*cos(rtasc3);
     los3[1]=cos(decl3)*sin(rtasc3);
     los3[2]=sin(decl3);
-     
+
 
     double magr1old  = 99999e3;
     double magr2old  = 99999e3;
@@ -88,58 +88,58 @@ void anglesdr(double rtasc1, double rtasc2, double rtasc3, double decl1, double 
         //printf("bucleando\n");
         ll = ll+1;
 
-        
+
 
         doubler(cc1,cc2,magrsite1,magrsite2,magr1in,magr2in,los1,los2,los3,rsite1,rsite2,rsite3,t1,t3,direct,r2v,r3,&f1,&f2,&q1,&magr1,&magr2,&a,&deltae32);
-        
+
         //     [v2v,v3] = lambert_gooding(r2v',r3',(Mjd3-Mjd2)*86400,GM_Earth,0,1);
         f  = 1 - a/magr2*(1-cos(deltae32));
         g  = t3 - sqrt((a*a*a)/GM_Earth)*(deltae32-sin(deltae32));
-        
+
 
 
         //v2v = (r3 - f*r2v)/g;
         multiplicacionVectorPorEscalar(r2v,f,aux1);
         restaVectores(r3,aux1,aux2);
-        devisionVectorPorEscalar(aux2,g,v2v);
-        
-        
-        
+        divisionVectorPorEscalar(aux2,g,v2v);
+
+
+
         double magr1o = magr1in;
         magr1in = (1+pctchg)*magr1in;
         double deltar1 = pctchg*magr1in;
 
-        
+
         doubler(cc1,cc2,magrsite1,magrsite2,magr1in,magr2in,los1,los2,los3,rsite1,rsite2,rsite3,t1,t3,direct,r2v,r3,&f1delr1,&f2delr1,&q2,&magr1,&magr2,&a,&deltae32);
-        
+
         double pf1pr1 = (f1delr1-f1)/deltar1;
         double pf2pr1 = (f2delr1-f2)/deltar1;
-        
+
         magr1in = magr1o;
         deltar1 = pctchg*magr1in;
         double magr2o = magr2in;
         magr2in = (1+pctchg)*magr2in;
         double deltar2 = pctchg*magr2in;
 
-        
+
         doubler(cc1,cc2,magrsite1,magrsite2,magr1in,magr2in,los1,los2,los3,rsite1,rsite2,rsite3,t1,t3,direct,r2v,r3,&f1delr2,&f2delr2,&q3,&magr1,&magr2,&a,&deltae32);
 
         double pf1pr2 = (f1delr2-f1)/deltar2;
         double pf2pr2 = (f2delr2-f2)/deltar2;
-        
+
         magr2in = magr2o;
         deltar2 = pctchg*magr2in;
-        
+
         double delta  = pf1pr1*pf2pr2 - pf2pr1*pf1pr2;
         double delta1 = pf2pr2*f1 - pf1pr2*f2;
         double delta2 = pf1pr1*f2 - pf2pr1*f1;
-        
+
         deltar1 = -delta1/delta;
         deltar2 = -delta2/delta;
-        
+
         magr1old = magr1in;
         magr2old = magr2in;
-        
+
         // may need to limit the amount of the correction
         //     if abs(deltar1) > magr1in*pctchg
         //         deltar1 = sign(deltar1)*magr1in*pctchg;
@@ -147,36 +147,36 @@ void anglesdr(double rtasc1, double rtasc2, double rtasc3, double decl1, double 
         //     if abs(deltar2) > magr2in*pctchg
         //         deltar2 = sign(deltar2)*magr2in*pctchg;
         //     end
-        
+
         magr1in = magr1in + deltar1;
-        magr2in = magr2in + deltar2;    
+        magr2in = magr2in + deltar2;
     }
 
     doubler(cc1,cc2,magrsite1,magrsite2,magr1in,magr2in,los1,los2,los3,rsite1,rsite2,rsite3,t1,t3,direct,r2v,r3,&f1,&f2,&q1,&magr1,&magr2,&a,&deltae32);
-    
+
     double * v2vaux;
     double * v3;
-    
+
     lambert_gooding(r2v,r3,(Mjd3-Mjd2)*86400,GM_Earth,0,1,&v2vaux,&v3);
-    
+
     f  = 1 - a/magr2*(1-cos(deltae32));
     g  = t3 - sqrt((a*a*a)/GM_Earth)*(deltae32-sin(deltae32));
-    
-    
+
+
     multiplicacionVectorPorEscalar(r2v,f,aux1);
     restaVectores(r3,aux1,aux2);
-    devisionVectorPorEscalar(aux2,g,aux3);
-    
-    
+    divisionVectorPorEscalar(aux2,g,aux3);
+
+
     *r2 = (double *)calloc(3,sizeof(double));//v1 = zeros(3,n_solutions);
     *v2 = (double *)calloc(3,sizeof(double));//v2 = zeros(3,n_solutions);
 
     (*r2)[0] = r2v[0];
     (*r2)[1] = r2v[1];
     (*r2)[2] = r2v[2];
-    
+
     (*v2)[0] = aux3[0];
     (*v2)[1] = aux3[1];
     (*v2)[2] = aux3[2];
-    
+
 }
