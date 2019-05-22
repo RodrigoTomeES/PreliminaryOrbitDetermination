@@ -1,3 +1,21 @@
+//$Header$
+//------------------------------------------------------------------------------
+//                                   gast.h
+//------------------------------------------------------------------------------
+// POD: Preleminary Orbit Determination.
+//
+// Legal: MIT  License
+//
+// Author: David Lacalle & Rodrigo Tomé
+// Created: 2019/04/27
+//
+/**
+* Provides the definitions of gast function.
+*
+* @note
+*/
+//------------------------------------------------------------------------------
+
 #ifndef GAST_H
 #define GAST_H
 

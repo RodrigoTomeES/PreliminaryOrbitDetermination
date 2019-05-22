@@ -1,5 +1,41 @@
+//$Header$
+//------------------------------------------------------------------------------
+//                                   gmst
+//------------------------------------------------------------------------------
+// POD: Preleminary Orbit Determination.
+//
+// Legal: MIT  License
+//
+// Author: David Lacalle & Rodrigo Tomé
+// Created: 2019/04/27
+//
+/**
+* Provides a implementation of gmst function.
+*
+* @note
+*/
+//------------------------------------------------------------------------------
+
 #include "gmst.h"
-double gmst(double Mjd_UT1){
+
+//------------------------------------------------------------------------------
+//  double gmst(double Mjd_UT1)
+//------------------------------------------------------------------------------
+/**
+* Greenwich Mean Sidereal Time
+*
+* @param  -
+* Input:
+*  Mjd_UT1    Modified Julian Date UT1
+* @return -
+* Output:
+*  gmstime     GMST in [rad]
+* @exception - none
+* @see - none
+* @note - none
+*/
+//------------------------------------------------------------------------------
+double gmst(double Mjd_UT1) {
     double res = 0;
 
     double Secs = 86400;

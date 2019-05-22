@@ -1,5 +1,23 @@
-#ifndef LAMBERTGOODING_H
-#define LAMBERTGOODING_H
+//$Header$
+//------------------------------------------------------------------------------
+//                                   lambert_gooding.h
+//------------------------------------------------------------------------------
+// POD: Preleminary Orbit Determination.
+//
+// Legal: MIT  License
+//
+// Author: David Lacalle & Rodrigo Tomé
+// Created: 2019/04/27
+//
+/**
+* Provides the definitions of lambert_gooding function.
+*
+* @note
+*/
+//------------------------------------------------------------------------------
+
+#ifndef LAMBERT_GOODING_H
+#define LAMBERT_GOODING_H
 
 #include <stdlib.h>
 #include <stdbool.h>
@@ -16,4 +34,4 @@ void vlamb(double gm,double * r1,double * r2,double th,double tdelt,double * n,d
 
 void lambert_gooding(double * r1,double * r2,double tof,double mu,double long_way,double multi_revs,double **  v1,double **  v2);
 
-#endif /* LAMBERTGOODING_H */
+#endif /* LAMBERT_GOODING_H */

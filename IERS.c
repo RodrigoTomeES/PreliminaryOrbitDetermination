@@ -1,6 +1,40 @@
+//$Header$
+//------------------------------------------------------------------------------
+//                                   IERS
+//------------------------------------------------------------------------------
+// POD: Preleminary Orbit Determination.
+//
+// Legal: MIT  License
+//
+// Author: David Lacalle & Rodrigo Tomé
+// Created: 2019/04/27
+//
+/**
+* Provides a implementation of IERS function.
+*
+* @note
+*/
+//------------------------------------------------------------------------------
+
 #include "IERS.h"
 
-void IERS(double ** eop, double filas,double columnas,double Mjd_UTC, char interp, double * UT1_UTC, double * TAI_UTC, double * x_pole, double * y_pole, double * ddpsi, double * ddeps){
+//------------------------------------------------------------------------------
+//  void IERS(double ** eop, double filas,double columnas,double Mjd_UTC,
+//            char interp, double * UT1_UTC, double * TAI_UTC, double * x_pole,
+//            double * y_pole, double * ddpsi, double * ddeps);
+//------------------------------------------------------------------------------
+/**
+* Management of IERS time and polar motion data
+*
+* @param  - double ** eop, double filas,double columnas,double Mjd_UTC, char interp
+* @return - double * UT1_UTC, double * TAI_UTC, double * x_pole, double * y_pole,
+*           double * ddpsi, double * ddeps
+* @exception - none
+* @see - none
+* @note - none
+*/
+//------------------------------------------------------------------------------
+void IERS(double ** eop, double filas,double columnas,double Mjd_UTC, char interp, double * UT1_UTC, double * TAI_UTC, double * x_pole, double * y_pole, double * ddpsi, double * ddeps) {
     double pi = 3.14159265358979;
 
     //double Arcs = 3600*180/pi;

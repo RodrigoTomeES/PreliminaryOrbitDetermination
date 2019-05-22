@@ -1,3 +1,21 @@
+//$Header$
+//------------------------------------------------------------------------------
+//                                   IERS.h
+//------------------------------------------------------------------------------
+// POD: Preleminary Orbit Determination.
+//
+// Legal: MIT  License
+//
+// Author: David Lacalle & Rodrigo Tomé
+// Created: 2019/04/27
+//
+/**
+* Provides the definitions of IERS function.
+*
+* @note
+*/
+//------------------------------------------------------------------------------
+
 #ifndef IERS_H
 #define IERS_H
 

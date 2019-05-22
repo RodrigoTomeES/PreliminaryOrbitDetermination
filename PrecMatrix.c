@@ -1,6 +1,42 @@
+//$Header$
+//------------------------------------------------------------------------------
+//                                   PrecMatrix
+//------------------------------------------------------------------------------
+// POD: Preleminary Orbit Determination.
+//
+// Legal: MIT  License
+//
+// Author: David Lacalle & Rodrigo Tomé
+// Created: 2019/04/27
+//
+/**
+* Provides a implementation of PrecMatrix function.
+*
+* @note
+*/
+//------------------------------------------------------------------------------
+
 #include "PrecMatrix.h"
 
-void PrecMatrix(double Mjd_1, double Mjd_2, double PrecMat[ROWS][COLS]){
+//------------------------------------------------------------------------------
+//  void PrecMatrix(double Mjd_1, double Mjd_2, double PrecMat[ROWS][COLS])
+//------------------------------------------------------------------------------
+/**
+* Precession transformation of equatorial coordinates
+*
+* @param  -
+* Inputs:
+*   Mjd_1     Epoch given (Modified Julian Date TT)
+*   MjD_2     Epoch to precess to (Modified Julian Date TT)
+* @return -
+* Output:
+*   PrecMat   Precession transformation matrix
+* @exception - none
+* @see - none
+* @note - none
+*/
+//------------------------------------------------------------------------------
+void PrecMatrix(double Mjd_1, double Mjd_2, double PrecMat[ROWS][COLS]) {
     double T = (Mjd_1-MJD_J2000)/36525;
     double dT= (Mjd_2-Mjd_1)/36525;
 
@@ -19,6 +55,4 @@ void PrecMatrix(double Mjd_1, double Mjd_2, double PrecMat[ROWS][COLS]){
     double aux[ROWS][COLS];
     crossMatrix(Rz,Ry,aux);
     crossMatrix(aux,Rz2,PrecMat);
-
-
 }
