@@ -22,6 +22,23 @@
 #include "MatLabUtilites.h"
 #include "Frac.h"
 
+//------------------------------------------------------------------------------
+//  double gmst(double Mjd_UT1)
+//------------------------------------------------------------------------------
+/**
+* Greenwich Mean Sidereal Time
+*
+* @param  -
+* Input:
+*  Mjd_UT1    Modified Julian Date UT1
+* @return -
+* Output:
+*  gmstime     GMST in [rad]
+* @exception - none
+* @see - none
+* @note - none
+*/
+//------------------------------------------------------------------------------
 double gmst(double Mjd_UT1);
 
 #endif /* GMST_H */

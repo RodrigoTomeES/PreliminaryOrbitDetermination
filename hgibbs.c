@@ -46,7 +46,6 @@
 * @note - none
 */
 //------------------------------------------------------------------------------
-
 void hgibbs(double r1[], double r2[], double r3[], double MJD1, double MJD2, double MJD3, double v2[], double *theta, double *theta1, double *copa, char error[]) {
 	strcpy(error,"ok");
 	*theta = 0;

@@ -34,7 +34,6 @@
 * @note - none
 */
 //------------------------------------------------------------------------------
-
 void gibbs(double r1[], double r2[], double r3[], double v2[], double *theta, double *theta1, double *copa, char error[]) {
 	double small = 0.00000001;
 	*theta = 0;

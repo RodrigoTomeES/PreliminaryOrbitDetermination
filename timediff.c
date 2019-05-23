@@ -24,14 +24,15 @@
 /**
 * Define constants
 *
-* @param - x
-* @return - res
+* @param - double UT1_UTC, double TAI_UTC
+* @return - double * UT1_TAI, double * UTC_GPS, double * UT1_GPS, double * TT_UTC,
+*           double * GPS_UTC
 * @exception - none
 * @see - none
 * @note - none
 */
 //------------------------------------------------------------------------------
-void timediff(double UT1_UTC,double TAI_UTC,double * UT1_TAI, double * UTC_GPS, double * UT1_GPS, double * TT_UTC, double * GPS_UTC) {
+void timediff(double UT1_UTC, double TAI_UTC, double * UT1_TAI, double * UTC_GPS, double * UT1_GPS, double * TT_UTC, double * GPS_UTC) {
     double TT_TAI  = 32.184;          // TT-TAI time difference [s]
 
     double GPS_TAI = -19.0;            // GPS-TAI time difference [s]
@@ -51,8 +52,6 @@ void timediff(double UT1_UTC,double TAI_UTC,double * UT1_TAI, double * UTC_GPS, 
     double TT_UTCv  = TT_TAI-UTC_TAI;   //  TT-UTC time difference [s]
 
     double GPS_UTCv = GPS_TAI-UTC_TAI;  // GPS-UTC time difference [s]
-
-
 
     *UT1_TAI = UT1_TAIv;
     *UTC_GPS = UTC_GPSv;

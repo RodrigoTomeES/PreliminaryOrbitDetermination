@@ -25,6 +25,21 @@
 #include "unit.h"
 #include "angl.h"
 
+//------------------------------------------------------------------------------
+//  void gibbs(double r1[], double r2[], double r3[], double res_vector[])
+//------------------------------------------------------------------------------
+/**
+* Performs the gibbs method of orbit determination. this method
+* determines the velocity at the middle point of the 3 given
+* position vectors.
+*
+* @param - double r1[], double r2[], double r3[], double res_vector[]
+* @return - none
+* @exception - none
+* @see - none
+* @note - none
+*/
+//------------------------------------------------------------------------------
 void gibbs(double r1[], double r2[], double r3[], double v2[], double *theta, double *theta1, double *copa, char error[]);
 
 #endif /* GIBBS_H */

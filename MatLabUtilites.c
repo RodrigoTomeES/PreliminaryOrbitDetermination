@@ -445,43 +445,120 @@ bool vectoresIguales(double vector1[], double vector2[])
 * @note - none
 */
 //------------------------------------------------------------------------------
-void crossVector(double vector1[], double vector2[], double resultado[])
-{
+void crossVector(double vector1[], double vector2[], double resultado[]) {
   resultado[0] = vector1[1] * vector2[2] - vector1[2] * vector2[1];
   resultado[1] = vector1[2] * vector2[0] - vector1[0] * vector2[2];
   resultado[2] = vector1[0] * vector2[1] - vector1[1] * vector2[0];
 }
 
-void sumaVectores(double vector1[], double vector2[], double res[]){
+//------------------------------------------------------------------------------
+//  void sumaVectores(double vector1[], double vector2[], double res[])
+//------------------------------------------------------------------------------
+/**
+* Make the plus of two vectors
+*
+* @param  - double vector1[], double vector2[], double res[]
+* @return - none
+* @exception - none
+* @see - none
+* @note - none
+*/
+//------------------------------------------------------------------------------
+void sumaVectores(double vector1[], double vector2[], double res[]) {
   res[0]=vector1 [0]+vector2[0];
   res[1]=vector1 [1]+vector2[1];
   res[2]=vector1 [2]+vector2[2];
 }
 
-void restaVectores(double vector1[], double vector2[], double res[]){
+//------------------------------------------------------------------------------
+//  void restaVectores(double vector1[], double vector2[], double res[])
+//------------------------------------------------------------------------------
+/**
+* Make the minus of two vectors
+*
+* @param  - double vector1[], double vector2[], double res[]
+* @return - none
+* @exception - none
+* @see - none
+* @note - none
+*/
+//------------------------------------------------------------------------------
+void restaVectores(double vector1[], double vector2[], double res[]) {
   res[0]=vector1 [0]-vector2[0];
   res[1]=vector1 [1]-vector2[1];
   res[2]=vector1 [2]-vector2[2];
 }
 
-void multiplicacionVectorPorEscalar(double vector[], double valor, double res[]){
+//------------------------------------------------------------------------------
+//  void multiplicacionVectorPorEscalar(double vector[], double valor, double res[])
+//------------------------------------------------------------------------------
+/**
+* Make the product of a vector to climb
+*
+* @param  - double vector[], double valor, double res[]
+* @return - none
+* @exception - none
+* @see - none
+* @note - none
+*/
+//------------------------------------------------------------------------------
+void multiplicacionVectorPorEscalar(double vector[], double valor, double res[]) {
   res[0]=vector[0]*valor;
   res[1]=vector[1]*valor;
   res[2]=vector[2]*valor;
 }
 
+//------------------------------------------------------------------------------
+//  void divisionVectorPorEscalar(double vector[], double valor, double res[])
+//------------------------------------------------------------------------------
+/**
+* Make the divison of a vector to climb
+*
+* @param  - double vector[], double valor, double res[]
+* @return - none
+* @exception - none
+* @see - none
+* @note - none
+*/
+//------------------------------------------------------------------------------
 void divisionVectorPorEscalar(double vector[], double valor, double res[]){
   res[0]=vector[0]/valor;
   res[1]=vector[1]/valor;
   res[2]=vector[2]/valor;
 }
 
-void opuestoVector(double vector[], double res[]){
+//------------------------------------------------------------------------------
+//  void opuestoVector(double vector[], double res[])
+//------------------------------------------------------------------------------
+/**
+* Does the opposite of a vector
+*
+* @param  - double vector[], double res[]
+* @return - none
+* @exception - none
+* @see - none
+* @note - none
+*/
+//------------------------------------------------------------------------------
+void opuestoVector(double vector[], double res[]) {
   res[0]=-vector[0];
   res[1]=-vector[1];
   res[2]=-vector[2];
 }
 
+//------------------------------------------------------------------------------
+//  void muestraVector(double vector[])
+//------------------------------------------------------------------------------
+/**
+* Show the vector
+*
+* @param  - double vector[]
+* @return - none
+* @exception - none
+* @see - none
+* @note - none
+*/
+//------------------------------------------------------------------------------
 void muestraVector(double vector[]){
   printf("\n");
   printf("%.15lf\n",vector[0]);
@@ -490,6 +567,19 @@ void muestraVector(double vector[]){
   printf("\n");
 }
 
+//------------------------------------------------------------------------------
+//  void muestraMatriz(double matrix[ROWS][COLS])
+//------------------------------------------------------------------------------
+/**
+* Show the maxtrix
+*
+* @param  - double matrix[ROWS][COLS]
+* @return - none
+* @exception - none
+* @see - none
+* @note - none
+*/
+//------------------------------------------------------------------------------
 void muestraMatriz(double matrix[ROWS][COLS]) {
   printf("\n");
   for (int i = 0; i < 3; i++) {
@@ -501,16 +591,40 @@ void muestraMatriz(double matrix[ROWS][COLS]) {
   printf("\n");
 }
 
-// Mod in C doesn't equal than Matlab
-// https://stackoverflow.com/questions/28888619/modulo-function-in-c-that-behaves-like-mod-in-matlab
+//------------------------------------------------------------------------------
+//  double matlab_mod(double a, double q)
+//------------------------------------------------------------------------------
+/**
+* Show the maxtrix
+*
+* @param  - double a, double q
+* @return - double
+* @exception - none
+* @see - none
+* @note - Mod in C doesn't equal than Matlab
+*         https://stackoverflow.com/questions/28888619/modulo-function-in-c-that-behaves-like-mod-in-matlab
+*/
+//------------------------------------------------------------------------------
 double matlab_mod(double a, double q) {
     double m = fmod(a, q);
     return m + q * (m < 0.f);
 }
 
+//------------------------------------------------------------------------------
+//  void copiaVector(double original [], double copia[])
+//------------------------------------------------------------------------------
+/**
+* Copy the vector original in copy
+*
+* @param  - double original [], double copia[]
+* @return - none
+* @exception - none
+* @see - none
+* @note - none
+*/
+//------------------------------------------------------------------------------
 void copiaVector(double original [], double copia[]){
   copia[0]=original[0];
   copia[1]=original[1];
   copia[2]=original[2];
 }
-

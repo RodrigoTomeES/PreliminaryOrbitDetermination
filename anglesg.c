@@ -53,7 +53,6 @@
 * @note - none
 */
 //------------------------------------------------------------------------------
-
 void anglesg(double Alpha1, double Alpha2, double Alpha3, double Delta1, double Delta2, double Delta3, double JD1, double JD2, double JD3, double RS1[], double RS2[], double RS3[], double R2[], double V2[]) {
     double Mu = 398600.4418e9;
     // double Rad = 180/pi; esta mal ?

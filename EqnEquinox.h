@@ -21,6 +21,25 @@
 
 #include "MatLabUtilites.h"
 
+//------------------------------------------------------------------------------
+//  double EqnEquinox(double x);
+//------------------------------------------------------------------------------
+/**
+* Computation of the equation of the equinoxes
+*
+* @param  -
+* Input:
+*   Mjd_TT    Modified Julian Date (Terrestrial Time)
+* @return -
+* Output:
+*    EqE      Equation of the equinoxes
+* @exception - none
+* @see - none
+* @note - The equation of the equinoxes dpsi*cos(eps) is the right ascension of
+*   	  the mean equinox referred to the true equator and equinox and is equal
+*   	  to the difference between apparent and mean sidereal time.
+*/
+//------------------------------------------------------------------------------
 double EqnEquinox(double x);
 
 #endif /* EQNEQUINOX_H */
