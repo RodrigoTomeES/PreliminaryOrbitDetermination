@@ -1,0 +1,24 @@
+dist: xenial
+language: c
+compiler: gcc
+addons:
+  sonarcloud:
+    organization: "preliminaryorbitdetermination" # the key of the org you chose at step #3
+    token: $SONAR_TOKEN
+script:
+  - build-wrapper-linux-x86-64 --out-dir bw-output make all
+  - sonar-scanner -X
+  - ./matlabutilites.out
+  - ./PreliminaryOrbitDeterminationTest.out
+  - ./example1.out
+  - ./example2.out
+  - ./example3.out
+  - ./example5.out
+  - ./example6.out
+  - ./example7.out
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: master

@@ -1,0 +1,1 @@
+E 2cXŸhrlambert_gooding.c

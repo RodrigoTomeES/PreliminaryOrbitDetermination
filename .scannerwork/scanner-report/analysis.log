@@ -1,0 +1,269 @@
+Environment variables:
+  - ANSI_CLEAR=\033[0K
+  - ANSI_GREEN=\033[32;1m
+  - ANSI_RED=\033[31;1m
+  - ANSI_RESET=\033[0m
+  - ANSI_YELLOW=\033[33;1m
+  - CC=gcc
+  - CC_FOR_BUILD=gcc
+  - CI=true
+  - COMPOSER_NO_INTERACTION=1
+  - CONTINUOUS_INTEGRATION=true
+  - DEBIAN_FRONTEND=noninteractive
+  - GEM_HOME=/home/travis/.rvm/gems/ruby-2.5.3
+  - GEM_PATH=/home/travis/.rvm/gems/ruby-2.5.3:/home/travis/.rvm/gems/ruby-2.5.3@global
+  - GITHUB_TOKEN=******
+  - GIT_ASKPASS=echo
+  - GOPATH=/home/travis/gopath
+  - GOROOT=/home/travis/.gimme/versions/go1.11.1.linux.amd64
+  - HAS_ANTARES_THREE_LITTLE_FRONZIES_BADGE=true
+  - HAS_JOSH_K_SEAL_OF_APPROVAL=true
+  - HISTCONTROL=ignoredups:ignorespace
+  - HISTFILESIZE=2000
+  - HISTSIZE=1000
+  - HOME=/home/travis
+  - IRBRC=/home/travis/.rvm/rubies/ruby-2.5.3/.irbrc
+  - JAVA_HOME=/usr/local/lib/jvm/openjdk11
+  - JRUBY_OPTS= --client -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-Xss2m -Xcompile.invokedynamic=false
+  - LANG=en_US.UTF-8
+  - LANGUAGE=en_US.UTF-8
+  - LC_ALL=en_US.UTF-8
+  - LC_CTYPE=en_US.UTF-8
+  - LOGNAME=travis
+  - MAIL=/var/mail/travis
+  - MANPATH=/home/travis/.nvm/versions/node/v8.12.0/share/man:/home/travis/.rvm/rubies/ruby-2.5.3/share/man:/usr/local/cmake-3.12.4/man:/usr/local/clang-7.0.0/share/man:/usr/local/man:/usr/local/share/man:/usr/share/man:/home/travis/.rvm/man
+  - MERB_ENV=test
+  - MYSQL_UNIX_PORT=/var/run/mysqld/mysqld.sock
+  - MY_RUBY_HOME=/home/travis/.rvm/rubies/ruby-2.5.3
+  - NVM_BIN=/home/travis/.nvm/versions/node/v8.12.0/bin
+  - NVM_CD_FLAGS=
+  - NVM_DIR=/home/travis/.nvm
+  - OLDPWD=/home/travis/build
+  - PAGER=cat
+  - PATH=/home/travis/bin:/home/travis/.local/bin:/usr/local/lib/jvm/openjdk11/bin:/opt/pyenv/shims:/home/travis/.phpenv/shims:/home/travis/perl5/perlbrew/bin:/home/travis/.nvm/versions/node/v8.12.0/bin:/home/travis/.rvm/gems/ruby-2.5.3/bin:/home/travis/.rvm/gems/ruby-2.5.3@global/bin:/home/travis/.rvm/rubies/ruby-2.5.3/bin:/home/travis/gopath/bin:/home/travis/.gimme/versions/go1.11.1.linux.amd64/bin:/usr/local/maven-3.6.0/bin:/usr/local/cmake-3.12.4/bin:/usr/local/clang-7.0.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/home/travis/.rvm/bin:/home/travis/.phpenv/bin:/opt/pyenv/bin:/home/travis/.yarn/bin:/home/travis/.sonarscanner/sonar-scanner-3.0.3.778/bin:/home/travis/.sonar/cache/7ef9cba93936dfd6df059c12d5580158/build-wrapper-linux-x86
+  - PERLBREW_HOME=/home/travis/.perlbrew
+  - PERLBREW_ROOT=/home/travis/perl5/perlbrew
+  - PERLBREW_SHELLRC_VERSION=0.86
+  - PS1=${debian_chroot:+($debian_chroot)}\u@\h:\w\$ 
+  - PS4=+
+  - PWD=/home/travis/build/RodrigoTomeES/PreliminaryOrbitDetermination
+  - PYENV_ROOT=/opt/pyenv
+  - PYENV_SHELL=bash
+  - PYTHON_CFLAGS=-g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security
+  - PYTHON_CONFIGURE_OPTS=--enable-unicode=ucs4 --with-wide-unicode --enable-shared --enable-ipv6 --enable-loadable-sqlite-extensions --with-computed-gotos
+  - RACK_ENV=test
+  - RAILS_ENV=test
+  - RBENV_SHELL=bash
+  - RUBY_VERSION=ruby-2.5.3
+  - SHELL=/bin/bash
+  - SHLVL=2
+  - SONARQUBE_SCANNER_PARAMS={ "sonar.organization" : "preliminaryorbitdetermination", "sonar.host.url" : "https://sonarcloud.io", "sonar.login" : "be011aa932c0bfa55e147f5552322cd3441066a1" }
+  - SONAR_SCANNER_HOME=/home/travis/.sonarscanner/sonar-scanner-3.0.3.778
+  - SONAR_TOKEN=******
+  - SSH_AGENT_PID=3203
+  - SSH_AUTH_SOCK=/tmp/ssh-tRQsUZpD6unF/agent.3197
+  - SSH_CLIENT=10.10.16.6 39800 22
+  - SSH_CONNECTION=10.10.16.6 39800 10.30.0.80 22
+  - SSH_TTY=/dev/pts/0
+  - TERM=xterm
+  - TRAVIS=true
+  - TRAVIS_ALLOW_FAILURE=false
+  - TRAVIS_APP_HOST=build.travis-ci.com
+  - TRAVIS_APT_PROXY=
+  - TRAVIS_ARCH=amd64
+  - TRAVIS_BRANCH=master
+  - TRAVIS_BUILD_DIR=/home/travis/build/RodrigoTomeES/PreliminaryOrbitDetermination
+  - TRAVIS_BUILD_ID=112979804
+  - TRAVIS_BUILD_NUMBER=73
+  - TRAVIS_BUILD_STAGE_NAME=
+  - TRAVIS_BUILD_WEB_URL=https://travis-ci.com/RodrigoTomeES/PreliminaryOrbitDetermination/builds/112979804
+  - TRAVIS_CMD=sonar-scanner -X
+  - TRAVIS_COMMIT=653fd91e2874487d07ed6574a3c33015ff91a6c8
+  - TRAVIS_COMMIT_MESSAGE=Added comments to H files.
+  - TRAVIS_COMMIT_RANGE=4238d85baf35...653fd91e2874
+  - TRAVIS_COMPILER=gcc
+  - TRAVIS_DIST=xenial
+  - TRAVIS_ENABLE_INFRA_DETECTION=true
+  - TRAVIS_EVENT_TYPE=push
+  - TRAVIS_FILTERED=redirect_io
+  - TRAVIS_HOME=/home/travis
+  - TRAVIS_INFRA=gce
+  - TRAVIS_INIT=systemd
+  - TRAVIS_INTERNAL_RUBY_REGEX=^ruby-(2\.[0-4]\.[0-9]|1\.9\.3)
+  - TRAVIS_JOB_ID=202616601
+  - TRAVIS_JOB_NAME=
+  - TRAVIS_JOB_NUMBER=73.1
+  - TRAVIS_JOB_WEB_URL=https://travis-ci.com/RodrigoTomeES/PreliminaryOrbitDetermination/jobs/202616601
+  - TRAVIS_LANGUAGE=c
+  - TRAVIS_OSX_IMAGE=
+  - TRAVIS_OS_NAME=linux
+  - TRAVIS_PRE_CHEF_BOOTSTRAP_TIME=2019-03-25T16:16:42
+  - TRAVIS_PULL_REQUEST=false
+  - TRAVIS_PULL_REQUEST_BRANCH=
+  - TRAVIS_PULL_REQUEST_SHA=
+  - TRAVIS_PULL_REQUEST_SLUG=
+  - TRAVIS_REPO_SLUG=RodrigoTomeES/PreliminaryOrbitDetermination
+  - TRAVIS_ROOT=/
+  - TRAVIS_SECURE_ENV_VARS=true
+  - TRAVIS_STACK_FEATURES=basic couchdb disabled-ipv6 docker docker-compose elasticsearch firefox go-toolchain google-chrome jdk memcached mongodb mysql nodejs_interpreter perl_interpreter perlbrew phantomjs postgresql python_interpreter redis ruby_interpreter sqlite xserver
+  - TRAVIS_STACK_JOB_BOARD_REGISTER=/.job-board-register.yml
+  - TRAVIS_STACK_LANGUAGES=__sardonyx__ c c++ clojure cplusplus cpp default generic go groovy java node_js php pure_java python ruby scala
+  - TRAVIS_STACK_NAME=sardonyx
+  - TRAVIS_STACK_NODE_ATTRIBUTES=/.node-attributes.yml
+  - TRAVIS_STACK_TIMESTAMP=2019-03-25 16:16:56 UTC
+  - TRAVIS_SUDO=true
+  - TRAVIS_TAG=
+  - TRAVIS_TEST_RESULT=0
+  - TRAVIS_TIMER_ID=12037de0
+  - TRAVIS_TIMER_START_TIME=1558634961435267858
+  - TRAVIS_TMPDIR=/tmp/tmp.Wl3SKOUHws
+  - TRAVIS_UID=2000
+  - TZ=UTC
+  - USER=travis
+  - XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+  - XDG_RUNTIME_DIR=/run/user/2000
+  - XDG_SESSION_ID=2
+  - _=/home/travis/.sonarscanner/sonar-scanner-3.0.3.778/bin/sonar-scanner
+  - _system_arch=x86_64
+  - _system_name=Ubuntu
+  - _system_type=Linux
+  - _system_version=16.04
+  - rvm_bin_path=/home/travis/.rvm/bin
+  - rvm_path=/home/travis/.rvm
+  - rvm_prefix=/home/travis
+  - rvm_version=1.29.7 (latest)
+System properties:
+  - awt.toolkit=sun.awt.X11.XToolkit
+  - file.encoding=UTF-8
+  - file.separator=/
+  - java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment
+  - java.awt.headless=true
+  - java.awt.printerjob=sun.print.PSPrinterJob
+  - java.class.path=/home/travis/.sonarscanner/sonar-scanner-3.0.3.778/lib/sonar-scanner-cli-3.0.3.778.jar
+  - java.class.version=55.0
+  - java.home=/usr/local/lib/jvm/openjdk11
+  - java.io.tmpdir=/tmp
+  - java.library.path=/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib
+  - java.runtime.name=OpenJDK Runtime Environment
+  - java.runtime.version=11.0.2+9
+  - java.specification.name=Java Platform API Specification
+  - java.specification.vendor=Oracle Corporation
+  - java.specification.version=11
+  - java.vendor=Oracle Corporation
+  - java.vendor.url=http://java.oracle.com/
+  - java.vendor.url.bug=http://bugreport.java.com/bugreport/
+  - java.vendor.version=18.9
+  - java.version=11.0.2
+  - java.version.date=2019-01-15
+  - java.vm.compressedOopsMode=32-bit
+  - java.vm.info=mixed mode
+  - java.vm.name=OpenJDK 64-Bit Server VM
+  - java.vm.specification.name=Java Virtual Machine Specification
+  - java.vm.specification.vendor=Oracle Corporation
+  - java.vm.specification.version=11
+  - java.vm.vendor=Oracle Corporation
+  - java.vm.version=11.0.2+9
+  - jdk.debug=release
+  - line.separator=
+
+  - os.arch=amd64
+  - os.name=Linux
+  - os.version=4.15.0-1028-gcp
+  - path.separator=:
+  - project.home=/home/travis/build/RodrigoTomeES/PreliminaryOrbitDetermination
+  - scanner.home=/home/travis/.sonarscanner/sonar-scanner-3.0.3.778
+  - sun.arch.data.model=64
+  - sun.boot.library.path=/usr/local/lib/jvm/openjdk11/lib
+  - sun.cpu.endian=little
+  - sun.cpu.isalist=
+  - sun.io.unicode.encoding=UnicodeLittle
+  - sun.java.command=org.sonarsource.scanner.cli.Main -X
+  - sun.java.launcher=SUN_STANDARD
+  - sun.jnu.encoding=UTF-8
+  - sun.management.compiler=HotSpot 64-Bit Tiered Compilers
+  - sun.os.patch.level=unknown
+  - user.country=US
+  - user.dir=/home/travis/build/RodrigoTomeES/PreliminaryOrbitDetermination
+  - user.home=/home/travis
+  - user.language=en
+  - user.name=travis
+  - user.timezone=UTC
+SonarQube plugins:
+  - SonarCSS 1.0.3.724 (cssfamily)
+  - SonarPLSQL 3.4.1.2576 (plsql)
+  - SonarScala 1.5.0.315 (sonarscala)
+  - SonarC# 7.14.0.8411 (csharp)
+  - Vulnerability Analysis 7.8.0.4451 (security)
+  - SonarJava 5.12.1.17771 (java)
+  - SonarHTML 3.1.0.1615 (web)
+  - SonarFlex 2.4.0.1222 (flex)
+  - SonarXML 2.0.1.2020 (xml)
+  - SonarTS 1.9.0.3766 (typescript)
+  - SonarVB 7.14.0.8411 (vbnet)
+  - SonarSwift 4.1.0.3087 (swift)
+  - SonarCFamily 6.2.0.11201 (cpp)
+  - SonarPython 1.13.0.2922 (python)
+  - JaCoCo 1.0.1.143 (jacoco)
+  - Mercurial 1.1.2 (scmmercurial)
+  - SonarGo 1.1.0.1612 (go)
+  - SonarKotlin 1.5.0.315 (kotlin)
+  - SonarTSQL 1.4.0.3334 (tsql)
+  - SonarApex 1.5.0.315 (sonarapex)
+  - SonarJS 5.1.1.7506 (javascript)
+  - SonarRuby 1.5.0.315 (ruby)
+  - Vulnerability Rules for C# 7.8.0.4451 (securitycsharpfrontend)
+  - Vulnerability Rules for Java 7.8.0.4451 (securityjavafrontend)
+  - License for SonarLint 7.8.0.25269 (license)
+  - SonarCOBOL 4.4.0.3403 (cobol)
+  - Git 1.9.0.1653 (scmgit)
+  - SonarPHP 3.1.1.4762 (php)
+  - SonarABAP 3.7.1.1762 (abap)
+  - Vulnerability Rules for PHP 7.8.0.4451 (securityphpfrontend)
+Global server settings:
+  - email.from=noreply@sonarcloud.io
+  - email.fromName=SonarCloud
+  - email.prefix=[SonarCloud]
+  - sonar.auth.bitbucket.enabled=true
+  - sonar.auth.microsoft.enabled=true
+  - sonar.core.id=BD367519-AWHW8ct9-T_TB3XqouNu
+  - sonar.core.serverBaseURL=https://sonarcloud.io
+  - sonar.core.startTime=2019-05-20T12:38:07+0200
+  - sonar.cpd.cross_project=false
+  - sonar.dbcleaner.weeksBeforeDeletingAllSnapshots=480
+  - sonar.dbcleaner.weeksBeforeKeepingOnlyOneSnapshotByMonth=4
+  - sonar.dbcleaner.weeksBeforeKeepingOnlyOneSnapshotByWeek=1
+  - sonar.java.collectAnalysisErrors=true
+  - sonar.leak.period=30
+  - sonar.lf.aboutText=<div class="boxed-group" style="border: none; border-radius: 3px;">
+  <div class="boxed-group-inner clearfix" style="padding: 30px; border-radius: 3px; border: #e6e6e6 1px solid; background: #f3f3f3;">
+    <div style="overflow: hidden; line-height: 1.5; font-size: 16px;">
+      <p>
+Analyze your open source and private projects on SonarCloud.
+Select your <a href="https://about.sonarcloud.io">plan</a> and start improving. 
+      </p>
+    </div>
+  </div>
+</div>
+  - sonar.lf.enableGravatar=true
+  - sonar.lf.logoWidthPx=105
+  - sonar.organizations.anyoneCanCreate=true
+  - sonar.organizations.createPersonalOrg=true
+  - sonar.plsql.file.suffixes=sql,tab,pkb
+  - sonar.tsql.file.suffixes=.tsql
+Project server settings:
+Project scanner properties:
+  - sonar.cfamily.build-wrapper-output=bw-output
+  - sonar.cfamily.gcov.reportsPath=.
+  - sonar.host.url=https://sonarcloud.io
+  - sonar.login=******
+  - sonar.organization=preliminaryorbitdetermination
+  - sonar.projectBaseDir=/home/travis/build/RodrigoTomeES/PreliminaryOrbitDetermination
+  - sonar.projectKey=preliminaryorbitdetermination
+  - sonar.projectName=Preliminary Orbit Determination
+  - sonar.projectVersion=1.0
+  - sonar.scanner.app=ScannerCli
+  - sonar.scanner.appVersion=3.0.3.778
+  - sonar.sourceEncoding=UTF-8
+  - sonar.sources=.
+  - sonar.verbose=true
+  - sonar.working.directory=/home/travis/build/RodrigoTomeES/PreliminaryOrbitDetermination/.scannerwork

@@ -1,0 +1,2 @@
+Ë
+ÁShallow clone detected during the analysis. Some files will miss SCM information. This will affect features like auto-assignment of issues. Please configure your build to disable shallow clone.²ÙŽ¯®-

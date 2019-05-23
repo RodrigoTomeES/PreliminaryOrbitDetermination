@@ -1,0 +1,7 @@
+organization=preliminaryorbitdetermination
+projectKey=preliminaryorbitdetermination
+serverUrl=https://sonarcloud.io
+serverVersion=7.8.0.25269
+dashboardUrl=https://sonarcloud.io/dashboard?id=preliminaryorbitdetermination
+ceTaskId=AWrl47FpOPzm62I_s82-
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AWrl47FpOPzm62I_s82-
